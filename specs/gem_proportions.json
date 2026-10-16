@@ -1,0 +1,84 @@
+{
+  "$schema": "./schemas/gem_proportions.schema.json",
+  "version": "1.0.0",
+  "description": "Canonical gem cut dimensional ratios normalized to 1.0 mm girdle diameter/width. Used for procedural canonical mesh generation and matrix scaling.",
+  "cuts": {
+    "RoundBrilliant": {
+      "name": "Round Brilliant",
+      "proportions": {
+        "tableWidthPercent": 56.0,
+        "crownAngleDeg": 34.5,
+        "crownHeightPercent": 14.5,
+        "pavilionAngleDeg": 40.75,
+        "pavilionDepthPercent": 43.0,
+        "girdleThicknessPercent": 2.5,
+        "totalDepthPercent": 60.0,
+        "culetPercent": 0.5
+      },
+      "aspectRatio": 1.0,
+      "facetCount": 57
+    },
+    "Princess": {
+      "name": "Princess (Square Modified Brilliant)",
+      "proportions": {
+        "tableWidthPercent": 68.0,
+        "crownHeightPercent": 12.0,
+        "pavilionDepthPercent": 58.0,
+        "girdleThicknessPercent": 3.0,
+        "totalDepthPercent": 73.0,
+        "cornerChamferPercent": 2.0
+      },
+      "aspectRatio": 1.0,
+      "facetCount": 49
+    },
+    "Oval": {
+      "name": "Oval Brilliant",
+      "proportions": {
+        "tableWidthPercent": 58.0,
+        "crownHeightPercent": 13.5,
+        "pavilionDepthPercent": 44.0,
+        "girdleThicknessPercent": 2.8,
+        "totalDepthPercent": 60.3
+      },
+      "aspectRatio": 1.45,
+      "facetCount": 57
+    },
+    "Pear": {
+      "name": "Pear / Teardrop",
+      "proportions": {
+        "tableWidthPercent": 57.0,
+        "crownHeightPercent": 14.0,
+        "pavilionDepthPercent": 44.5,
+        "girdleThicknessPercent": 2.5,
+        "totalDepthPercent": 61.0
+      },
+      "aspectRatio": 1.55,
+      "facetCount": 58
+    },
+    "Emerald": {
+      "name": "Emerald Cut (Step Cut)",
+      "proportions": {
+        "tableWidthPercent": 64.0,
+        "crownHeightPercent": 12.5,
+        "pavilionDepthPercent": 50.0,
+        "girdleThicknessPercent": 3.5,
+        "totalDepthPercent": 66.0,
+        "cornerChamferPercent": 6.0
+      },
+      "aspectRatio": 1.40,
+      "facetCount": 50
+    },
+    "Marquise": {
+      "name": "Marquise",
+      "proportions": {
+        "tableWidthPercent": 58.0,
+        "crownHeightPercent": 13.0,
+        "pavilionDepthPercent": 44.0,
+        "girdleThicknessPercent": 3.0,
+        "totalDepthPercent": 60.0
+      },
+      "aspectRatio": 1.95,
+      "facetCount": 57
+    }
+  }
+}

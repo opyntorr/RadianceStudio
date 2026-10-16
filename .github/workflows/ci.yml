@@ -1,0 +1,35 @@
+name: RadianceStudio CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  verify:
+    name: Clean-Room & Unit Tests
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Setup .NET 8 SDK
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Run Clean-Room Anti-Contamination Linter
+      shell: pwsh
+      run: |
+        ./tools/check_clean_room.ps1
+
+    - name: Restore Dependencies
+      run: dotnet restore RadianceStudio/RadianceStudio.sln
+
+    - name: Build Solution
+      run: dotnet build RadianceStudio/RadianceStudio.sln --configuration Release --no-restore
+
+    - name: Execute Automated Unit Tests
+      run: dotnet test RadianceStudio/RadianceStudio.sln --configuration Release --no-build --verbosity normal --logger "trx"

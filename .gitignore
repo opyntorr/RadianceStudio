@@ -1,0 +1,27 @@
+# ==========================================
+# Clean-Room Isolation - Chinese Wall Rules
+# ==========================================
+
+# CRITICAL: Completely isolate the dirty room from git
+_dirty_room/
+*.exe
+*.dll
+*.rar
+*.zip
+*.7z
+*.msi
+*.pdb
+
+# Build and IDE artifacts
+bin/
+obj/
+.vs/
+.idea/
+*.user
+*.suo
+*.log
+
+# Rhino temporary files
+*.3dm.bak
+*.3dm.rhl
+*.autosave
