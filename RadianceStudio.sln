@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B1B58B69
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadianceStudio.Core.Tests", "tests\RadianceStudio.Core.Tests\RadianceStudio.Core.Tests.csproj", "{FA5D3B96-5BDA-48E0-934D-511B2DC5609E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadianceStudio.Launcher", "src\RadianceStudio.Launcher\RadianceStudio.Launcher.csproj", "{50E13162-86D9-4C6B-86EA-BD57BB310A01}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,10 @@ Global
 		{FA5D3B96-5BDA-48E0-934D-511B2DC5609E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA5D3B96-5BDA-48E0-934D-511B2DC5609E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA5D3B96-5BDA-48E0-934D-511B2DC5609E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50E13162-86D9-4C6B-86EA-BD57BB310A01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50E13162-86D9-4C6B-86EA-BD57BB310A01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50E13162-86D9-4C6B-86EA-BD57BB310A01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50E13162-86D9-4C6B-86EA-BD57BB310A01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{65CD0560-0DDA-4245-ABC7-EEFFB333463C} = {46A346F0-8E24-44AD-9DFA-9E1A4E1DC3A6}
@@ -53,5 +59,6 @@ Global
 		{1C5A952D-B84C-4362-A472-079BA2FDAB52} = {46A346F0-8E24-44AD-9DFA-9E1A4E1DC3A6}
 		{4780DB6F-DC02-4C01-B2B4-5DA730BEE57B} = {46A346F0-8E24-44AD-9DFA-9E1A4E1DC3A6}
 		{FA5D3B96-5BDA-48E0-934D-511B2DC5609E} = {B1B58B69-C7DF-4968-AD68-4313E836331D}
+		{50E13162-86D9-4C6B-86EA-BD57BB310A01} = {46A346F0-8E24-44AD-9DFA-9E1A4E1DC3A6}
 	EndGlobalSection
 EndGlobal

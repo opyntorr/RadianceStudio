@@ -6,7 +6,7 @@ using RadianceStudio.Core.Engines;
 using RadianceStudio.Core.Enums;
 using RadianceStudio.Core.Geometry;
 using RadianceStudio.Core.Models;
-using Rhino.Geometry;
+using global::Rhino.Geometry;
 using Xunit;
 
 /// <summary>

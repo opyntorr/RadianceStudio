@@ -7,6 +7,7 @@
 
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
+    <AllowedReferenceAssemblyFileExtensions>$(AllowedReferenceAssemblyFileExtensions);.rhp</AllowedReferenceAssemblyFileExtensions>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,6 +23,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\RadianceStudio.Core\RadianceStudio.Core.csproj" />
+    <ProjectReference Include="..\..\src\RadianceStudio.UI\RadianceStudio.UI.csproj" />
+    <ProjectReference Include="..\..\src\RadianceStudio.MCP\RadianceStudio.MCP.csproj" />
+    <ProjectReference Include="..\..\src\RadianceStudio.Launcher\RadianceStudio.Launcher.csproj" />
+    <ProjectReference Include="..\..\src\RadianceStudio.Rhino\RadianceStudio.Rhino.csproj" />
   </ItemGroup>
 
 </Project>
