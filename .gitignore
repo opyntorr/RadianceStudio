@@ -17,6 +17,8 @@ dirty-room/
 # Build and IDE artifacts
 bin/
 obj/
+TestResults/
+*.trx
 .vs/
 .vscode/
 .idea/
