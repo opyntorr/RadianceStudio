@@ -22,7 +22,8 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 Write-Host "`n>>> [2/2] Running Automated Unit Tests ($Configuration)..." -ForegroundColor Cyan
-& "C:\Users\omarp\.dotnet\dotnet.exe" test $SlnPath --configuration $Configuration --verbosity normal
+$DotnetCmd = if (Test-Path "C:\Users\omarp\.dotnet\dotnet.exe") { "C:\Users\omarp\.dotnet\dotnet.exe" } else { "dotnet" }
+& $DotnetCmd test $SlnPath --configuration $Configuration /warnaserror --verbosity minimal
 if ($LASTEXITCODE -ne 0) {
     Write-Host "[FAILED] One or more unit tests failed." -ForegroundColor Red
     exit 1

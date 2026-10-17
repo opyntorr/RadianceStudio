@@ -30,3 +30,6 @@ TestResults/
 *.3dm.bak
 *.3dm.rhl
 *.autosave
+
+# Ephemeral multi-agent teamwork files
+.agents/teamwork/

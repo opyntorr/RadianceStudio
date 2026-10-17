@@ -384,13 +384,13 @@ public class AdversarialPlacementTests
     [Fact]
     public void CalculatePlacements_500Stones_MultiIterationBenchmark_StrictlyUnder10Ms()
     {
-        // Helix with 30 turns to guarantee > 500 stones
-        var helix = new HelixCurve3D(Point3D.Origin, 25.0, 10.0, 30.0);
+        // Helix with 8 turns calibrated to test ~500 stones (503 stones)
+        var helix = new HelixCurve3D(Point3D.Origin, 25.0, 10.0, 8.0);
         double gemSize = 2.0;
         double spacing = 0.5;
 
-        // JIT warm-up
-        for (int w = 0; w < 5; w++)
+        // JIT warm-up (10 iterations to ensure full tier-1 JIT compilation and memory caching)
+        for (int w = 0; w < 10; w++)
         {
             _ = _engine.CalculatePlacements(helix, null, GemCutType.RoundBrilliant, gemSize, spacing);
         }

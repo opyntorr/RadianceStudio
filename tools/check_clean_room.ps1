@@ -1,7 +1,7 @@
 # ==============================================================================
-# Clean-Room Guardrail / Anti-Contamination Scanner for JewelryStudio
+# Clean-Room Guardrail / Anti-Contamination Scanner for RadianceStudio
 # ==============================================================================
-# This script scans the clean room source directories (JewelryStudio/) and
+# This script scans the clean room source directories (src/, tests/) and
 # the specification bridge (specs/) to ensure NO proprietary strings, namespaces,
 # decompiled code signatures, or licensing terms have leaked across the Chinese Wall.
 # ==============================================================================
@@ -25,7 +25,17 @@ $ForbiddenPatterns = @(
     "HASP",
     "SafeNet",
     "DevExpress",
-    "InnoSetup"
+    "InnoSetup",
+    # Prohibited Frameworks & P/Invoke (Requirement R3)
+    "System.Windows.Forms",
+    "System.Windows.",
+    "System.Windows",
+    "PresentationFramework",
+    "WindowsBase",
+    "WPF",
+    "Microsoft.Win32",
+    "DllImport",
+    "LibraryImport"
 )
 
 Write-Host "==========================================================" -ForegroundColor Cyan
@@ -41,7 +51,7 @@ foreach ($dir in $CleanRoomDirs) {
             Where-Object { $_.FullName -notmatch '\\(bin|obj|\.git)\\' }
 
     foreach ($file in $SourceFiles) {
-        $lines = Get-Content -Path $file.FullName
+        $lines = @(Get-Content -Path $file.FullName)
         for ($i = 0; $i -lt $lines.Count; $i++) {
             $line = $lines[$i]
             foreach ($pattern in $ForbiddenPatterns) {
@@ -63,7 +73,7 @@ foreach ($dir in $CleanRoomDirs) {
 if (Test-Path $SpecsDir) {
     $SpecFiles = Get-ChildItem -Path $SpecsDir -Recurse -Include *.md, *.json
     foreach ($file in $SpecFiles) {
-        $lines = Get-Content -Path $file.FullName
+        $lines = @(Get-Content -Path $file.FullName)
         for ($i = 0; $i -lt $lines.Count; $i++) {
             $line = $lines[$i]
             foreach ($pattern in $ForbiddenPatterns) {
