@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "rea": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "rea-agents",
+        "mcp"
+      ],
+      "env": {
+        "REA_TARGET_DIR": "./dirty-room/unpacked_mg3"
+      }
+    }
+  }
+}

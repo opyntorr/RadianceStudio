@@ -10,10 +10,10 @@ param(
     [string]$RootPath = "$PSScriptRoot\.."
 )
 
-$CleanRoomDir = Join-Path $RootPath "RadianceStudio"
-if (-not (Test-Path $CleanRoomDir)) {
-    $CleanRoomDir = Join-Path $RootPath "JewelryStudio"
-}
+$CleanRoomDirs = @(
+    (Join-Path $RootPath "src"),
+    (Join-Path $RootPath "tests")
+)
 $SpecsDir = Join-Path $RootPath "specs"
 
 $ForbiddenPatterns = @(
@@ -34,10 +34,11 @@ Write-Host "==========================================================" -Foregro
 
 $Violations = @()
 
-# 1. Scan JewelryStudio source files
-if (Test-Path $CleanRoomDir) {
-    $SourceFiles = Get-ChildItem -Path $CleanRoomDir -Recurse -Include *.cs, *.xaml, *.csproj, *.json, *.md |
-        Where-Object { $_.FullName -notmatch '\\(bin|obj|\.git)\\' }
+# 1. Scan source and test files
+foreach ($dir in $CleanRoomDirs) {
+    if (Test-Path $dir) {
+        $SourceFiles = Get-ChildItem -Path $dir -Recurse -Include *.cs, *.xaml, *.csproj, *.json, *.md |
+            Where-Object { $_.FullName -notmatch '\\(bin|obj|\.git)\\' }
 
     foreach ($file in $SourceFiles) {
         $lines = Get-Content -Path $file.FullName
@@ -53,6 +54,7 @@ if (Test-Path $CleanRoomDir) {
                     }
                 }
             }
+        }
         }
     }
 }

@@ -11,7 +11,7 @@ param(
 $ErrorActionPreference = "Stop"
 $ScriptDir = $PSScriptRoot
 $RootDir = Split-Path $ScriptDir -Parent
-$SlnPath = Join-Path $RootDir "RadianceStudio\RadianceStudio.sln"
+$SlnPath = Join-Path $RootDir "RadianceStudio.sln"
 $ScannerPath = Join-Path $ScriptDir "check_clean_room.ps1"
 
 Write-Host "`n>>> [1/2] Running Clean-Room Anti-Contamination Linter..." -ForegroundColor Cyan

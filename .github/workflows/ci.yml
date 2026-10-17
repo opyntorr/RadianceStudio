@@ -26,10 +26,10 @@ jobs:
         ./tools/check_clean_room.ps1
 
     - name: Restore Dependencies
-      run: dotnet restore RadianceStudio/RadianceStudio.sln
+      run: dotnet restore RadianceStudio.sln
 
     - name: Build Solution
-      run: dotnet build RadianceStudio/RadianceStudio.sln --configuration Release --no-restore
+      run: dotnet build RadianceStudio.sln --configuration Release --no-restore
 
     - name: Execute Automated Unit Tests
-      run: dotnet test RadianceStudio/RadianceStudio.sln --configuration Release --no-build --verbosity normal --logger "trx"
+      run: dotnet test RadianceStudio.sln --configuration Release --no-build --verbosity normal --logger "trx"

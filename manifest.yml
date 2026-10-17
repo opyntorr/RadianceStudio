@@ -1,0 +1,15 @@
+name: RadianceStudio
+version: 0.1.0
+title: RadianceStudio Fine Jewelry CAD
+authors:
+  - RadianceStudio Team
+description: The next-generation parametric CAD suite for fine jewelry designers on Rhino 8.
+url: https://github.com/opyntorr/RadianceStudio
+keywords:
+  - jewelry
+  - parametric
+  - gem
+  - ring
+  - rhino8
+platforms:
+  - rh8_0-any

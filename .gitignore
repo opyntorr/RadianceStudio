@@ -2,8 +2,9 @@
 # Clean-Room Isolation - Chinese Wall Rules
 # ==========================================
 
-# CRITICAL: Completely isolate the dirty room from git
+# CRITICAL: Completely isolate dirty rooms from git
 _dirty_room/
+dirty-room/
 *.exe
 *.dll
 *.rar
@@ -11,11 +12,13 @@ _dirty_room/
 *.7z
 *.msi
 *.pdb
+*.rhp
 
 # Build and IDE artifacts
 bin/
 obj/
 .vs/
+.vscode/
 .idea/
 *.user
 *.suo
