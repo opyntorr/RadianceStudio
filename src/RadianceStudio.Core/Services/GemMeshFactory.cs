@@ -18,7 +18,14 @@ public static class GemMeshFactory
         [GemCutType.Oval] = new OvalMeshGenerator(),
         [GemCutType.Pear] = new PearMeshGenerator(),
         [GemCutType.Emerald] = new EmeraldMeshGenerator(),
-        [GemCutType.Marquise] = new MarquiseMeshGenerator()
+        [GemCutType.Marquise] = new MarquiseMeshGenerator(),
+        [GemCutType.Baguette] = new BaguetteMeshGenerator(),
+        [GemCutType.Cushion] = new CushionMeshGenerator(),
+        [GemCutType.Asscher] = new AsscherMeshGenerator(),
+        [GemCutType.Radiant] = new RadiantMeshGenerator(),
+        [GemCutType.Heart] = new HeartMeshGenerator(),
+        [GemCutType.Trilliant] = new TrilliantMeshGenerator(),
+        [GemCutType.TaperedBaguette] = new TaperedBaguetteMeshGenerator()
     };
 
     public static IGemMeshGenerator GetGenerator(GemCutType cutType)

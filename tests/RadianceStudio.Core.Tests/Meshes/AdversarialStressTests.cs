@@ -18,7 +18,14 @@ public class AdversarialStressTests
         GemCutType.Oval,
         GemCutType.Pear,
         GemCutType.Emerald,
-        GemCutType.Marquise
+        GemCutType.Marquise,
+        GemCutType.Baguette,
+        GemCutType.Cushion,
+        GemCutType.Asscher,
+        GemCutType.Radiant,
+        GemCutType.Heart,
+        GemCutType.Trilliant,
+        GemCutType.TaperedBaguette
     ];
 
     #region 1. Extreme Diameters & Boundary Probing
@@ -99,6 +106,13 @@ public class AdversarialStressTests
     [InlineData(GemCutType.Pear)]
     [InlineData(GemCutType.Emerald)]
     [InlineData(GemCutType.Marquise)]
+    [InlineData(GemCutType.Baguette)]
+    [InlineData(GemCutType.Cushion)]
+    [InlineData(GemCutType.Asscher)]
+    [InlineData(GemCutType.Radiant)]
+    [InlineData(GemCutType.Heart)]
+    [InlineData(GemCutType.Trilliant)]
+    [InlineData(GemCutType.TaperedBaguette)]
     public void Mesh_IsStrictly2Manifold_AndSatisfiesEulerCharacteristic(GemCutType cutType)
     {
         var mesh = GemMeshFactory.CreateCanonical(cutType);
@@ -191,6 +205,13 @@ public class AdversarialStressTests
     [InlineData(GemCutType.Pear)]
     [InlineData(GemCutType.Emerald)]
     [InlineData(GemCutType.Marquise)]
+    [InlineData(GemCutType.Baguette)]
+    [InlineData(GemCutType.Cushion)]
+    [InlineData(GemCutType.Asscher)]
+    [InlineData(GemCutType.Radiant)]
+    [InlineData(GemCutType.Heart)]
+    [InlineData(GemCutType.Trilliant)]
+    [InlineData(GemCutType.TaperedBaguette)]
     public void Mesh_NormalsPointStrictlyOutwardFromInterior(GemCutType cutType)
     {
         var mesh = GemMeshFactory.CreateCanonical(cutType);
@@ -235,6 +256,13 @@ public class AdversarialStressTests
     [InlineData(GemCutType.Pear)]
     [InlineData(GemCutType.Emerald)]
     [InlineData(GemCutType.Marquise)]
+    [InlineData(GemCutType.Baguette)]
+    [InlineData(GemCutType.Cushion)]
+    [InlineData(GemCutType.Asscher)]
+    [InlineData(GemCutType.Radiant)]
+    [InlineData(GemCutType.Heart)]
+    [InlineData(GemCutType.Trilliant)]
+    [InlineData(GemCutType.TaperedBaguette)]
     public void Mesh_FacetPlanarityCheck(GemCutType cutType)
     {
         var mesh = GemMeshFactory.CreateCanonical(cutType);
@@ -272,6 +300,10 @@ public class AdversarialStressTests
     [InlineData(GemCutType.Pear, 1.55)]
     [InlineData(GemCutType.Emerald, 1.40)]
     [InlineData(GemCutType.Marquise, 1.95)]
+    [InlineData(GemCutType.Baguette, 1.50)]
+    [InlineData(GemCutType.Cushion, 1.05)]
+    [InlineData(GemCutType.Radiant, 1.15)]
+    [InlineData(GemCutType.TaperedBaguette, 1.60)]
     public void EndToEndPipeline_CanonicalMeshTransformedByPlacementMatrix_PreservesExpectedAspectRatio(
         GemCutType cutType, double expectedAspectRatio)
     {

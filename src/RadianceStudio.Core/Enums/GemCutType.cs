@@ -12,5 +12,10 @@ public enum GemCutType
     Emerald,
     Marquise,
     Baguette,
-    Cushion
+    Cushion,
+    Asscher,
+    Radiant,
+    Heart,
+    Trilliant,
+    TaperedBaguette
 }

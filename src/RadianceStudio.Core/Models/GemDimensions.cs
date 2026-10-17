@@ -108,6 +108,90 @@ public record GemDimensions
                 PavilionAngleDeg = 41.0,
                 GirdleThicknessPercent = 3.0
             },
+            GemCutType.Baguette => new GemDimensions
+            {
+                CutType = cutType,
+                DiameterMm = diameterMm,
+                AspectRatio = 1.50,
+                TableWidthPercent = 72.0,
+                CrownHeightPercent = 8.0,
+                CrownAngleDeg = 28.0,
+                PavilionDepthPercent = 42.0,
+                PavilionAngleDeg = 38.0,
+                GirdleThicknessPercent = 2.5
+            },
+            GemCutType.Cushion => new GemDimensions
+            {
+                CutType = cutType,
+                DiameterMm = diameterMm,
+                AspectRatio = 1.05,
+                TableWidthPercent = 61.0,
+                CrownHeightPercent = 13.5,
+                CrownAngleDeg = 33.0,
+                PavilionDepthPercent = 44.0,
+                PavilionAngleDeg = 41.0,
+                GirdleThicknessPercent = 3.0
+            },
+            GemCutType.Asscher => new GemDimensions
+            {
+                CutType = cutType,
+                DiameterMm = diameterMm,
+                AspectRatio = 1.0,
+                TableWidthPercent = 60.0,
+                CrownHeightPercent = 14.0,
+                CrownAngleDeg = 34.0,
+                PavilionDepthPercent = 52.0,
+                PavilionAngleDeg = 44.0,
+                GirdleThicknessPercent = 3.5
+            },
+            GemCutType.Radiant => new GemDimensions
+            {
+                CutType = cutType,
+                DiameterMm = diameterMm,
+                AspectRatio = 1.15,
+                TableWidthPercent = 65.0,
+                CrownHeightPercent = 12.0,
+                CrownAngleDeg = 32.0,
+                PavilionDepthPercent = 48.0,
+                PavilionAngleDeg = 42.0,
+                GirdleThicknessPercent = 3.0
+            },
+            GemCutType.Heart => new GemDimensions
+            {
+                CutType = cutType,
+                DiameterMm = diameterMm,
+                AspectRatio = 1.0,
+                TableWidthPercent = 56.0,
+                CrownHeightPercent = 14.0,
+                CrownAngleDeg = 34.5,
+                PavilionDepthPercent = 44.0,
+                PavilionAngleDeg = 41.0,
+                GirdleThicknessPercent = 3.0
+            },
+            GemCutType.Trilliant => new GemDimensions
+            {
+                CutType = cutType,
+                DiameterMm = diameterMm,
+                AspectRatio = 1.0,
+                TableWidthPercent = 53.0,
+                CrownHeightPercent = 12.5,
+                CrownAngleDeg = 33.0,
+                PavilionDepthPercent = 43.0,
+                PavilionAngleDeg = 41.0,
+                GirdleThicknessPercent = 3.0
+            },
+            GemCutType.TaperedBaguette => new GemDimensions
+            {
+                CutType = cutType,
+                DiameterMm = diameterMm,
+                AspectRatio = 1.60,
+                TableWidthPercent = 70.0,
+                CrownHeightPercent = 8.0,
+                CrownAngleDeg = 28.0,
+                PavilionDepthPercent = 42.0,
+                PavilionAngleDeg = 38.0,
+                GirdleThicknessPercent = 2.5
+            },
             _ => new GemDimensions
             {
                 CutType = cutType,

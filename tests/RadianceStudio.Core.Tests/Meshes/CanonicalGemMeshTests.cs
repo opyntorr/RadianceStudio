@@ -16,6 +16,13 @@ public class CanonicalGemMeshTests
     [InlineData(GemCutType.Pear, 58)]
     [InlineData(GemCutType.Emerald, 50)]
     [InlineData(GemCutType.Marquise, 57)]
+    [InlineData(GemCutType.Baguette, 14)]
+    [InlineData(GemCutType.Cushion, 57)]
+    [InlineData(GemCutType.Asscher, 50)]
+    [InlineData(GemCutType.Radiant, 70)]
+    [InlineData(GemCutType.Heart, 59)]
+    [InlineData(GemCutType.Trilliant, 43)]
+    [InlineData(GemCutType.TaperedBaguette, 14)]
     public void CanonicalMesh_HasExactFacetCount(GemCutType cutType, int expectedFacetCount)
     {
         var mesh = GemMeshFactory.CreateCanonical(cutType);
@@ -34,6 +41,13 @@ public class CanonicalGemMeshTests
     [InlineData(GemCutType.Pear, 1.0, 1.55, 0.61)]
     [InlineData(GemCutType.Emerald, 1.0, 1.40, 0.66)]
     [InlineData(GemCutType.Marquise, 1.0, 1.95, 0.60)]
+    [InlineData(GemCutType.Baguette, 1.0, 1.50, 0.525)]
+    [InlineData(GemCutType.Cushion, 1.0, 1.05, 0.605)]
+    [InlineData(GemCutType.Asscher, 1.0, 1.0, 0.695)]
+    [InlineData(GemCutType.Radiant, 1.0, 1.15, 0.63)]
+    [InlineData(GemCutType.Heart, 1.0, 1.0, 0.61)]
+    [InlineData(GemCutType.Trilliant, 1.0, 1.0, 0.585)]
+    [InlineData(GemCutType.TaperedBaguette, 1.0, 1.60, 0.525)]
     public void CanonicalMesh_MatchesProportionsAndBounds(
         GemCutType cutType,
         double expectedWidth,
@@ -63,6 +77,13 @@ public class CanonicalGemMeshTests
     [InlineData(GemCutType.Pear, 1.8)]
     [InlineData(GemCutType.Emerald, 5.0)]
     [InlineData(GemCutType.Marquise, 4.0)]
+    [InlineData(GemCutType.Baguette, 2.2)]
+    [InlineData(GemCutType.Cushion, 3.0)]
+    [InlineData(GemCutType.Asscher, 4.5)]
+    [InlineData(GemCutType.Radiant, 2.8)]
+    [InlineData(GemCutType.Heart, 3.2)]
+    [InlineData(GemCutType.Trilliant, 2.4)]
+    [InlineData(GemCutType.TaperedBaguette, 1.5)]
     public void ScaledMesh_ScalesLinearlyWithDiameter(GemCutType cutType, double diameterMm)
     {
         var canonical = GemMeshFactory.CreateCanonical(cutType);
@@ -91,6 +112,13 @@ public class CanonicalGemMeshTests
     [InlineData(GemCutType.Pear)]
     [InlineData(GemCutType.Emerald)]
     [InlineData(GemCutType.Marquise)]
+    [InlineData(GemCutType.Baguette)]
+    [InlineData(GemCutType.Cushion)]
+    [InlineData(GemCutType.Asscher)]
+    [InlineData(GemCutType.Radiant)]
+    [InlineData(GemCutType.Heart)]
+    [InlineData(GemCutType.Trilliant)]
+    [InlineData(GemCutType.TaperedBaguette)]
     public void Mesh_NormalsAreUnitLengthAndTablePointsUp(GemCutType cutType)
     {
         var mesh = GemMeshFactory.CreateCanonical(cutType);
