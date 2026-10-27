@@ -22,6 +22,7 @@ public class RadianceStudioPlugIn : PlugIn
 {
     public const string StudioSchemeName = "RadianceStudio";
     public const string StudioWindowTitle = "RadianceStudio - Jewelry CAD Suite";
+    public static readonly Guid PlugInGuid = new("1D4FB0A4-325A-4B6A-B6B1-D1817EB7FF4B");
 
     private static RadianceStudioPlugIn? _instance;
     private static bool _initialWorkspaceConfigured;
@@ -36,6 +37,26 @@ public class RadianceStudioPlugIn : PlugIn
     public RadianceStudioPlugIn()
     {
         _instance = this;
+        EnsurePlugInId();
+    }
+
+    private void EnsurePlugInId()
+    {
+        try
+        {
+            var idField = typeof(PlugIn).GetField("m_id", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            if (idField != null)
+            {
+                var cur = (Guid)(idField.GetValue(this) ?? Guid.Empty);
+                if (cur == Guid.Empty)
+                {
+                    idField.SetValue(this, PlugInGuid);
+                }
+            }
+        }
+        catch
+        {
+        }
     }
 
     /// <summary>
@@ -50,6 +71,8 @@ public class RadianceStudioPlugIn : PlugIn
     {
         try
         {
+            EnsurePlugInId();
+
             // Hook Rhino document and application idle lifecycle events
             RhinoDoc.NewDocument += OnNewDocument;
             RhinoDoc.EndOpenDocument += OnEndOpenDocument;
@@ -206,17 +229,34 @@ public class RadianceStudioPlugIn : PlugIn
     /// </summary>
     public void RegisterStudioPanels()
     {
+        EnsurePlugInId();
         if (!RailEngine.IsRhinoNativeAvailable) return;
 
         try
         {
             RhinoPanels.RegisterPanel(this, typeof(JewelryRibbonPanel), "Radiance Ribbon", null);
+        }
+        catch (Exception ex)
+        {
+            RhinoApp.WriteLine($"[RadianceStudio] Note registering Ribbon panel: {ex.Message}");
+        }
+
+        try
+        {
             RhinoPanels.RegisterPanel(this, typeof(DynamicInspectorPanelHost), "Jewelry Inspector", null);
+        }
+        catch (Exception ex)
+        {
+            RhinoApp.WriteLine($"[RadianceStudio] Note registering Inspector panel: {ex.Message}");
+        }
+
+        try
+        {
             RhinoPanels.RegisterPanel(this, typeof(HistoryPanelHost), "Parametric History", null);
         }
         catch (Exception ex)
         {
-            RhinoApp.WriteLine($"[RadianceStudio] Note registering studio panels: {ex.Message}");
+            RhinoApp.WriteLine($"[RadianceStudio] Note registering History panel: {ex.Message}");
         }
     }
 

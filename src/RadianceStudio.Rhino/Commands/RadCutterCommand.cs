@@ -4,68 +4,44 @@ using System;
 using System.Runtime.InteropServices;
 using global::Rhino;
 using global::Rhino.Commands;
-using global::Rhino.Input.Custom;
-using RadianceStudio.Core.Enums;
+using RadianceStudio.MCP.Tools;
 using RadianceStudio.UI.ViewModels;
 
 /// <summary>
-/// Applies gem cutters, bearing seat ledges, and light hole punches,
-/// performing automated boolean difference subtraction against target metal solids.
+/// Creates parametric gem cutters in the document and activates the dynamic Inspector.
 /// </summary>
-[Guid("29864235-CE06-4447-975E-1616AA7C8157")]
+[Guid("3FA11738-4BD6-46B9-B33D-94EDC5484812")]
 public class RadCutterCommand : Command
 {
-    public static readonly string[] CommandParameters = { "GemId", "SeatAngleDegrees", "GirdleClearancePercent", "LightHole" };
+    public static readonly string[] CommandParameters = { "GemId", "SeatAngleDegrees", "GirdleClearancePercent", "HasLightHole" };
 
     public override string EnglishName => "RadCutter";
 
     protected override Result RunCommand(RhinoDoc doc, RunMode mode)
     {
-        string gemId = string.Empty;
-        double seatAngleDegrees = 90.0;
-        double girdleClearancePercent = 10.0;
-        bool lightHole = true;
+        var task = JewelryMcpRegistry.Default.Tools.SetCutterAsync(
+            gemId: null,
+            cutType: "RoundBrilliant",
+            gemDiameterMm: 2.0,
+            girdleClearanceMm: 0.08,
+            seatAngle: "Degree70",
+            crownHeightExtensionMm: 1.5,
+            lightHoleDepthExtensionMm: 2.0,
+            lightHoleDiameterRatio: 0.50,
+            taperShaft: true);
+        task.GetAwaiter().GetResult();
 
-        if (mode == RunMode.Scripted)
-        {
-            var go = new GetOption();
-            go.SetCommandPrompt("RadianceStudio Cutter Options");
-
-            var optAngle = new OptionDouble(seatAngleDegrees);
-            var optClearance = new OptionDouble(girdleClearancePercent);
-            var optLight = new OptionToggle(lightHole, "Off", "On");
-
-            go.AddOption("GemId");
-            go.AddOptionDouble("SeatAngleDegrees", ref optAngle);
-            go.AddOptionDouble("GirdleClearancePercent", ref optClearance);
-            go.AddOptionToggle("LightHole", ref optLight);
-
-            while (go.Get() == global::Rhino.Input.GetResult.Option)
-            {
-                seatAngleDegrees = optAngle.CurrentValue;
-                girdleClearancePercent = optClearance.CurrentValue;
-                lightHole = optLight.CurrentValue;
-            }
-        }
-
-        // Open studio workspace and load CutterViewModel into Inspector
         RadianceStudioPlugIn.OpenStudioWorkspace();
         var inspector = RadianceStudioPlugIn.GetOrCreateInspector();
-
-        var seatStyle = Math.Abs(seatAngleDegrees - 70.0) < 5.0
-            ? CutterSeatStyle.Degree70
-            : CutterSeatStyle.Degree90;
-
         var vm = new CutterViewModel
         {
-            SeatAngle = seatStyle,
-            GirdleClearanceMm = 0.08 * (girdleClearancePercent / 10.0),
-            LightHoleDiameterRatio = lightHole ? 0.50 : 0.0
+            GirdleClearanceMm = 0.08,
+            CrownHeightExtensionMm = 1.5,
+            LightHoleDepthExtensionMm = 2.0
         };
-
         inspector.SetViewModel(vm);
 
-        RhinoApp.WriteLine($"[RadianceStudio] Dynamic Gem Cutter loaded: Seat Angle {seatAngleDegrees:F0} deg, Clearance {girdleClearancePercent:F1}%, LightHole: {lightHole}.");
+        RhinoApp.WriteLine("[RadianceStudio] Parametric cutters created in viewport with light holes.");
         return Result.Success;
     }
 }

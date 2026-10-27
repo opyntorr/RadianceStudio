@@ -5,12 +5,12 @@ using System.IO;
 using System.Runtime.InteropServices;
 using global::Rhino;
 using global::Rhino.Commands;
-using global::Rhino.Input.Custom;
 
 /// <summary>
 /// Boot entry point executed by launcher switch: /runscript="_-RadInitializeStudio".
 /// Configures millimetric jewelry template units/tolerances, sets custom window title,
 /// docks the jewelry workspace, and writes the readiness token file to synchronize with splash screen.
+/// Runs completely non-blocking without requiring user interaction.
 /// </summary>
 [Guid("9B308D64-325D-4F11-8CD1-2DDEB4815E70")]
 [CommandStyle(Style.ScriptRunner)]
@@ -23,19 +23,6 @@ public class RadInitializeStudioCommand : Command
     protected override Result RunCommand(RhinoDoc doc, RunMode mode)
     {
         bool silent = false;
-
-        // Parse optional -Silent flag
-        if (mode == RunMode.Scripted)
-        {
-            var go = new GetOption();
-            go.SetCommandPrompt("RadianceStudio Initialize");
-            var optSilent = new OptionToggle(false, "Off", "On");
-            go.AddOptionToggle("Silent", ref optSilent);
-            while (go.Get() == global::Rhino.Input.GetResult.Option)
-            {
-                silent = optSilent.CurrentValue;
-            }
-        }
 
         // 1. Configure jewelry document tolerances and viewport grid
         RadianceStudioPlugIn.ConfigureJewelryDocument(doc);
