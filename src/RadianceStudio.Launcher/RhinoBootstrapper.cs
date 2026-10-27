@@ -1,10 +1,15 @@
 namespace RadianceStudio.Launcher;
 
+using System;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 /// <summary>
 /// Bootstraps Rhino 8 under the isolated RadianceStudio scheme.
-/// Handles CLI parameter configuration and readiness signal synchronization.
+/// Handles CLI parameter configuration, automatic package deployment, and readiness signal synchronization.
 /// </summary>
 public static class RhinoBootstrapper
 {
@@ -24,6 +29,63 @@ public static class RhinoBootstrapper
     public const string StandardArguments = "/scheme=\"RadianceStudio\" /nosplash /runscript=\"_-RadInitializeStudio\"";
 
     /// <summary>
+    /// Ensures that RadianceStudio.Rhino.rhp and its dependencies are deployed to Rhino 8's packages directory
+    /// (%APPDATA%\McNeel\Rhinoceros\packages\8.0\RadianceStudio\1.0.0\net8.0) so Rhino 8 automatically discovers
+    /// and loads the plugin and all 12 jewelry commands across all schemes.
+    /// Uses purely cross-platform System.IO APIs compliant with Clean-Room requirements.
+    /// </summary>
+    public static void EnsurePluginDeployed()
+    {
+        try
+        {
+            string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            if (string.IsNullOrWhiteSpace(appData)) return;
+
+            string packageBase = Path.Combine(appData, "McNeel", "Rhinoceros", "packages", "8.0", "RadianceStudio", "1.0.0");
+            string packageNet8 = Path.Combine(packageBase, "net8.0");
+
+            string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+            string[] candidateDirs =
+            {
+                baseDir,
+                Path.GetFullPath(Path.Combine(baseDir, "..", "..", "..", "RadianceStudio.Rhino", "bin", "Release", "net8.0")),
+                Path.GetFullPath(Path.Combine(baseDir, "..", "..", "..", "RadianceStudio.Rhino", "bin", "Debug", "net8.0")),
+                Path.GetFullPath(Path.Combine(baseDir, "..", "..", "..", "..", "src", "RadianceStudio.Rhino", "bin", "Release", "net8.0")),
+                Path.GetFullPath(Path.Combine(baseDir, "..", "..", "..", "..", "src", "RadianceStudio.Rhino", "bin", "Debug", "net8.0"))
+            };
+
+            string? sourceDir = candidateDirs.FirstOrDefault(d => Directory.Exists(d) && File.Exists(Path.Combine(d, "RadianceStudio.Rhino.rhp")));
+            if (sourceDir == null) return;
+
+            Directory.CreateDirectory(packageNet8);
+
+            string manifestPath = Path.Combine(packageBase, "manifest.yml");
+            if (!File.Exists(manifestPath))
+            {
+                string manifest = "---\nname: RadianceStudio\nversion: 1.0.0\nauthors:\n- RadianceStudio Team\ndescription: Commercial-Grade Parametric Jewelry CAD Suite for Rhino 8\n";
+                File.WriteAllText(manifestPath, manifest);
+            }
+
+            foreach (string file in Directory.GetFiles(sourceDir, "*.*"))
+            {
+                string ext = Path.GetExtension(file).ToLowerInvariant();
+                if (ext is ".rhp" or ".dll" or ".pdb")
+                {
+                    string dest = Path.Combine(packageNet8, Path.GetFileName(file));
+                    if (!File.Exists(dest) || File.GetLastWriteTimeUtc(file) > File.GetLastWriteTimeUtc(dest))
+                    {
+                        File.Copy(file, dest, overwrite: true);
+                    }
+                }
+            }
+        }
+        catch
+        {
+            // Non-critical background deployment fallback
+        }
+    }
+
+    /// <summary>
     /// Launches the Rhino 8 process configured for RadianceStudio.
     /// </summary>
     /// <param name="executablePath">Optional path to rhino executable; if null, RhinoLocator is used.</param>
@@ -33,6 +95,8 @@ public static class RhinoBootstrapper
     /// <exception cref="InvalidOperationException">Thrown when process failed to start.</exception>
     public static Process Launch(string? executablePath = null, string? additionalArguments = null)
     {
+        EnsurePluginDeployed();
+
         string? targetPath = executablePath ?? RhinoLocator.FindRhinoExecutable();
         if (string.IsNullOrWhiteSpace(targetPath) || !File.Exists(targetPath))
         {

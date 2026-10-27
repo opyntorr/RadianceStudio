@@ -34,6 +34,12 @@ if (-not (Test-Path $DesktopPath)) {
 
 $ShortcutPath = Join-Path $DesktopPath "RadianceStudio.lnk"
 
+# Register RadianceStudio.Rhino.rhp into Rhino 8 registry
+$RegisterScript = Join-Path $ScriptDir "register_plugin.ps1"
+if (Test-Path $RegisterScript) {
+    & powershell -File $RegisterScript -Configuration $Configuration
+}
+
 $WshShell = New-Object -ComObject WScript.Shell
 $Shortcut = $WshShell.CreateShortcut($ShortcutPath)
 $Shortcut.TargetPath = $ResolvedTarget
