@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 /// <summary>
 /// Bootstraps Rhino 8 under the isolated RadianceStudio scheme.
-/// Handles CLI parameter configuration, automatic package deployment, and readiness signal synchronization.
+/// Handles CLI parameter configuration, automatic package discovery, and readiness signal synchronization.
 /// </summary>
 public static class RhinoBootstrapper
 {
@@ -29,9 +29,9 @@ public static class RhinoBootstrapper
     public const string StandardArguments = "/scheme=\"RadianceStudio\" /nosplash /runscript=\"_-RadInitializeStudio\"";
 
     /// <summary>
-    /// Ensures that RadianceStudio.Rhino.rhp and its dependencies are deployed to Rhino 8's packages directory
-    /// (%APPDATA%\McNeel\Rhinoceros\packages\8.0\RadianceStudio\1.0.0\net8.0) so Rhino 8 automatically discovers
-    /// and loads the plugin and all 12 jewelry commands across all schemes.
+    /// Verifies that RadianceStudio is installed in Rhino 8's package directory.
+    /// Does not manually copy untracked files into the packages folder to prevent Yak's
+    /// PackageManager orphan cleaner from deleting the package.
     /// Uses purely cross-platform System.IO APIs compliant with Clean-Room requirements.
     /// </summary>
     public static void EnsurePluginDeployed()
@@ -41,47 +41,39 @@ public static class RhinoBootstrapper
             string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             if (string.IsNullOrWhiteSpace(appData)) return;
 
-            string packageBase = Path.Combine(appData, "McNeel", "Rhinoceros", "packages", "8.0", "RadianceStudio", "1.0.0");
-            string packageNet8 = Path.Combine(packageBase, "net8.0");
-
-            string baseDir = AppDomain.CurrentDomain.BaseDirectory;
-            string[] candidateDirs =
+            string packageRhp = Path.Combine(appData, "McNeel", "Rhinoceros", "packages", "8.0", "RadianceStudio", "1.0.0", "net8.0", "RadianceStudio.Rhino.rhp");
+            if (File.Exists(packageRhp))
             {
-                baseDir,
-                Path.GetFullPath(Path.Combine(baseDir, "..", "..", "..", "RadianceStudio.Rhino", "bin", "Release", "net8.0")),
-                Path.GetFullPath(Path.Combine(baseDir, "..", "..", "..", "RadianceStudio.Rhino", "bin", "Debug", "net8.0")),
-                Path.GetFullPath(Path.Combine(baseDir, "..", "..", "..", "..", "src", "RadianceStudio.Rhino", "bin", "Release", "net8.0")),
-                Path.GetFullPath(Path.Combine(baseDir, "..", "..", "..", "..", "src", "RadianceStudio.Rhino", "bin", "Debug", "net8.0"))
-            };
-
-            string? sourceDir = candidateDirs.FirstOrDefault(d => Directory.Exists(d) && File.Exists(Path.Combine(d, "RadianceStudio.Rhino.rhp")));
-            if (sourceDir == null) return;
-
-            Directory.CreateDirectory(packageNet8);
-
-            string manifestPath = Path.Combine(packageBase, "manifest.yml");
-            if (!File.Exists(manifestPath))
-            {
-                string manifest = "---\nname: RadianceStudio\nversion: 1.0.0\nauthors:\n- RadianceStudio Team\ndescription: Commercial-Grade Parametric Jewelry CAD Suite for Rhino 8\n";
-                File.WriteAllText(manifestPath, manifest);
+                // Already legitimately installed via Yak Package Manager
+                return;
             }
 
-            foreach (string file in Directory.GetFiles(sourceDir, "*.*"))
+            // If not found in packages, locate source build and check if yak install script is available
+            string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+            string[] scriptCandidates =
             {
-                string ext = Path.GetExtension(file).ToLowerInvariant();
-                if (ext is ".rhp" or ".dll" or ".pdb")
+                Path.GetFullPath(Path.Combine(baseDir, "..", "..", "..", "..", "tools", "deploy_to_rhino_packages.ps1")),
+                Path.GetFullPath(Path.Combine(baseDir, "..", "..", "..", "tools", "deploy_to_rhino_packages.ps1")),
+                Path.GetFullPath(Path.Combine(baseDir, "tools", "deploy_to_rhino_packages.ps1"))
+            };
+
+            string? script = scriptCandidates.FirstOrDefault(File.Exists);
+            if (script != null)
+            {
+                var psi = new ProcessStartInfo
                 {
-                    string dest = Path.Combine(packageNet8, Path.GetFileName(file));
-                    if (!File.Exists(dest) || File.GetLastWriteTimeUtc(file) > File.GetLastWriteTimeUtc(dest))
-                    {
-                        File.Copy(file, dest, overwrite: true);
-                    }
-                }
+                    FileName = "powershell.exe",
+                    Arguments = $"-NoProfile -ExecutionPolicy Bypass -File \"{script}\"",
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+                using var proc = Process.Start(psi);
+                proc?.WaitForExit(10000);
             }
         }
         catch
         {
-            // Non-critical background deployment fallback
+            // Non-critical background verification
         }
     }
 

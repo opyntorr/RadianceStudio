@@ -15,7 +15,7 @@ $ErrorActionPreference = "Stop"
 $ScriptDir = $PSScriptRoot
 $RootDir = Split-Path $ScriptDir -Parent
 
-# 1. Deploy to Rhino Packages directory
+# 1. Deploy via official Yak Package Manager
 $DeployScript = Join-Path $ScriptDir "deploy_to_rhino_packages.ps1"
 if (Test-Path $DeployScript) {
     & powershell -File $DeployScript -Configuration $Configuration
