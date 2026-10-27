@@ -1,59 +1,69 @@
 namespace RadianceStudio.Core.Models;
 
 using System;
-using System.Runtime.InteropServices;
 using Rhino.Collections;
-using Rhino.DocObjects.Custom;
-using Rhino.FileIO;
+using Rhino.Geometry;
 
 /// <summary>
-/// Subclass of Rhino UserData to serialize parametric jewelry history (ring size, width, thickness, parent/child IDs)
-/// into the native .3dm file using ArchivableDictionary, bypassing Grasshopper entirely.
+/// Manages parametric jewelry history (ring size, width, thickness, parent/child IDs)
+/// within the native Rhino geometry UserDictionary, persisting seamlessly into .3dm files.
 /// </summary>
-[Guid("A4C7581B-8340-4A9B-9852-6C931E54F301")]
-public class ParametricMetadata : UserData
+public class ParametricMetadata
 {
-    public ArchivableDictionary Parameters { get; private set; } = new ArchivableDictionary();
+    public const string UserDictionaryKey = "RadianceStudio_ParametricMetadata";
 
-    public override string Description => "RadianceStudio Parametric Metadata";
+    public ArchivableDictionary Parameters { get; }
 
-    protected override bool Read(BinaryArchiveReader archive)
+    public string Description => "RadianceStudio Parametric Metadata";
+
+    public ParametricMetadata()
     {
-        var dict = archive.ReadDictionary();
-        if (dict != null)
-        {
-            Parameters = dict;
-        }
-        return true;
+        Parameters = new ArchivableDictionary();
     }
 
-    protected override bool Write(BinaryArchiveWriter archive)
+    public ParametricMetadata(ArchivableDictionary dictionary)
     {
-        archive.WriteDictionary(Parameters);
-        return true;
+        Parameters = dictionary ?? new ArchivableDictionary();
     }
 
     /// <summary>
     /// Attaches parametric metadata to a target Rhino geometry object.
     /// </summary>
-    public static ParametricMetadata Attach(Rhino.Geometry.GeometryBase geometry)
+    public static ParametricMetadata Attach(GeometryBase geometry)
     {
-        var existing = geometry.UserData.Find(typeof(ParametricMetadata)) as ParametricMetadata;
-        if (existing != null)
+        if (geometry == null) throw new ArgumentNullException(nameof(geometry));
+
+        ArchivableDictionary? dict = null;
+        if (geometry.UserDictionary.ContainsKey(UserDictionaryKey))
         {
-            return existing;
+            dict = geometry.UserDictionary.GetDictionary(UserDictionaryKey);
         }
 
-        var created = new ParametricMetadata();
-        geometry.UserData.Add(created);
-        return created;
+        if (dict == null)
+        {
+            dict = new ArchivableDictionary();
+            geometry.UserDictionary.Set(UserDictionaryKey, dict);
+        }
+
+        return new ParametricMetadata(dict);
     }
 
     /// <summary>
     /// Finds parametric metadata on a geometry instance if present.
     /// </summary>
-    public static ParametricMetadata? Find(Rhino.Geometry.GeometryBase geometry)
+    public static ParametricMetadata? Find(GeometryBase geometry)
     {
-        return geometry.UserData.Find(typeof(ParametricMetadata)) as ParametricMetadata;
+        if (geometry == null) return null;
+
+        if (geometry.UserDictionary.ContainsKey(UserDictionaryKey))
+        {
+            var dict = geometry.UserDictionary.GetDictionary(UserDictionaryKey);
+            if (dict != null)
+            {
+                return new ParametricMetadata(dict);
+            }
+        }
+
+        return null;
     }
 }

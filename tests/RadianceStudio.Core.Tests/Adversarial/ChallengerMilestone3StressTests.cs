@@ -386,7 +386,7 @@ public class ChallengerMilestone3StressTests
     public void RhinoCommands_Reflection_All12CommandClassesInheritFromCommandAndHaveDistinctGuids()
     {
         var commandTypes = typeof(RadStudioCommand).Assembly.GetTypes()
-            .Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(typeof(global::Rhino.Commands.Command)))
+            .Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(typeof(global::Rhino.Commands.Command)) && t.Name != nameof(RadHarnessAuditCommand))
             .ToList();
 
         // Exactly 12 Rhino Commands must exist

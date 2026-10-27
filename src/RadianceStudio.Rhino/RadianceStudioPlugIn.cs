@@ -261,6 +261,41 @@ public class RadianceStudioPlugIn : PlugIn
     }
 
     /// <summary>
+    /// Hides Rhino's default Standard Toolbars and tab groups so that only RadianceStudio's
+    /// dedicated top ribbon and jewelry commands are exposed, providing a standalone commercial jewelry CAD suite experience.
+    /// </summary>
+    public static void HideStandardToolbars()
+    {
+        if (!RailEngine.IsRhinoNativeAvailable) return;
+
+        try
+        {
+            if (RhinoApp.ToolbarFiles != null)
+            {
+                foreach (var tf in RhinoApp.ToolbarFiles)
+                {
+                    if (tf == null) continue;
+                    for (int i = 0; i < tf.GroupCount; i++)
+                    {
+                        var group = tf.GetGroup(i);
+                        if (group != null && (group.Name.Contains("Standard", StringComparison.OrdinalIgnoreCase) ||
+                                              group.Name.Contains("Default", StringComparison.OrdinalIgnoreCase)))
+                        {
+                            group.Visible = false;
+                        }
+                    }
+                }
+            }
+
+            RhinoApp.RunScript("-_ToolbarGroup \"Standard Toolbars\" Hide", echo: false);
+        }
+        catch (Exception ex)
+        {
+            RhinoApp.WriteLine($"[RadianceStudio] Note adjusting toolbar visibility: {ex.Message}");
+        }
+    }
+
+    /// <summary>
     /// Docks and displays the full standalone jewelry UI workspace:
     /// Ribbon bar, Dynamic Inspector panel, and Parametric History panel.
     /// </summary>
@@ -270,6 +305,8 @@ public class RadianceStudioPlugIn : PlugIn
 
         try
         {
+            HideStandardToolbars();
+
             // Open Inspector and History as docked siblings
             RhinoPanels.OpenPanel(DynamicInspectorPanelHost.PanelId);
             RhinoPanels.OpenPanelAsSibling(HistoryPanelHost.PanelId, DynamicInspectorPanelHost.PanelId);

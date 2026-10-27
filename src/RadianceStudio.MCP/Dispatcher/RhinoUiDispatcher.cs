@@ -10,6 +10,8 @@ using Rhino;
 /// Bridges background MCP socket/network threads to RhinoApp safely using TaskCompletionSource.
 /// Includes headless CI fallback guard using RailEngine.IsRhinoNativeAvailable so that
 /// running outside Rhino.exe executes on the calling thread without throwing DllNotFoundException.
+/// If already executing on the Rhino UI thread (RhinoApp.IsOnMainThread), executes synchronously
+/// to prevent message pump deadlocks.
 /// </summary>
 public static class RhinoUiDispatcher
 {
@@ -17,6 +19,7 @@ public static class RhinoUiDispatcher
     /// Executes a function on the main Rhino UI thread and returns its result asynchronously.
     /// In headless CI environments where Rhino.exe is not hosting the process, falls back
     /// to executing directly on the calling thread.
+    /// If called from Rhino's main UI thread, executes directly without re-dispatching.
     /// </summary>
     public static Task<T> RunOnMainThread<T>(Func<T> action)
     {
@@ -25,7 +28,7 @@ public static class RhinoUiDispatcher
             throw new ArgumentNullException(nameof(action));
         }
 
-        if (!RailEngine.IsRhinoNativeAvailable)
+        if (!RailEngine.IsRhinoNativeAvailable || RhinoApp.IsOnMainThread)
         {
             try
             {
@@ -65,6 +68,7 @@ public static class RhinoUiDispatcher
 
     /// <summary>
     /// Executes an asynchronous function on the main Rhino UI thread.
+    /// If called from Rhino's main UI thread, executes directly without re-dispatching.
     /// </summary>
     public static async Task<T> RunOnMainThreadAsync<T>(Func<Task<T>> action)
     {
@@ -73,7 +77,7 @@ public static class RhinoUiDispatcher
             throw new ArgumentNullException(nameof(action));
         }
 
-        if (!RailEngine.IsRhinoNativeAvailable)
+        if (!RailEngine.IsRhinoNativeAvailable || RhinoApp.IsOnMainThread)
         {
             return await action().ConfigureAwait(false);
         }
