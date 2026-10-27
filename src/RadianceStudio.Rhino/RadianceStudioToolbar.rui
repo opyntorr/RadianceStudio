@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RhinoUI major_ver="3" minor_ver="0" guid="c4a754b2-2987-43a1-9b90-1e5f8a09b431" localize="False" default_language_id="1033" dpi_scale="100">
+  <extend_rhino_menus />
+  <menus />
+  <tool_bar_groups>
+    <tool_bar_group guid="e8b52194-4360-4963-8a02-984cd4d47150" dock_bar_guid64="171011a9-a956-41ee-853e-3ccc0c0db1d8" active_tool_bar_group="a1c430e7-8cfb-4e67-8cf9-b54f9a0c8101" single_file="False" hide_single_tab="False">
+      <text>
+        <locale_1033>Radiance Studio</locale_1033>
+      </text>
+      <tool_bar_group_item guid="a1c430e7-8cfb-4e67-8cf9-b54f9a0c8101" major_version="1" minor_version="1">
+        <text>
+          <locale_1033>Rails &amp; Shanks</locale_1033>
+        </text>
+        <tool_bar_id>f1011111-1111-1111-1111-111111111101</tool_bar_id>
+      </tool_bar_group_item>
+      <tool_bar_group_item guid="a2c430e7-8cfb-4e67-8cf9-b54f9a0c8102" major_version="1" minor_version="1">
+        <text>
+          <locale_1033>Gems</locale_1033>
+        </text>
+        <tool_bar_id>f1011111-1111-1111-1111-111111111102</tool_bar_id>
+      </tool_bar_group_item>
+      <tool_bar_group_item guid="a3c430e7-8cfb-4e67-8cf9-b54f9a0c8103" major_version="1" minor_version="1">
+        <text>
+          <locale_1033>Settings</locale_1033>
+        </text>
+        <tool_bar_id>f1011111-1111-1111-1111-111111111103</tool_bar_id>
+      </tool_bar_group_item>
+      <tool_bar_group_item guid="a4c430e7-8cfb-4e67-8cf9-b54f9a0c8104" major_version="1" minor_version="1">
+        <text>
+          <locale_1033>Cutters</locale_1033>
+        </text>
+        <tool_bar_id>f1011111-1111-1111-1111-111111111104</tool_bar_id>
+      </tool_bar_group_item>
+      <tool_bar_group_item guid="a5c430e7-8cfb-4e67-8cf9-b54f9a0c8105" major_version="1" minor_version="1">
+        <text>
+          <locale_1033>Transform</locale_1033>
+        </text>
+        <tool_bar_id>f1011111-1111-1111-1111-111111111105</tool_bar_id>
+      </tool_bar_group_item>
+      <tool_bar_group_item guid="a6c430e7-8cfb-4e67-8cf9-b54f9a0c8106" major_version="1" minor_version="1">
+        <text>
+          <locale_1033>Manufacturing</locale_1033>
+        </text>
+        <tool_bar_id>f1011111-1111-1111-1111-111111111106</tool_bar_id>
+      </tool_bar_group_item>
+    </tool_bar_group>
+  </tool_bar_groups>
+  <tool_bars>
+    <tool_bar guid="f1011111-1111-1111-1111-111111111101">
+      <text>
+        <locale_1033>Rails &amp; Shanks</locale_1033>
+      </text>
+      <tool_bar_item guid="b1011111-1111-1111-1111-111111111101">
+        <text>
+          <locale_1033>Round Rail</locale_1033>
+        </text>
+        <left_macro_id>m1011111-1111-1111-1111-111111111101</left_macro_id>
+      </tool_bar_item>
+      <tool_bar_item guid="b1011111-1111-1111-1111-111111111102">
+        <text>
+          <locale_1033>Euro Rail</locale_1033>
+        </text>
+        <left_macro_id>m1011111-1111-1111-1111-111111111102</left_macro_id>
+      </tool_bar_item>
+      <tool_bar_item guid="b1011111-1111-1111-1111-111111111103">
+        <text>
+          <locale_1033>Cushion Rail</locale_1033>
+        </text>
+        <left_macro_id>m1011111-1111-1111-1111-111111111103</left_macro_id>
+      </tool_bar_item>
+      <tool_bar_item guid="b1011111-1111-1111-1111-111111111104">
+        <text>
+          <locale_1033>Comfort-Fit Shank</locale_1033>
+        </text>
+        <left_macro_id>m1011111-1111-1111-1111-111111111104</left_macro_id>
+      </tool_bar_item>
+      <tool_bar_item guid="b1011111-1111-1111-1111-111111111105">
+        <text>
+          <locale_1033>Knife-Edge Shank</locale_1033>
+        </text>
+        <left_macro_id>m1011111-1111-1111-1111-111111111105</left_macro_id>
+      </tool_bar_item>
+      <tool_bar_item guid="b1011111-1111-1111-1111-111111111106">
+        <text>
+          <locale_1033>Cathedral Shank</locale_1033>
+        </text>
+        <left_macro_id>m1011111-1111-1111-1111-111111111106</left_macro_id>
+      </tool_bar_item>
+      <tool_bar_item guid="b1011111-1111-1111-1111-111111111107">
+        <text>
+          <locale_1033>D-Shape Shank</locale_1033>
+        </left_macro_id>
+        <left_macro_id>m1011111-1111-1111-1111-111111111107</left_macro_id>
+      </tool_bar_item>
+    </tool_bar>
+    <tool_bar guid="f1011111-1111-1111-1111-111111111102">
+      <text>
+        <locale_1033>Gems</locale_1033>
+      </text>
+      <tool_bar_item guid="b2011111-1111-1111-1111-111111111101">
+        <text>
+          <locale_1033>Gems on Curve</locale_1033>
+        </text>
+        <left_macro_id>m2011111-1111-1111-1111-111111111101</left_macro_id>
+      </tool_bar_item>
+      <tool_bar_item guid="b2011111-1111-1111-1111-111111111102">
+        <text>
+          <locale_1033>Pavé Surface</locale_1033>
+        </text>
+        <left_macro_id>m2011111-1111-1111-1111-111111111102</left_macro_id>
+      </tool_bar_item>
+    </tool_bar>
+    <tool_bar guid="f1011111-1111-1111-1111-111111111103">
+      <text>
+        <locale_1033>Settings</locale_1033>
+      </text>
+      <tool_bar_item guid="b3011111-1111-1111-1111-111111111101">
+        <text>
+          <locale_1033>Prong Head</locale_1033>
+        </text>
+        <left_macro_id>m3011111-1111-1111-1111-111111111101</left_macro_id>
+      </tool_bar_item>
+      <tool_bar_item guid="b3011111-1111-1111-1111-111111111102">
+        <text>
+          <locale_1033>Bezel Setting</locale_1033>
+        </text>
+        <left_macro_id>m3011111-1111-1111-1111-111111111102</left_macro_id>
+      </tool_bar_item>
+      <tool_bar_item guid="b3011111-1111-1111-1111-111111111103">
+        <text>
+          <locale_1033>Halo Setting</locale_1033>
+        </text>
+        <left_macro_id>m3011111-1111-1111-1111-111111111103</left_macro_id>
+      </tool_bar_item>
+    </tool_bar>
+    <tool_bar guid="f1011111-1111-1111-1111-111111111104">
+      <text>
+        <locale_1033>Cutters</locale_1033>
+      </text>
+      <tool_bar_item guid="b4011111-1111-1111-1111-111111111101">
+        <text>
+          <locale_1033>Gem Cutters</locale_1033>
+        </text>
+        <left_macro_id>m4011111-1111-1111-1111-111111111101</left_macro_id>
+      </tool_bar_item>
+    </tool_bar>
+    <tool_bar guid="f1011111-1111-1111-1111-111111111105">
+      <text>
+        <locale_1033>Transform</locale_1033>
+      </text>
+      <tool_bar_item guid="b5011111-1111-1111-1111-111111111101">
+        <text>
+          <locale_1033>Boolean Diff</locale_1033>
+        </text>
+        <left_macro_id>m5011111-1111-1111-1111-111111111101</left_macro_id>
+      </tool_bar_item>
+      <tool_bar_item guid="b5011111-1111-1111-1111-111111111102">
+        <text>
+          <locale_1033>Polar Array</locale_1033>
+        </text>
+        <left_macro_id>m5011111-1111-1111-1111-111111111102</left_macro_id>
+      </tool_bar_item>
+    </tool_bar>
+    <tool_bar guid="f1011111-1111-1111-1111-111111111106">
+      <text>
+        <locale_1033>Manufacturing</locale_1033>
+      </text>
+      <tool_bar_item guid="b6011111-1111-1111-1111-111111111101">
+        <text>
+          <locale_1033>Wall Thickness</locale_1033>
+        </text>
+        <left_macro_id>m6011111-1111-1111-1111-111111111101</left_macro_id>
+      </tool_bar_item>
+      <tool_bar_item guid="b6011111-1111-1111-1111-111111111102">
+        <text>
+          <locale_1033>Export STL</locale_1033>
+        </text>
+        <left_macro_id>m6011111-1111-1111-1111-111111111102</left_macro_id>
+      </tool_bar_item>
+      <tool_bar_item guid="b6011111-1111-1111-1111-111111111103">
+        <text>
+          <locale_1033>Toggle Tree Mode</locale_1033>
+        </text>
+        <left_macro_id>m6011111-1111-1111-1111-111111111103</left_macro_id>
+      </tool_bar_item>
+    </tool_bar>
+  </tool_bars>
+  <macros>
+    <macro_item guid="m1011111-1111-1111-1111-111111111101">
+      <text><locale_1033>Round Rail</locale_1033></text>
+      <tooltip><locale_1033>Create Round Ring Rail</locale_1033></tooltip>
+      <button_text><locale_1033>Round</locale_1033></button_text>
+      <script>! _RadRingRail Round</script>
+    </macro_item>
+    <macro_item guid="m1011111-1111-1111-1111-111111111102">
+      <text><locale_1033>Euro Rail</locale_1033></text>
+      <tooltip><locale_1033>Create Euro-Shank Ring Rail</locale_1033></tooltip>
+      <button_text><locale_1033>Euro</locale_1033></button_text>
+      <script>! _RadRingRail Euro</script>
+    </macro_item>
+    <macro_item guid="m1011111-1111-1111-1111-111111111103">
+      <text><locale_1033>Cushion Rail</locale_1033></text>
+      <tooltip><locale_1033>Create Cushion Squircle Ring Rail</locale_1033></tooltip>
+      <button_text><locale_1033>Cushion</locale_1033></button_text>
+      <script>! _RadRingRail Cushion</script>
+    </macro_item>
+    <macro_item guid="m1011111-1111-1111-1111-111111111104">
+      <text><locale_1033>Comfort-Fit</locale_1033></text>
+      <tooltip><locale_1033>Create Comfort-Fit Swept Shank</locale_1033></tooltip>
+      <button_text><locale_1033>ComfortFit</locale_1033></button_text>
+      <script>! _RadShank ComfortFit</script>
+    </macro_item>
+    <macro_item guid="m1011111-1111-1111-1111-111111111105">
+      <text><locale_1033>Knife-Edge</locale_1033></text>
+      <tooltip><locale_1033>Create Knife-Edge Shank</locale_1033></tooltip>
+      <button_text><locale_1033>KnifeEdge</locale_1033></button_text>
+      <script>! _RadShank KnifeEdge</script>
+    </macro_item>
+    <macro_item guid="m1011111-1111-1111-1111-111111111106">
+      <text><locale_1033>Cathedral</locale_1033></text>
+      <tooltip><locale_1033>Create Cathedral Arch Shank</locale_1033></tooltip>
+      <button_text><locale_1033>Cathedral</locale_1033></button_text>
+      <script>! _RadShank Cathedral</script>
+    </macro_item>
+    <macro_item guid="m1011111-1111-1111-1111-111111111107">
+      <text><locale_1033>D-Shape</locale_1033></text>
+      <tooltip><locale_1033>Create D-Shape Half-Round Shank</locale_1033></tooltip>
+      <button_text><locale_1033>DShape</locale_1033></button_text>
+      <script>! _RadShank DShape</script>
+    </macro_item>
+    <macro_item guid="m2011111-1111-1111-1111-111111111101">
+      <text><locale_1033>Gems on Curve</locale_1033></text>
+      <tooltip><locale_1033>Distribute Gems along Curve</locale_1033></tooltip>
+      <button_text><locale_1033>GemOnCurve</locale_1033></button_text>
+      <script>! _RadGemOnCurve</script>
+    </macro_item>
+    <macro_item guid="m2011111-1111-1111-1111-111111111102">
+      <text><locale_1033>Pavé</locale_1033></text>
+      <tooltip><locale_1033>Generate Pavé Stone Distribution</locale_1033></tooltip>
+      <button_text><locale_1033>Pave</locale_1033></button_text>
+      <script>! _RadPave</script>
+    </macro_item>
+    <macro_item guid="m3011111-1111-1111-1111-111111111101">
+      <text><locale_1033>Prong Head</locale_1033></text>
+      <tooltip><locale_1033>Create Parametric Prong Setting</locale_1033></tooltip>
+      <button_text><locale_1033>Prongs</locale_1033></button_text>
+      <script>! _RadProngHead</script>
+    </macro_item>
+    <macro_item guid="m3011111-1111-1111-1111-111111111102">
+      <text><locale_1033>Bezel</locale_1033></text>
+      <tooltip><locale_1033>Create Parametric Bezel Setting</locale_1033></tooltip>
+      <button_text><locale_1033>Bezel</locale_1033></button_text>
+      <script>! _RadBezel</script>
+    </macro_item>
+    <macro_item guid="m3011111-1111-1111-1111-111111111103">
+      <text><locale_1033>Halo</locale_1033></text>
+      <tooltip><locale_1033>Create Parametric Halo Setting</locale_1033></tooltip>
+      <button_text><locale_1033>Halo</locale_1033></button_text>
+      <script>! _RadHalo</script>
+    </macro_item>
+    <macro_item guid="m4011111-1111-1111-1111-111111111101">
+      <text><locale_1033>Gem Cutters</locale_1033></text>
+      <tooltip><locale_1033>Generate Seat and Light Hole Cutters</locale_1033></tooltip>
+      <button_text><locale_1033>Cutters</locale_1033></button_text>
+      <script>! _RadCutter</script>
+    </macro_item>
+    <macro_item guid="m5011111-1111-1111-1111-111111111101">
+      <text><locale_1033>Boolean Difference</locale_1033></text>
+      <tooltip><locale_1033>Perform Multi-Pass Jewelry Boolean Difference</locale_1033></tooltip>
+      <button_text><locale_1033>BoolDiff</locale_1033></button_text>
+      <script>! _RadBoolean</script>
+    </macro_item>
+    <macro_item guid="m5011111-1111-1111-1111-111111111102">
+      <text><locale_1033>Polar Array</locale_1033></text>
+      <tooltip><locale_1033>Array Gems Around Ring Axis</locale_1033></tooltip>
+      <button_text><locale_1033>PolarArray</locale_1033></button_text>
+      <script>! _ArrayPolar</script>
+    </macro_item>
+    <macro_item guid="m6011111-1111-1111-1111-111111111101">
+      <text><locale_1033>Wall Thickness</locale_1033></text>
+      <tooltip><locale_1033>Ray-Cast Wall Thickness Analysis</locale_1033></tooltip>
+      <button_text><locale_1033>Thickness</locale_1033></button_text>
+      <script>! _RadWallThickness</script>
+    </macro_item>
+    <macro_item guid="m6011111-1111-1111-1111-111111111102">
+      <text><locale_1033>Export STL</locale_1033></text>
+      <tooltip><locale_1033>Export Watertight Binary STL</locale_1033></tooltip>
+      <button_text><locale_1033>ExportSTL</locale_1033></button_text>
+      <script>! _RadExportSTL</script>
+    </macro_item>
+    <macro_item guid="m6011111-1111-1111-1111-111111111103">
+      <text><locale_1033>Toggle Tree Mode</locale_1033></text>
+      <tooltip><locale_1033>Toggle Parametric History Tree Mode</locale_1033></tooltip>
+      <button_text><locale_1033>TreeMode</locale_1033></button_text>
+      <script>! _RadToggleTreeMode</script>
+    </macro_item>
+  </macros>
+</RhinoUI>

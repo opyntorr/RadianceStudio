@@ -61,10 +61,10 @@ public class RadHarnessAuditCommand : Command
             RecordStage("DocumentUnitsAndTolerance", unitsOk && tolOk,
                 $"Units: {doc.ModelUnitSystem} (Expected Millimeters), AbsTol: {doc.ModelAbsoluteTolerance} (Expected <= 0.001)");
 
-            // Stage 2: UI Panel Registration
-            bool panelsRegistered = JewelryRibbonPanel.Instance != null || RadianceStudioPlugIn.Ribbon != null;
-            RecordStage("StudioPanelsRegistration", panelsRegistered,
-                $"RibbonPanel: {(panelsRegistered ? "Registered" : "Unattached")}");
+            // Stage 2: PlugIn & UI Workspace Verification
+            bool pluginOk = RadianceStudioPlugIn.Instance != null;
+            RecordStage("StudioPanelsRegistration", pluginOk,
+                $"PlugInLoaded: {pluginOk}, Scheme: {RhinoApp.SchemeName}");
 
             // Stage 3: Parametric Ring Rail Creation
             double us7Diameter = RailEngine.SizeToInnerDiameterMm(RingSizingStandard.US, 7.0);

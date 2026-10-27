@@ -2,8 +2,9 @@
 # Configure RadianceStudio Scheme Workspace (containers.xml)
 # ==============================================================================
 # Customizes Rhino 8 Scheme__RadianceStudio:
-# 1. Hides standard Rhino toolbars (Standard Toolbars -> visible="False")
-# 2. Docks Radiance Ribbon across the top (dock_location="Top", visible="True")
+# 1. Hides/replaces standard Rhino toolbars with native Radiance Studio tabs:
+#    (Rails & Shanks, Gems, Settings, Cutters, Transform, Manufacturing)
+# 2. Removes floating Ribbon window
 # 3. Docks Jewelry Inspector & Parametric History in the right sidebar
 # ==============================================================================
 
@@ -17,7 +18,6 @@ if (-not (Test-Path $SettingsDir)) {
 
 $ContainersXmlPath = Join-Path $SettingsDir "containers.xml"
 if (-not (Test-Path $ContainersXmlPath)) {
-    # If Scheme__RadianceStudio does not have containers.xml yet, copy from Scheme__Default
     $DefaultContainers = Join-Path $AppData "McNeel\Rhinoceros\8.0\settings\Scheme__Default\containers.xml"
     if (Test-Path $DefaultContainers) {
         Copy-Item -Path $DefaultContainers -Destination $ContainersXmlPath -Force
@@ -31,63 +31,86 @@ if (-not (Test-Path $ContainersXmlPath)) {
 
 [xml]$doc = Get-Content -Path $ContainersXmlPath -Raw -Encoding UTF8
 
-# 1. Hide Standard Toolbars (guid: 171011a9-a956-41ee-853e-3ccc0c0db1d8)
-$stdDockBar = $doc.SelectSingleNode("//dock_bar[@guid='171011a9-a956-41ee-853e-3ccc0c0db1d8']")
-if ($stdDockBar -and $stdDockBar.placement) {
-    $stdDockBar.placement.SetAttribute("visible", "False")
-    Write-Host "[OK] Hidden standard toolbars dock_bar in Scheme__RadianceStudio." -ForegroundColor Green
-}
-
-# 2. Add or update Radiance Ribbon Top DockBar (guid: 7721867f-0ac8-45f4-a0c3-bc5d500ba899)
-$ribbonGuid = "7721867f-0ac8-45f4-a0c3-bc5d500ba899"
+$ruiFileGuid = "c4a754b2-2987-43a1-9b90-1e5f8a09b431"
 $pluginGuid = "1d4fb0a4-325a-4b6a-b6b1-d1817eb7ff4b"
-$ribbonDockBar = $doc.SelectSingleNode("//dock_bar[@guid='$ribbonGuid']")
-if (-not $ribbonDockBar) {
-    $dockBarsNode = $doc.SelectSingleNode("//dock_bars")
-    if ($dockBarsNode) {
-        $ribbonElement = $doc.CreateElement("dock_bar")
-        $ribbonElement.SetAttribute("guid", $ribbonGuid)
+$ruiFilePath = Join-Path $AppData "McNeel\Rhinoceros\packages\8.0\RadianceStudio\1.0.0\net8.0\RadianceStudioToolbar.rui"
 
-        $placement = $doc.CreateElement("placement")
-        $placement.SetAttribute("dock_location", "Top")
-        $placement.SetAttribute("recent_dock_location", "Top")
-        $placement.SetAttribute("dock_band_size", "36,105")
-        $placement.SetAttribute("dock_band_item_size", "1,-1")
-        $placement.SetAttribute("docked_placement", "0,0")
-        $placement.SetAttribute("float_point", "0,0")
-        $placement.SetAttribute("float_size", "1200,105")
-        $placement.SetAttribute("visible", "True")
-        $ribbonElement.AppendChild($placement) | Out-Null
-
-        $tabs = $doc.CreateElement("tabs")
-        $tabs.SetAttribute("name", "Radiance Ribbon")
-        $tabs.SetAttribute("selected_item", $ribbonGuid)
-        $tabs.SetAttribute("display_style", "Text")
-
-        $name = $doc.CreateElement("name")
-        $locale = $doc.CreateElement("locale_1033")
-        $locale.InnerText = "Radiance Ribbon"
-        $name.AppendChild($locale) | Out-Null
-        $tabs.AppendChild($name) | Out-Null
-
-        $panel = $doc.CreateElement("panel")
-        $panel.SetAttribute("guid", $ribbonGuid)
-        $panel.SetAttribute("plug_in", $pluginGuid)
-        $panel.SetAttribute("name", "Radiance Ribbon")
-        $tabs.AppendChild($panel) | Out-Null
-
-        $ribbonElement.AppendChild($tabs) | Out-Null
-        $dockBarsNode.PrependChild($ribbonElement) | Out-Null
-        Write-Host "[OK] Added Radiance Ribbon dock_bar to containers.xml." -ForegroundColor Green
-    }
-} else {
-    if ($ribbonDockBar.placement) {
-        $ribbonDockBar.placement.SetAttribute("visible", "True")
-        $ribbonDockBar.placement.SetAttribute("dock_location", "Top")
+# 1. Register RadianceStudioToolbar.rui in <files>
+$filesNode = $doc.SelectSingleNode("//files")
+if ($filesNode) {
+    $existingFile = $filesNode.SelectSingleNode("file_name[@guid='$ruiFileGuid']")
+    if (-not $existingFile) {
+        $fileElem = $doc.CreateElement("file_name")
+        $fileElem.SetAttribute("guid", $ruiFileGuid)
+        $fileElem.SetAttribute("plug_in_guid", $pluginGuid)
+        $fileElem.SetAttribute("source", "PlugInFolder")
+        $fileElem.InnerText = $ruiFilePath
+        $filesNode.AppendChild($fileElem) | Out-Null
+        Write-Host "[OK] Registered RadianceStudioToolbar.rui in containers.xml." -ForegroundColor Green
+    } else {
+        $existingFile.InnerText = $ruiFilePath
     }
 }
 
-# 3. Add Jewelry Inspector & Parametric History to Right Container if not present
+# 2. Configure Top Dock Bar (guid: 171011a9-a956-41ee-853e-3ccc0c0db1d8) to display Radiance Studio tabs
+$topDockBar = $doc.SelectSingleNode("//dock_bar[@guid='171011a9-a956-41ee-853e-3ccc0c0db1d8']")
+if ($topDockBar) {
+    $topDockBar.SetAttribute("source_group_file", $ruiFileGuid)
+    $topDockBar.SetAttribute("source_group", "e8b52194-4360-4963-8a02-984cd4d47150")
+
+    if ($topDockBar.placement) {
+        $topDockBar.placement.SetAttribute("visible", "True")
+        $topDockBar.placement.SetAttribute("dock_location", "Top")
+    }
+
+    $tabsNode = $topDockBar.SelectSingleNode("tabs")
+    if ($tabsNode) {
+        $tabsNode.SetAttribute("name", "Radiance Studio")
+        $tabsNode.SetAttribute("selected_item", "f1011111-1111-1111-1111-111111111101")
+        $tabsNode.SetAttribute("display_style", "Text")
+
+        # Replace all standard tool_bar nodes with Radiance Studio tabs
+        $tabsNode.RemoveAll()
+
+        $nameElem = $doc.CreateElement("name")
+        $locElem = $doc.CreateElement("locale_1033")
+        $locElem.InnerText = "Radiance Studio"
+        $nameElem.AppendChild($locElem) | Out-Null
+        $tabsNode.AppendChild($nameElem) | Out-Null
+
+        $toolbars = @(
+            "f1011111-1111-1111-1111-111111111101",
+            "f1011111-1111-1111-1111-111111111102",
+            "f1011111-1111-1111-1111-111111111103",
+            "f1011111-1111-1111-1111-111111111104",
+            "f1011111-1111-1111-1111-111111111105",
+            "f1011111-1111-1111-1111-111111111106"
+        )
+
+        foreach ($tbGuid in $toolbars) {
+            $tbElem = $doc.CreateElement("tool_bar")
+            $tbElem.SetAttribute("guid", $tbGuid)
+            $tbElem.SetAttribute("file", $ruiFileGuid)
+            $tabsNode.AppendChild($tbElem) | Out-Null
+        }
+
+        Write-Host "[OK] Top Dock Bar configured with 6 Radiance Studio tabs." -ForegroundColor Green
+    }
+}
+
+# 3. Remove any floating or leftover ribbon dock_bars
+$floatingRibbons = $doc.SelectNodes("//dock_bar[.//panel[@guid='7721867f-0ac8-45f4-a0c3-bc5d500ba899']]")
+foreach ($fr in $floatingRibbons) {
+    $fr.ParentNode.RemoveChild($fr) | Out-Null
+    Write-Host "[OK] Removed floating ribbon dock_bar." -ForegroundColor Green
+}
+
+$floatingOldRibbons = $doc.SelectNodes("//dock_bar[@guid='7721867f-0ac8-45f4-a0c3-bc5d500ba899']")
+foreach ($fr in $floatingOldRibbons) {
+    $fr.ParentNode.RemoveChild($fr) | Out-Null
+}
+
+# 4. Dock Jewelry Inspector and Parametric History in Right Container
 $rightTabs = $doc.SelectSingleNode("//tabs[@name='Right Container']")
 if ($rightTabs) {
     $inspectorGuid = "2e27cd9a-3bf2-4bf3-9f9b-b85ff6e9d5aa"
@@ -100,7 +123,6 @@ if ($rightTabs) {
         $inspPanel.SetAttribute("plug_in", $pluginGuid)
         $inspPanel.SetAttribute("name", "Jewelry Inspector")
         $rightTabs.AppendChild($inspPanel) | Out-Null
-        Write-Host "[OK] Added Jewelry Inspector to Right Container." -ForegroundColor Green
     }
 
     $hasHistory = $rightTabs.SelectSingleNode("panel[@guid='$historyGuid']")
@@ -110,9 +132,8 @@ if ($rightTabs) {
         $histPanel.SetAttribute("plug_in", $pluginGuid)
         $histPanel.SetAttribute("name", "Parametric History")
         $rightTabs.AppendChild($histPanel) | Out-Null
-        Write-Host "[OK] Added Parametric History to Right Container." -ForegroundColor Green
     }
 }
 
 $doc.Save($ContainersXmlPath)
-Write-Host "[SUCCESS] containers.xml successfully configured for 1:1 MatrixGold experience." -ForegroundColor Cyan
+Write-Host "[SUCCESS] containers.xml configured with native Radiance Studio tabs." -ForegroundColor Cyan

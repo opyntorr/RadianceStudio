@@ -11,6 +11,12 @@
   </Target>
 
   <ItemGroup>
+    <None Update="RadianceStudioToolbar.rui">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="RhinoCommon" Version="8.*" />
   </ItemGroup>
 

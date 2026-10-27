@@ -76,10 +76,20 @@ keywords:
 "@
 Set-Content -Path (Join-Path $StagingDir "manifest.yml") -Value $ManifestContent -Encoding UTF8
 
-# 5. Copy compiled assemblies and rhp into net8.0 staging
-$FilesToCopy = Get-ChildItem -Path "$SourceBin\*" -Include *.rhp, *.dll, *.pdb, *.deps.json
+# 5. Copy compiled assemblies, rui, and rhp into net8.0 staging
+$FilesToCopy = Get-ChildItem -Path "$SourceBin\*" -Include *.rhp, *.dll, *.pdb, *.deps.json, *.rui
 foreach ($file in $FilesToCopy) {
     Copy-Item -Path $file.FullName -Destination $NetDir -Force
+}
+
+# Also copy rui to staging root
+$ruiSource = Join-Path $SourceBin "RadianceStudioToolbar.rui"
+if (-not (Test-Path $ruiSource)) {
+    $ruiSource = Join-Path $RootDir "src\RadianceStudio.Rhino\RadianceStudioToolbar.rui"
+}
+if (Test-Path $ruiSource) {
+    Copy-Item -Path $ruiSource -Destination $StagingDir -Force
+    Copy-Item -Path $ruiSource -Destination $NetDir -Force
 }
 
 # 6. Build .yak package and clean existing package destination

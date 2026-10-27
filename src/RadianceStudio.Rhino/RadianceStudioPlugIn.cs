@@ -307,12 +307,9 @@ public class RadianceStudioPlugIn : PlugIn
         {
             HideStandardToolbars();
 
-            // Open Inspector and History as docked siblings
+            // Open Inspector and History as docked siblings in the right panel
             RhinoPanels.OpenPanel(DynamicInspectorPanelHost.PanelId);
             RhinoPanels.OpenPanelAsSibling(HistoryPanelHost.PanelId, DynamicInspectorPanelHost.PanelId);
-
-            // Open Ribbon panel
-            RhinoPanels.OpenPanel(JewelryRibbonPanel.PanelId);
 
             // Connect Inspector and History if both are instantiated
             if (InspectorPanel != null && HistoryPanel != null)

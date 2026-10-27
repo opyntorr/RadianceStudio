@@ -40,6 +40,15 @@ public class RadShankCommand : Command
         {
             var go = new GetOption();
             go.SetCommandPrompt("Shank (Press Enter for Defaults)");
+            go.AcceptNothing(true);
+
+            int optComfortFit = go.AddOption("ComfortFit");
+            int optFlat = go.AddOption("Flat");
+            int optDShape = go.AddOption("DShape");
+            int optKnifeEdge = go.AddOption("KnifeEdge");
+            int optCathedral = go.AddOption("Cathedral");
+            int optEuroShank = go.AddOption("EuroShank");
+
             var bwOpt = new OptionDouble(bottomWidth, 0.5, 20.0);
             var btOpt = new OptionDouble(bottomThickness, 0.5, 10.0);
             var twOpt = new OptionDouble(topWidth, 0.5, 20.0);
@@ -66,7 +75,13 @@ public class RadShankCommand : Command
                 }
                 if (res == GetResult.Option)
                 {
-                    if (go.OptionIndex() == optProfile) profileIndex = go.Option().CurrentListOptionIndex;
+                    if (go.OptionIndex() == optComfortFit) { profileIndex = 0; break; }
+                    else if (go.OptionIndex() == optFlat) { profileIndex = 1; break; }
+                    else if (go.OptionIndex() == optDShape) { profileIndex = 2; break; }
+                    else if (go.OptionIndex() == optKnifeEdge) { profileIndex = 3; break; }
+                    else if (go.OptionIndex() == optCathedral) { profileIndex = 4; break; }
+                    else if (go.OptionIndex() == optEuroShank) { profileIndex = 2; break; }
+                    else if (go.OptionIndex() == optProfile) profileIndex = go.Option().CurrentListOptionIndex;
                     else if (go.OptionIndex() == optBw) bottomWidth = bwOpt.CurrentValue;
                     else if (go.OptionIndex() == optBt) bottomThickness = btOpt.CurrentValue;
                     else if (go.OptionIndex() == optTw) topWidth = twOpt.CurrentValue;

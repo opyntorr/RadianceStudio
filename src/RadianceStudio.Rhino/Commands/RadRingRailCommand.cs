@@ -38,6 +38,13 @@ public class RadRingRailCommand : Command
         {
             var go = new GetOption();
             go.SetCommandPrompt("Ring Rail (Press Enter for Defaults)");
+            go.AcceptNothing(true);
+
+            int optRound = go.AddOption("Round");
+            int optEuro = go.AddOption("Euro");
+            int optCushion = go.AddOption("Cushion");
+            int optBypass = go.AddOption("Bypass");
+
             var sizeOpt = new OptionDouble(sizeUs, 1.0, 25.0);
             var widthOpt = new OptionDouble(widthMm, 0.5, 20.0);
             var thickOpt = new OptionDouble(thicknessMm, 0.5, 10.0);
@@ -62,7 +69,11 @@ public class RadRingRailCommand : Command
                 }
                 if (res == GetResult.Option)
                 {
-                    if (go.OptionIndex() == optSize) sizeUs = sizeOpt.CurrentValue;
+                    if (go.OptionIndex() == optRound) { profileIndex = 0; break; }
+                    else if (go.OptionIndex() == optEuro) { profileIndex = 1; break; }
+                    else if (go.OptionIndex() == optCushion) { profileIndex = 2; break; }
+                    else if (go.OptionIndex() == optBypass) { profileIndex = 3; break; }
+                    else if (go.OptionIndex() == optSize) sizeUs = sizeOpt.CurrentValue;
                     else if (go.OptionIndex() == optWidth) widthMm = widthOpt.CurrentValue;
                     else if (go.OptionIndex() == optThick) thicknessMm = thickOpt.CurrentValue;
                     else if (go.OptionIndex() == optStandard) standardIndex = go.Option().CurrentListOptionIndex;
