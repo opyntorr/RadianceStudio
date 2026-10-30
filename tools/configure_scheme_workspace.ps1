@@ -3,8 +3,8 @@
 # ==============================================================================
 # Customizes Rhino 8 Scheme__RadianceStudio:
 # 1. Hides/replaces standard Rhino toolbars with native Radiance Studio tabs:
-#    (Rails & Shanks, Gems, Settings, Cutters, Transform, Manufacturing)
-# 2. Removes floating Ribbon window
+#    (Projects, Rails, Shanks, Gems, Settings, Cutters, Transform, Art & Textures, Render, Manufacturing, Drafting)
+# 2. Hides all left sidebar dockbars (Rhinoceros Sidebar, OSnap, Main)
 # 3. Docks Jewelry Inspector & Parametric History in the right sidebar
 # ==============================================================================
 
@@ -66,10 +66,10 @@ if ($topDockBar) {
     $tabsNode = $topDockBar.SelectSingleNode("tabs")
     if ($tabsNode) {
         $tabsNode.SetAttribute("name", "Radiance Studio")
-        $tabsNode.SetAttribute("selected_item", "f1011111-1111-1111-1111-111111111101")
+        $tabsNode.SetAttribute("selected_item", "f1011111-1111-1111-1111-111111111102") # Default to Rails
         $tabsNode.SetAttribute("display_style", "Text")
 
-        # Replace all standard tool_bar nodes with Radiance Studio tabs
+        # Replace all standard tool_bar nodes with 11 Radiance Studio tabs
         $tabsNode.RemoveAll()
 
         $nameElem = $doc.CreateElement("name")
@@ -79,12 +79,17 @@ if ($topDockBar) {
         $tabsNode.AppendChild($nameElem) | Out-Null
 
         $toolbars = @(
-            "f1011111-1111-1111-1111-111111111101",
-            "f1011111-1111-1111-1111-111111111102",
-            "f1011111-1111-1111-1111-111111111103",
-            "f1011111-1111-1111-1111-111111111104",
-            "f1011111-1111-1111-1111-111111111105",
-            "f1011111-1111-1111-1111-111111111106"
+            "f1011111-1111-1111-1111-111111111101", # Projects
+            "f1011111-1111-1111-1111-111111111102", # Rails
+            "f1011111-1111-1111-1111-111111111103", # Shanks
+            "f1011111-1111-1111-1111-111111111104", # Gems
+            "f1011111-1111-1111-1111-111111111105", # Settings
+            "f1011111-1111-1111-1111-111111111106", # Cutters
+            "f1011111-1111-1111-1111-111111111107", # Transform
+            "f1011111-1111-1111-1111-111111111108", # Art & Textures
+            "f1011111-1111-1111-1111-111111111109", # Render
+            "f1011111-1111-1111-1111-111111111110", # Manufacturing
+            "f1011111-1111-1111-1111-111111111111"  # Drafting
         )
 
         foreach ($tbGuid in $toolbars) {
@@ -94,11 +99,33 @@ if ($topDockBar) {
             $tabsNode.AppendChild($tbElem) | Out-Null
         }
 
-        Write-Host "[OK] Top Dock Bar configured with 6 Radiance Studio tabs." -ForegroundColor Green
+        Write-Host "[OK] Top Dock Bar configured with 11 Radiance Studio tabs." -ForegroundColor Green
     }
 }
 
-# 3. Remove any floating or leftover ribbon dock_bars
+# 3. Hide Left Sidebar Dock Bars (Rhinoceros Sidebar, OSnap, Main)
+$leftSidebars = @(
+    "7491ffac-ebf2-4214-bf42-d3d1e4e0f0e1", # Rhinoceros Sidebar
+    "b1c225e5-68ba-44a9-8402-f70a6eb49937", # OSnap
+    "d1225ee0-cf16-4f05-b053-60aa46183ac0"  # Main
+)
+
+foreach ($lsGuid in $leftSidebars) {
+    $lsBar = $doc.SelectSingleNode("//dock_bar[@guid='$lsGuid']")
+    if ($lsBar) {
+        if ($lsBar.placement) {
+            $lsBar.placement.SetAttribute("visible", "False")
+        }
+    }
+    # Also remove from visible dock site bands
+    $siteItems = $doc.SelectNodes("//dock_site//dock_bar[@guid='$lsGuid']")
+    foreach ($si in $siteItems) {
+        $si.ParentNode.RemoveChild($si) | Out-Null
+    }
+}
+Write-Host "[OK] Left sidebar dockbars hidden and detached." -ForegroundColor Green
+
+# 4. Remove any floating or leftover ribbon dock_bars
 $floatingRibbons = $doc.SelectNodes("//dock_bar[.//panel[@guid='7721867f-0ac8-45f4-a0c3-bc5d500ba899']]")
 foreach ($fr in $floatingRibbons) {
     $fr.ParentNode.RemoveChild($fr) | Out-Null
@@ -110,11 +137,20 @@ foreach ($fr in $floatingOldRibbons) {
     $fr.ParentNode.RemoveChild($fr) | Out-Null
 }
 
-# 4. Dock Jewelry Inspector and Parametric History in Right Container
+# 5. Dock Jewelry Inspector and Parametric History in Right Container
 $rightTabs = $doc.SelectSingleNode("//tabs[@name='Right Container']")
 if ($rightTabs) {
-    $inspectorGuid = "2e27cd9a-3bf2-4bf3-9f9b-b85ff6e9d5aa"
-    $historyGuid = "9b82963b-b0b5-4cfa-bc4b-11da04aa3d66"
+    $inspectorGuid = "552c1656-787d-4fce-a263-ac0174092e47"
+    $historyGuid = "8965008e-eea4-4a86-bfa3-a2d696417531"
+
+    # Remove old incorrect guids if present
+    $oldGuids = @("2e27cd9a-3bf2-4bf3-9f9b-b85ff6e9d5aa", "9b82963b-b0b5-4cfa-bc4b-11da04aa3d66")
+    foreach ($og in $oldGuids) {
+        $oldPanel = $rightTabs.SelectSingleNode("panel[@guid='$og']")
+        if ($oldPanel) {
+            $rightTabs.RemoveChild($oldPanel) | Out-Null
+        }
+    }
 
     $hasInspector = $rightTabs.SelectSingleNode("panel[@guid='$inspectorGuid']")
     if (-not $hasInspector) {
@@ -133,7 +169,11 @@ if ($rightTabs) {
         $histPanel.SetAttribute("name", "Parametric History")
         $rightTabs.AppendChild($histPanel) | Out-Null
     }
+
+    # Set default tab focus to Jewelry Inspector
+    $rightTabs.SetAttribute("selected_item", $inspectorGuid)
+    Write-Host "[OK] Right Container configured with Jewelry Inspector and Parametric History." -ForegroundColor Green
 }
 
 $doc.Save($ContainersXmlPath)
-Write-Host "[SUCCESS] containers.xml configured with native Radiance Studio tabs." -ForegroundColor Cyan
+Write-Host "[SUCCESS] containers.xml configured with 11 Radiance Studio tabs and clean workspace." -ForegroundColor Cyan

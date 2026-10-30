@@ -90,8 +90,6 @@ public class RadianceStudioPlugIn : PlugIn
                 {
                     ConfigureJewelryDocument(RhinoDoc.ActiveDoc);
                 }
-
-                OpenStudioWorkspace();
             }
 
             return LoadReturnCode.Success;
@@ -261,8 +259,9 @@ public class RadianceStudioPlugIn : PlugIn
     }
 
     /// <summary>
-    /// Hides Rhino's default Standard Toolbars and tab groups so that only RadianceStudio's
+    /// Hides Rhino's default Standard Toolbars, tabs, and left sidebars so that only RadianceStudio's
     /// dedicated top ribbon and jewelry commands are exposed, providing a standalone commercial jewelry CAD suite experience.
+    /// Standard Rhino commands remain fully accessible via the top command prompt.
     /// </summary>
     public static void HideStandardToolbars()
     {
@@ -272,21 +271,34 @@ public class RadianceStudioPlugIn : PlugIn
         {
             if (RhinoApp.ToolbarFiles != null)
             {
+                string[] standardGroups = new[]
+                {
+                    "Standard", "Main", "Default", "CPlanes", "Set View", "Display", "Select",
+                    "Viewport Layout", "Visibility", "Transform", "Curve Tools", "Surface Tools",
+                    "Solid Tools", "SubD Tools", "Mesh Tools", "Render Tools", "Drafting", "New in V8"
+                };
+
                 foreach (var tf in RhinoApp.ToolbarFiles)
                 {
                     if (tf == null) continue;
                     for (int i = 0; i < tf.GroupCount; i++)
                     {
                         var group = tf.GetGroup(i);
-                        if (group != null && (group.Name.Contains("Standard", StringComparison.OrdinalIgnoreCase) ||
-                                              group.Name.Contains("Default", StringComparison.OrdinalIgnoreCase)))
+                        if (group == null) continue;
+
+                        foreach (var name in standardGroups)
                         {
-                            group.Visible = false;
+                            if (group.Name.Contains(name, StringComparison.OrdinalIgnoreCase))
+                            {
+                                group.Visible = false;
+                                break;
+                            }
                         }
                     }
                 }
             }
 
+            // Hide standard top toolbars if open
             RhinoApp.RunScript("-_ToolbarGroup \"Standard Toolbars\" Hide", echo: false);
         }
         catch (Exception ex)

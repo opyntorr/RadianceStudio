@@ -339,6 +339,10 @@ public class DynamicInspectorPanel : Panel
                 BuildBezelControls(bezelVm);
                 break;
 
+            case PlaceholderViewModel placeholderVm:
+                BuildPlaceholderControls(placeholderVm);
+                break;
+
             case CutterViewModel cutterVm:
                 BuildCutterControls(cutterVm);
                 break;
@@ -640,6 +644,100 @@ public class DynamicInspectorPanel : Panel
         {
             Content = check,
             Padding = new Padding(2, 4)
+        };
+    }
+
+    private void BuildPlaceholderControls(PlaceholderViewModel vm)
+    {
+        var badgeLabel = new Label
+        {
+            Text = $"CATEGORY: {vm.Category.ToUpperInvariant()} (PREVIEW)",
+            Font = JewelryDarkTheme.SmallFont,
+            TextColor = JewelryDarkTheme.AccentGold
+        };
+        _controlsLayout.Items.Add(badgeLabel);
+
+        var descLabel = new Label
+        {
+            Text = vm.Description,
+            Font = JewelryDarkTheme.BodyFont,
+            TextColor = JewelryDarkTheme.TextSecondary,
+            Wrap = WrapMode.Word
+        };
+        _controlsLayout.Items.Add(new Panel
+        {
+            BackgroundColor = JewelryDarkTheme.SurfaceCard,
+            Padding = new Padding(8),
+            Content = descLabel
+        });
+
+        _controlsLayout.Items.Add(CreateCoupledSlider(vm.Param1Label, vm.Param1Value, vm.Param1Min, vm.Param1Max, vm.Param1Step, v => vm.Param1Value = v));
+        _controlsLayout.Items.Add(CreateCoupledSlider(vm.Param2Label, vm.Param2Value, vm.Param2Min, vm.Param2Max, vm.Param2Step, v => vm.Param2Value = v));
+
+        if (vm.Options != null && vm.Options.Length > 0)
+        {
+            _controlsLayout.Items.Add(CreateStringDropDown(vm.OptionLabel, vm.Options, vm.SelectedOption, v => vm.SelectedOption = v));
+        }
+
+        var noteLabel = new Label
+        {
+            Text = "Roadmap: Interactive parameter preview active. Full geometry synthesis engine in progress.",
+            Font = JewelryDarkTheme.SmallFont,
+            TextColor = JewelryDarkTheme.AccentCyan,
+            Wrap = WrapMode.Word
+        };
+        _controlsLayout.Items.Add(noteLabel);
+    }
+
+    private static Panel CreateStringDropDown(string labelText, string[] options, string initialValue, Action<string> onSelected)
+    {
+        var container = new StackLayout
+        {
+            Orientation = Orientation.Vertical,
+            Spacing = 2
+        };
+
+        var label = new Label
+        {
+            Text = labelText,
+            Font = JewelryDarkTheme.SmallFont,
+            TextColor = JewelryDarkTheme.TextSecondary
+        };
+
+        var dropDown = new DropDown
+        {
+            BackgroundColor = JewelryDarkTheme.SurfaceElevated,
+            TextColor = JewelryDarkTheme.TextPrimary,
+            Font = JewelryDarkTheme.BodyFont
+        };
+
+        int selectedIndex = 0;
+        for (int i = 0; i < options.Length; i++)
+        {
+            var opt = options[i];
+            dropDown.Items.Add(new ListItem { Text = opt, Key = opt });
+            if (string.Equals(opt, initialValue, StringComparison.OrdinalIgnoreCase))
+            {
+                selectedIndex = i;
+            }
+        }
+        dropDown.SelectedIndex = selectedIndex;
+
+        dropDown.SelectedIndexChanged += (s, e) =>
+        {
+            if (dropDown.SelectedKey != null)
+            {
+                onSelected(dropDown.SelectedKey);
+            }
+        };
+
+        container.Items.Add(label);
+        container.Items.Add(dropDown);
+
+        return new Panel
+        {
+            Content = container,
+            Padding = new Padding(2)
         };
     }
 
