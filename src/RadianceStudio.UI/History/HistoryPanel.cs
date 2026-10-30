@@ -12,6 +12,7 @@ using RadianceStudio.UI.Inspector;
 using RadianceStudio.UI.Theme;
 using RadianceStudio.UI.ViewModels;
 using Rhino;
+using Rhino.DocObjects;
 
 /// <summary>
 /// Dual-mode parametric history and timeline panel toggled via _RadToggleTreeMode:
@@ -137,6 +138,25 @@ public class HistoryPanel : Panel
 
         _featureTreeGridView.ContextMenu = CreateContextMenu();
         _featureTreeGridView.SelectedItemChanged += OnFeatureTreeItemSelected;
+
+        // Double-click to edit feature parameters in Dynamic Inspector
+        _classicGridView.CellDoubleClick += (s, e) =>
+        {
+            if (GetSelectedNodeId() is Guid id)
+            {
+                LoadFeatureIntoInspector(id);
+                FocusInspectorPanel();
+            }
+        };
+
+        _featureTreeGridView.CellDoubleClick += (s, e) =>
+        {
+            if (GetSelectedNodeId() is Guid id)
+            {
+                LoadFeatureIntoInspector(id);
+                FocusInspectorPanel();
+            }
+        };
 
         // 4. Rollback Bar controls
         _rollbackLabel = new Label
@@ -492,6 +512,69 @@ public class HistoryPanel : Panel
             RhinoDoc.DeleteRhinoObject += (s, e) => RefreshHistory();
             RhinoDoc.UndeleteRhinoObject += (s, e) => RefreshHistory();
             RhinoDoc.ReplaceRhinoObject += (s, e) => RefreshHistory();
+            RhinoDoc.SelectObjects += OnRhinoObjectsSelected;
+        }
+        catch
+        {
+        }
+    }
+
+    private void OnRhinoObjectsSelected(object? sender, RhinoObjectSelectionEventArgs e)
+    {
+        if (e.RhinoObjects == null || e.RhinoObjects.Length == 0) return;
+
+        foreach (var obj in e.RhinoObjects)
+        {
+            if (obj?.Geometry == null) continue;
+
+            var metadata = ParametricMetadata.Find(obj.Geometry);
+            if (metadata != null)
+            {
+                // Switch focus to the Parametric History / Operation Tree tab
+                try
+                {
+                    Rhino.UI.Panels.OpenPanel(new Guid("8965008E-EEA4-4A86-BFA3-A2D696417531"));
+                }
+                catch
+                {
+                }
+
+                SelectNodeInViews(obj.Id);
+                break;
+            }
+        }
+    }
+
+    public void SelectNodeInViews(Guid objectId)
+    {
+        if (CurrentMode == ParametricMode.StudioClassic)
+        {
+            int idx = _classicDataStore.FindIndex(x => x.Id == objectId);
+            if (idx >= 0)
+            {
+                _classicGridView.SelectedRow = idx;
+            }
+        }
+        else
+        {
+            int rowIdx = 0;
+            foreach (var item in _treeDataStore)
+            {
+                if (item is TreeGridItem tgi && tgi.Tag is Guid id && id == objectId)
+                {
+                    _featureTreeGridView.SelectedRow = rowIdx;
+                    break;
+                }
+                rowIdx++;
+            }
+        }
+    }
+
+    private static void FocusInspectorPanel()
+    {
+        try
+        {
+            Rhino.UI.Panels.OpenPanel(new Guid("552C1656-787D-4FCE-A263-AC0174092E47"));
         }
         catch
         {

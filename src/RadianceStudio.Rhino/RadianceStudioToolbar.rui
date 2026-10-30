@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <RhinoUI major_ver="3" minor_ver="0" guid="c4a754b2-2987-43a1-9b90-1e5f8a09b431" localize="False" default_language_id="1033" dpi_scale="100">
   <extend_rhino_menus />
   <menus />
@@ -7,57 +7,57 @@
       <text>
         <locale_1033>Radiance Studio</locale_1033>
       </text>
-      <!-- 1. Projects -->
+      
       <tool_bar_group_item guid="a1c430e7-8cfb-4e67-8cf9-b54f9a0c8101" major_version="1" minor_version="1">
         <text><locale_1033>Projects</locale_1033></text>
         <tool_bar_id>f1011111-1111-1111-1111-111111111101</tool_bar_id>
       </tool_bar_group_item>
-      <!-- 2. Rails -->
+      
       <tool_bar_group_item guid="a2c430e7-8cfb-4e67-8cf9-b54f9a0c8102" major_version="1" minor_version="1">
         <text><locale_1033>Rails</locale_1033></text>
         <tool_bar_id>f1011111-1111-1111-1111-111111111102</tool_bar_id>
       </tool_bar_group_item>
-      <!-- 3. Shanks -->
+      
       <tool_bar_group_item guid="a3c430e7-8cfb-4e67-8cf9-b54f9a0c8103" major_version="1" minor_version="1">
         <text><locale_1033>Shanks</locale_1033></text>
         <tool_bar_id>f1011111-1111-1111-1111-111111111103</tool_bar_id>
       </tool_bar_group_item>
-      <!-- 4. Gems -->
+      
       <tool_bar_group_item guid="a4c430e7-8cfb-4e67-8cf9-b54f9a0c8104" major_version="1" minor_version="1">
         <text><locale_1033>Gems</locale_1033></text>
         <tool_bar_id>f1011111-1111-1111-1111-111111111104</tool_bar_id>
       </tool_bar_group_item>
-      <!-- 5. Settings -->
+      
       <tool_bar_group_item guid="a5c430e7-8cfb-4e67-8cf9-b54f9a0c8105" major_version="1" minor_version="1">
         <text><locale_1033>Settings</locale_1033></text>
         <tool_bar_id>f1011111-1111-1111-1111-111111111105</tool_bar_id>
       </tool_bar_group_item>
-      <!-- 6. Cutters -->
+      
       <tool_bar_group_item guid="a6c430e7-8cfb-4e67-8cf9-b54f9a0c8106" major_version="1" minor_version="1">
         <text><locale_1033>Cutters</locale_1033></text>
         <tool_bar_id>f1011111-1111-1111-1111-111111111106</tool_bar_id>
       </tool_bar_group_item>
-      <!-- 7. Transform -->
+      
       <tool_bar_group_item guid="a7c430e7-8cfb-4e67-8cf9-b54f9a0c8107" major_version="1" minor_version="1">
         <text><locale_1033>Transform</locale_1033></text>
         <tool_bar_id>f1011111-1111-1111-1111-111111111107</tool_bar_id>
       </tool_bar_group_item>
-      <!-- 8. Art & Textures -->
+      
       <tool_bar_group_item guid="a8c430e7-8cfb-4e67-8cf9-b54f9a0c8108" major_version="1" minor_version="1">
         <text><locale_1033>Art &amp; Textures</locale_1033></text>
         <tool_bar_id>f1011111-1111-1111-1111-111111111108</tool_bar_id>
       </tool_bar_group_item>
-      <!-- 9. Render -->
+      
       <tool_bar_group_item guid="a9c430e7-8cfb-4e67-8cf9-b54f9a0c8109" major_version="1" minor_version="1">
         <text><locale_1033>Render</locale_1033></text>
         <tool_bar_id>f1011111-1111-1111-1111-111111111109</tool_bar_id>
       </tool_bar_group_item>
-      <!-- 10. Manufacturing -->
+      
       <tool_bar_group_item guid="b0c430e7-8cfb-4e67-8cf9-b54f9a0c8110" major_version="1" minor_version="1">
         <text><locale_1033>Manufacturing</locale_1033></text>
         <tool_bar_id>f1011111-1111-1111-1111-111111111110</tool_bar_id>
       </tool_bar_group_item>
-      <!-- 11. Drafting -->
+      
       <tool_bar_group_item guid="b1c430e7-8cfb-4e67-8cf9-b54f9a0c8111" major_version="1" minor_version="1">
         <text><locale_1033>Drafting</locale_1033></text>
         <tool_bar_id>f1011111-1111-1111-1111-111111111111</tool_bar_id>
@@ -65,7 +65,7 @@
     </tool_bar_group>
   </tool_bar_groups>
   <tool_bars>
-    <!-- 1. Projects -->
+    
     <tool_bar guid="f1011111-1111-1111-1111-111111111101">
       <text><locale_1033>Projects</locale_1033></text>
       <tool_bar_item guid="c1011111-1111-1111-1111-111111111101">
@@ -86,7 +86,7 @@
       </tool_bar_item>
     </tool_bar>
 
-    <!-- 2. Rails -->
+    
     <tool_bar guid="f1011111-1111-1111-1111-111111111102">
       <text><locale_1033>Rails</locale_1033></text>
       <tool_bar_item guid="c2011111-1111-1111-1111-111111111101">
@@ -119,7 +119,7 @@
       </tool_bar_item>
     </tool_bar>
 
-    <!-- 3. Shanks -->
+    
     <tool_bar guid="f1011111-1111-1111-1111-111111111103">
       <text><locale_1033>Shanks</locale_1033></text>
       <tool_bar_item guid="c3011111-1111-1111-1111-111111111101">
@@ -152,7 +152,7 @@
       </tool_bar_item>
     </tool_bar>
 
-    <!-- 4. Gems -->
+    
     <tool_bar guid="f1011111-1111-1111-1111-111111111104">
       <text><locale_1033>Gems</locale_1033></text>
       <tool_bar_item guid="c4011111-1111-1111-1111-111111111101">
@@ -177,7 +177,7 @@
       </tool_bar_item>
     </tool_bar>
 
-    <!-- 5. Settings -->
+    
     <tool_bar guid="f1011111-1111-1111-1111-111111111105">
       <text><locale_1033>Settings</locale_1033></text>
       <tool_bar_item guid="c5011111-1111-1111-1111-111111111101">
@@ -206,7 +206,7 @@
       </tool_bar_item>
     </tool_bar>
 
-    <!-- 6. Cutters -->
+    
     <tool_bar guid="f1011111-1111-1111-1111-111111111106">
       <text><locale_1033>Cutters</locale_1033></text>
       <tool_bar_item guid="c6011111-1111-1111-1111-111111111101">
@@ -227,7 +227,7 @@
       </tool_bar_item>
     </tool_bar>
 
-    <!-- 7. Transform -->
+    
     <tool_bar guid="f1011111-1111-1111-1111-111111111107">
       <text><locale_1033>Transform</locale_1033></text>
       <tool_bar_item guid="c7011111-1111-1111-1111-111111111101">
@@ -252,7 +252,7 @@
       </tool_bar_item>
     </tool_bar>
 
-    <!-- 8. Art & Textures -->
+    
     <tool_bar guid="f1011111-1111-1111-1111-111111111108">
       <text><locale_1033>Art &amp; Textures</locale_1033></text>
       <tool_bar_item guid="c8011111-1111-1111-1111-111111111101">
@@ -277,7 +277,7 @@
       </tool_bar_item>
     </tool_bar>
 
-    <!-- 9. Render -->
+    
     <tool_bar guid="f1011111-1111-1111-1111-111111111109">
       <text><locale_1033>Render</locale_1033></text>
       <tool_bar_item guid="c9011111-1111-1111-1111-111111111101">
@@ -302,7 +302,7 @@
       </tool_bar_item>
     </tool_bar>
 
-    <!-- 10. Manufacturing -->
+    
     <tool_bar guid="f1011111-1111-1111-1111-111111111110">
       <text><locale_1033>Manufacturing</locale_1033></text>
       <tool_bar_item guid="ca011111-1111-1111-1111-111111111101">
@@ -331,7 +331,7 @@
       </tool_bar_item>
     </tool_bar>
 
-    <!-- 11. Drafting -->
+    
     <tool_bar guid="f1011111-1111-1111-1111-111111111111">
       <text><locale_1033>Drafting</locale_1033></text>
       <tool_bar_item guid="cb011111-1111-1111-1111-111111111101">
@@ -354,374 +354,374 @@
   </tool_bars>
 
   <macros>
-    <!-- Projects -->
-    <macro_item guid="d0011111-1111-1111-1111-111111111101">
+    
+    <macro_item guid="d0011111-1111-1111-1111-111111111101" bitmap_id="bb011111-1111-1111-1111-000000000001">
       <text><locale_1033>New Project</locale_1033></text>
-      <tooltip><locale_1033>Create New Jewelry Project</locale_1033></tooltip>
-      <button_text><locale_1033>NewProject</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Create New Jewelry Project</locale_1033></tooltip>
+      <button_text><locale_1033>•NewProject</locale_1033></button_text>
       <script>! _RadNewProject</script>
     </macro_item>
-    <macro_item guid="d0011111-1111-1111-1111-111111111102">
+    <macro_item guid="d0011111-1111-1111-1111-111111111102" bitmap_id="bb011111-1111-1111-1111-000000000002">
       <text><locale_1033>Open Project</locale_1033></text>
-      <tooltip><locale_1033>Open Existing Jewelry Project</locale_1033></tooltip>
-      <button_text><locale_1033>OpenProject</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Open Existing Jewelry Project</locale_1033></tooltip>
+      <button_text><locale_1033>•OpenProject</locale_1033></button_text>
       <script>! _RadOpenProject</script>
     </macro_item>
-    <macro_item guid="d0011111-1111-1111-1111-111111111103">
+    <macro_item guid="d0011111-1111-1111-1111-111111111103" bitmap_id="bb011111-1111-1111-1111-000000000003">
       <text><locale_1033>Stone Library</locale_1033></text>
-      <tooltip><locale_1033>Gemological Cuts and Calibers</locale_1033></tooltip>
-      <button_text><locale_1033>StoneLib</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Gemological Cuts and Calibers</locale_1033></tooltip>
+      <button_text><locale_1033>•StoneLib</locale_1033></button_text>
       <script>! _RadStoneLibrary</script>
     </macro_item>
-    <macro_item guid="d0011111-1111-1111-1111-111111111104">
+    <macro_item guid="d0011111-1111-1111-1111-111111111104" bitmap_id="bb011111-1111-1111-1111-000000000004">
       <text><locale_1033>Metal Catalog</locale_1033></text>
-      <tooltip><locale_1033>Precious Metal Density and Alloy Specifications</locale_1033></tooltip>
-      <button_text><locale_1033>MetalCat</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Precious Metal Density and Alloy Specifications</locale_1033></tooltip>
+      <button_text><locale_1033>•MetalCat</locale_1033></button_text>
       <script>! _RadMetalCatalog</script>
     </macro_item>
 
-    <!-- Rails -->
-    <macro_item guid="d1011111-1111-1111-1111-111111111101">
+    
+    <macro_item guid="d1011111-1111-1111-1111-111111111101" bitmap_id="bb011111-1111-1111-1111-000000000005">
       <text><locale_1033>Round Rail</locale_1033></text>
       <tooltip><locale_1033>Create Round Ring Rail</locale_1033></tooltip>
       <button_text><locale_1033>Round</locale_1033></button_text>
       <script>! _RadRingRail</script>
     </macro_item>
-    <macro_item guid="d1011111-1111-1111-1111-111111111102">
+    <macro_item guid="d1011111-1111-1111-1111-111111111102" bitmap_id="bb011111-1111-1111-1111-000000000006">
       <text><locale_1033>Euro Rail</locale_1033></text>
       <tooltip><locale_1033>Create Euro-Shank Ring Rail</locale_1033></tooltip>
       <button_text><locale_1033>Euro</locale_1033></button_text>
       <script>! _RadEuroRail</script>
     </macro_item>
-    <macro_item guid="d1011111-1111-1111-1111-111111111103">
+    <macro_item guid="d1011111-1111-1111-1111-111111111103" bitmap_id="bb011111-1111-1111-1111-000000000007">
       <text><locale_1033>Cushion Rail</locale_1033></text>
       <tooltip><locale_1033>Create Cushion Squircle Ring Rail</locale_1033></tooltip>
       <button_text><locale_1033>Cushion</locale_1033></button_text>
       <script>! _RadCushionRail</script>
     </macro_item>
-    <macro_item guid="d1011111-1111-1111-1111-111111111108">
+    <macro_item guid="d1011111-1111-1111-1111-111111111108" bitmap_id="bb011111-1111-1111-1111-000000000008">
       <text><locale_1033>Bypass Rail</locale_1033></text>
       <tooltip><locale_1033>Create Bypass Overlap Ring Rail</locale_1033></tooltip>
       <button_text><locale_1033>Bypass</locale_1033></button_text>
       <script>! _RadBypassRail</script>
     </macro_item>
-    <macro_item guid="d1011111-1111-1111-1111-111111111109">
+    <macro_item guid="d1011111-1111-1111-1111-111111111109" bitmap_id="bb011111-1111-1111-1111-000000000009">
       <text><locale_1033>Profile Placer</locale_1033></text>
-      <tooltip><locale_1033>Place Cross Section Profiles on Rails</locale_1033></tooltip>
-      <button_text><locale_1033>ProfPlacer</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Place Cross Section Profiles on Rails</locale_1033></tooltip>
+      <button_text><locale_1033>•ProfPlacer</locale_1033></button_text>
       <script>! _RadProfilePlacer</script>
     </macro_item>
-    <macro_item guid="d1011111-1111-1111-1111-111111111110">
+    <macro_item guid="d1011111-1111-1111-1111-111111111110" bitmap_id="bb011111-1111-1111-1111-000000000010">
       <text><locale_1033>Sweep 1 Rail</locale_1033></text>
-      <tooltip><locale_1033>Sweep Profiles Along Single Rail</locale_1033></tooltip>
-      <button_text><locale_1033>Swp1Rail</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Sweep Profiles Along Single Rail</locale_1033></tooltip>
+      <button_text><locale_1033>•Swp1Rail</locale_1033></button_text>
       <script>! _RadSweep1Rail</script>
     </macro_item>
-    <macro_item guid="d1011111-1111-1111-1111-111111111111">
+    <macro_item guid="d1011111-1111-1111-1111-111111111111" bitmap_id="bb011111-1111-1111-1111-000000000011">
       <text><locale_1033>Sweep 2 Rails</locale_1033></text>
-      <tooltip><locale_1033>Sweep Profiles Along Dual Rails</locale_1033></tooltip>
-      <button_text><locale_1033>Swp2Rail</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Sweep Profiles Along Dual Rails</locale_1033></tooltip>
+      <button_text><locale_1033>•Swp2Rail</locale_1033></button_text>
       <script>! _RadSweep2Rail</script>
     </macro_item>
 
-    <!-- Shanks -->
-    <macro_item guid="d1011111-1111-1111-1111-111111111104">
+    
+    <macro_item guid="d1011111-1111-1111-1111-111111111104" bitmap_id="bb011111-1111-1111-1111-000000000012">
       <text><locale_1033>Comfort-Fit</locale_1033></text>
       <tooltip><locale_1033>Create Comfort-Fit Swept Shank</locale_1033></tooltip>
       <button_text><locale_1033>ComfortFit</locale_1033></button_text>
       <script>! _RadShank</script>
     </macro_item>
-    <macro_item guid="d1011111-1111-1111-1111-111111111105">
+    <macro_item guid="d1011111-1111-1111-1111-111111111105" bitmap_id="bb011111-1111-1111-1111-000000000013">
       <text><locale_1033>Knife-Edge</locale_1033></text>
       <tooltip><locale_1033>Create Knife-Edge Shank</locale_1033></tooltip>
       <button_text><locale_1033>KnifeEdge</locale_1033></button_text>
       <script>! _RadKnifeEdgeShank</script>
     </macro_item>
-    <macro_item guid="d1011111-1111-1111-1111-111111111106">
+    <macro_item guid="d1011111-1111-1111-1111-111111111106" bitmap_id="bb011111-1111-1111-1111-000000000014">
       <text><locale_1033>Cathedral</locale_1033></text>
       <tooltip><locale_1033>Create Cathedral Arch Shank</locale_1033></tooltip>
       <button_text><locale_1033>Cathedral</locale_1033></button_text>
       <script>! _RadCathedralShank</script>
     </macro_item>
-    <macro_item guid="d1011111-1111-1111-1111-111111111107">
+    <macro_item guid="d1011111-1111-1111-1111-111111111107" bitmap_id="bb011111-1111-1111-1111-000000000015">
       <text><locale_1033>D-Shape</locale_1033></text>
       <tooltip><locale_1033>Create D-Shape Half-Round Shank</locale_1033></tooltip>
       <button_text><locale_1033>DShape</locale_1033></button_text>
       <script>! _RadDShapeShank</script>
     </macro_item>
-    <macro_item guid="d1011111-1111-1111-1111-111111111112">
+    <macro_item guid="d1011111-1111-1111-1111-111111111112" bitmap_id="bb011111-1111-1111-1111-000000000016">
       <text><locale_1033>Flat Shank</locale_1033></text>
       <tooltip><locale_1033>Create Flat Cross-Section Shank</locale_1033></tooltip>
       <button_text><locale_1033>Flat</locale_1033></button_text>
       <script>! _RadFlatShank</script>
     </macro_item>
-    <macro_item guid="d1011111-1111-1111-1111-111111111113">
+    <macro_item guid="d1011111-1111-1111-1111-111111111113" bitmap_id="bb011111-1111-1111-1111-000000000017">
       <text><locale_1033>Split Shank</locale_1033></text>
-      <tooltip><locale_1033>Create Split Dual-Branch Shank</locale_1033></tooltip>
-      <button_text><locale_1033>SplitShank</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Create Split Dual-Branch Shank</locale_1033></tooltip>
+      <button_text><locale_1033>•SplitShank</locale_1033></button_text>
       <script>! _RadSplitShank</script>
     </macro_item>
-    <macro_item guid="d1011111-1111-1111-1111-111111111114">
+    <macro_item guid="d1011111-1111-1111-1111-111111111114" bitmap_id="bb011111-1111-1111-1111-000000000018">
       <text><locale_1033>Eternity Band</locale_1033></text>
-      <tooltip><locale_1033>Create Full Eternity Ring Shank</locale_1033></tooltip>
-      <button_text><locale_1033>Eternity</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Create Full Eternity Ring Shank</locale_1033></tooltip>
+      <button_text><locale_1033>•Eternity</locale_1033></button_text>
       <script>! _RadEternityBand</script>
     </macro_item>
 
-    <!-- Gems -->
-    <macro_item guid="d2011111-1111-1111-1111-111111111101">
+    
+    <macro_item guid="d2011111-1111-1111-1111-111111111101" bitmap_id="bb011111-1111-1111-1111-000000000019">
       <text><locale_1033>Gems on Curve</locale_1033></text>
       <tooltip><locale_1033>Distribute Gems along Curve</locale_1033></tooltip>
       <button_text><locale_1033>GemOnCurve</locale_1033></button_text>
       <script>! _RadGemOnCurve</script>
     </macro_item>
-    <macro_item guid="d2011111-1111-1111-1111-111111111102">
+    <macro_item guid="d2011111-1111-1111-1111-111111111102" bitmap_id="bb011111-1111-1111-1111-000000000020">
       <text><locale_1033>Pavé</locale_1033></text>
       <tooltip><locale_1033>Generate Pavé Stone Distribution</locale_1033></tooltip>
       <button_text><locale_1033>Pave</locale_1033></button_text>
       <script>! _RadPave</script>
     </macro_item>
-    <macro_item guid="d2011111-1111-1111-1111-111111111103">
+    <macro_item guid="d2011111-1111-1111-1111-111111111103" bitmap_id="bb011111-1111-1111-1111-000000000021">
       <text><locale_1033>Between Curves</locale_1033></text>
-      <tooltip><locale_1033>Distribute Stones Between Dual Boundary Curves</locale_1033></tooltip>
-      <button_text><locale_1033>BetweenCrvs</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Distribute Stones Between Dual Boundary Curves</locale_1033></tooltip>
+      <button_text><locale_1033>•BetweenCrvs</locale_1033></button_text>
       <script>! _RadGemBetweenCurves</script>
     </macro_item>
-    <macro_item guid="d2011111-1111-1111-1111-111111111104">
+    <macro_item guid="d2011111-1111-1111-1111-111111111104" bitmap_id="bb011111-1111-1111-1111-000000000022">
       <text><locale_1033>Diamond Placer</locale_1033></text>
-      <tooltip><locale_1033>Place Diamonds Directly on Surfaces</locale_1033></tooltip>
-      <button_text><locale_1033>Placer</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Place Diamonds Directly on Surfaces</locale_1033></tooltip>
+      <button_text><locale_1033>•Placer</locale_1033></button_text>
       <script>! _RadDiamondPlacer</script>
     </macro_item>
-    <macro_item guid="d2011111-1111-1111-1111-111111111105">
+    <macro_item guid="d2011111-1111-1111-1111-111111111105" bitmap_id="bb011111-1111-1111-1111-000000000023">
       <text><locale_1033>Baguette Placer</locale_1033></text>
-      <tooltip><locale_1033>Place Baguette Diamonds along Curve</locale_1033></tooltip>
-      <button_text><locale_1033>Baguettes</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Place Baguette Diamonds along Curve</locale_1033></tooltip>
+      <button_text><locale_1033>•Baguettes</locale_1033></button_text>
       <script>! _RadBaguettePlacer</script>
     </macro_item>
 
-    <!-- Settings -->
-    <macro_item guid="d3011111-1111-1111-1111-111111111101">
+    
+    <macro_item guid="d3011111-1111-1111-1111-111111111101" bitmap_id="bb011111-1111-1111-1111-000000000024">
       <text><locale_1033>Prong Head</locale_1033></text>
       <tooltip><locale_1033>Create Parametric Prong Setting</locale_1033></tooltip>
       <button_text><locale_1033>Prongs</locale_1033></button_text>
       <script>! _RadProngHead</script>
     </macro_item>
-    <macro_item guid="d3011111-1111-1111-1111-111111111102">
+    <macro_item guid="d3011111-1111-1111-1111-111111111102" bitmap_id="bb011111-1111-1111-1111-000000000025">
       <text><locale_1033>Bezel</locale_1033></text>
       <tooltip><locale_1033>Create Parametric Bezel Setting</locale_1033></tooltip>
       <button_text><locale_1033>Bezel</locale_1033></button_text>
       <script>! _RadBezel</script>
     </macro_item>
-    <macro_item guid="d3011111-1111-1111-1111-111111111103">
+    <macro_item guid="d3011111-1111-1111-1111-111111111103" bitmap_id="bb011111-1111-1111-1111-000000000026">
       <text><locale_1033>Halo</locale_1033></text>
-      <tooltip><locale_1033>Create Parametric Halo Setting</locale_1033></tooltip>
-      <button_text><locale_1033>Halo</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Create Parametric Halo Setting</locale_1033></tooltip>
+      <button_text><locale_1033>•Halo</locale_1033></button_text>
       <script>! _RadHalo</script>
     </macro_item>
-    <macro_item guid="d3011111-1111-1111-1111-111111111104">
+    <macro_item guid="d3011111-1111-1111-1111-111111111104" bitmap_id="bb011111-1111-1111-1111-000000000027">
       <text><locale_1033>Channel Setting</locale_1033></text>
-      <tooltip><locale_1033>Create Continuous Channel Wall Setting</locale_1033></tooltip>
-      <button_text><locale_1033>Channel</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Create Continuous Channel Wall Setting</locale_1033></tooltip>
+      <button_text><locale_1033>•Channel</locale_1033></button_text>
       <script>! _RadChannelSetting</script>
     </macro_item>
-    <macro_item guid="d3011111-1111-1111-1111-111111111105">
+    <macro_item guid="d3011111-1111-1111-1111-111111111105" bitmap_id="bb011111-1111-1111-1111-000000000028">
       <text><locale_1033>Cluster Setting</locale_1033></text>
-      <tooltip><locale_1033>Create Multi-Stone Cluster Setting</locale_1033></tooltip>
-      <button_text><locale_1033>Cluster</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Create Multi-Stone Cluster Setting</locale_1033></tooltip>
+      <button_text><locale_1033>•Cluster</locale_1033></button_text>
       <script>! _RadClusterSetting</script>
     </macro_item>
-    <macro_item guid="d3011111-1111-1111-1111-111111111106">
+    <macro_item guid="d3011111-1111-1111-1111-111111111106" bitmap_id="bb011111-1111-1111-1111-000000000029">
       <text><locale_1033>Shared Prong</locale_1033></text>
-      <tooltip><locale_1033>Create Continuous Shared Prong Row</locale_1033></tooltip>
-      <button_text><locale_1033>SharedProng</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Create Continuous Shared Prong Row</locale_1033></tooltip>
+      <button_text><locale_1033>•SharedProng</locale_1033></button_text>
       <script>! _RadSharedProng</script>
     </macro_item>
 
-    <!-- Cutters -->
-    <macro_item guid="d4011111-1111-1111-1111-111111111101">
+    
+    <macro_item guid="d4011111-1111-1111-1111-111111111101" bitmap_id="bb011111-1111-1111-1111-000000000030">
       <text><locale_1033>Gem Cutters</locale_1033></text>
       <tooltip><locale_1033>Generate Seat and Light Hole Cutters</locale_1033></tooltip>
       <button_text><locale_1033>Cutters</locale_1033></button_text>
       <script>! _RadCutter</script>
     </macro_item>
-    <macro_item guid="d4011111-1111-1111-1111-111111111102">
+    <macro_item guid="d4011111-1111-1111-1111-111111111102" bitmap_id="bb011111-1111-1111-1111-000000000031">
       <text><locale_1033>Channel Cutter</locale_1033></text>
-      <tooltip><locale_1033>Generate Continuous Channel Excavation Solids</locale_1033></tooltip>
-      <button_text><locale_1033>ChanCutter</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Generate Continuous Channel Excavation Solids</locale_1033></tooltip>
+      <button_text><locale_1033>•ChanCutter</locale_1033></button_text>
       <script>! _RadChannelCutter</script>
     </macro_item>
-    <macro_item guid="d4011111-1111-1111-1111-111111111103">
+    <macro_item guid="d4011111-1111-1111-1111-111111111103" bitmap_id="bb011111-1111-1111-1111-000000000032">
       <text><locale_1033>Azure Cutter</locale_1033></text>
-      <tooltip><locale_1033>Generate Decorative Honeycomb Azuring Holes</locale_1033></tooltip>
-      <button_text><locale_1033>Azure</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Generate Decorative Honeycomb Azuring Holes</locale_1033></tooltip>
+      <button_text><locale_1033>•Azure</locale_1033></button_text>
       <script>! _RadAzureCutter</script>
     </macro_item>
-    <macro_item guid="d4011111-1111-1111-1111-111111111104">
+    <macro_item guid="d4011111-1111-1111-1111-111111111104" bitmap_id="bb011111-1111-1111-1111-000000000033">
       <text><locale_1033>Scoop Cutter</locale_1033></text>
-      <tooltip><locale_1033>Excavate Interior Hollows for Weight Reduction</locale_1033></tooltip>
-      <button_text><locale_1033>Scoop</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Excavate Interior Hollows for Weight Reduction</locale_1033></tooltip>
+      <button_text><locale_1033>•Scoop</locale_1033></button_text>
       <script>! _RadScoopCutter</script>
     </macro_item>
 
-    <!-- Transform -->
-    <macro_item guid="d5011111-1111-1111-1111-111111111102">
+    
+    <macro_item guid="d5011111-1111-1111-1111-111111111102" bitmap_id="bb011111-1111-1111-1111-000000000034">
       <text><locale_1033>Polar Array</locale_1033></text>
-      <tooltip><locale_1033>Array Gems Around Ring Axis</locale_1033></tooltip>
-      <button_text><locale_1033>PolarArray</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Array Gems Around Ring Axis</locale_1033></tooltip>
+      <button_text><locale_1033>•PolarArray</locale_1033></button_text>
       <script>! _ArrayPolar</script>
     </macro_item>
-    <macro_item guid="d5011111-1111-1111-1111-111111111103">
+    <macro_item guid="d5011111-1111-1111-1111-111111111103" bitmap_id="bb011111-1111-1111-1111-000000000035">
       <text><locale_1033>Curve Array</locale_1033></text>
-      <tooltip><locale_1033>Array Objects Along 3D Guide Curve</locale_1033></tooltip>
-      <button_text><locale_1033>ArrayCrv</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Array Objects Along 3D Guide Curve</locale_1033></tooltip>
+      <button_text><locale_1033>•ArrayCrv</locale_1033></button_text>
       <script>! _ArrayCrv</script>
     </macro_item>
-    <macro_item guid="d5011111-1111-1111-1111-111111111104">
+    <macro_item guid="d5011111-1111-1111-1111-111111111104" bitmap_id="bb011111-1111-1111-1111-000000000036">
       <text><locale_1033>Mirror</locale_1033></text>
-      <tooltip><locale_1033>Mirror Geometry Across Center Planes</locale_1033></tooltip>
-      <button_text><locale_1033>Mirror</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Mirror Geometry Across Center Planes</locale_1033></tooltip>
+      <button_text><locale_1033>•Mirror</locale_1033></button_text>
       <script>! _Mirror</script>
     </macro_item>
-    <macro_item guid="d5011111-1111-1111-1111-111111111105">
+    <macro_item guid="d5011111-1111-1111-1111-111111111105" bitmap_id="bb011111-1111-1111-1111-000000000037">
       <text><locale_1033>Dynamic Bend</locale_1033></text>
-      <tooltip><locale_1033>Spine-Based Bending Deformation</locale_1033></tooltip>
-      <button_text><locale_1033>Bend</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Spine-Based Bending Deformation</locale_1033></tooltip>
+      <button_text><locale_1033>•Bend</locale_1033></button_text>
       <script>! _RadDynamicBend</script>
     </macro_item>
-    <macro_item guid="d5011111-1111-1111-1111-111111111106">
+    <macro_item guid="d5011111-1111-1111-1111-111111111106" bitmap_id="bb011111-1111-1111-1111-000000000038">
       <text><locale_1033>Surface Morph</locale_1033></text>
-      <tooltip><locale_1033>Morph Geometry onto Doubly Curved Surfaces</locale_1033></tooltip>
-      <button_text><locale_1033>Morph</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Morph Geometry onto Doubly Curved Surfaces</locale_1033></tooltip>
+      <button_text><locale_1033>•Morph</locale_1033></button_text>
       <script>! _RadSurfaceMorph</script>
     </macro_item>
 
-    <!-- Art & Textures -->
-    <macro_item guid="d8011111-1111-1111-1111-111111111101">
+    
+    <macro_item guid="d8011111-1111-1111-1111-111111111101" bitmap_id="bb011111-1111-1111-1111-000000000039">
       <text><locale_1033>3D Relief</locale_1033></text>
-      <tooltip><locale_1033>Heightfield Mesh Displacement from Vectors</locale_1033></tooltip>
-      <button_text><locale_1033>Relief</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Heightfield Mesh Displacement from Vectors</locale_1033></tooltip>
+      <button_text><locale_1033>•Relief</locale_1033></button_text>
       <script>! _Rad3DRelief</script>
     </macro_item>
-    <macro_item guid="d8011111-1111-1111-1111-111111111102">
+    <macro_item guid="d8011111-1111-1111-1111-111111111102" bitmap_id="bb011111-1111-1111-1111-000000000040">
       <text><locale_1033>Texture on Surface</locale_1033></text>
-      <tooltip><locale_1033>Procedural Hammered, Florentine, and Bark Textures</locale_1033></tooltip>
-      <button_text><locale_1033>Textures</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Procedural Hammered, Florentine, and Bark Textures</locale_1033></tooltip>
+      <button_text><locale_1033>•Textures</locale_1033></button_text>
       <script>! _RadTextureOnSurface</script>
     </macro_item>
-    <macro_item guid="d8011111-1111-1111-1111-111111111103">
+    <macro_item guid="d8011111-1111-1111-1111-111111111103" bitmap_id="bb011111-1111-1111-1111-000000000041">
       <text><locale_1033>Millgrain</locale_1033></text>
-      <tooltip><locale_1033>Parametric Bead and Millgrain Wire along Curves</locale_1033></tooltip>
-      <button_text><locale_1033>Millgrain</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Parametric Bead and Millgrain Wire along Curves</locale_1033></tooltip>
+      <button_text><locale_1033>•Millgrain</locale_1033></button_text>
       <script>! _RadMillgrain</script>
     </macro_item>
-    <macro_item guid="d8011111-1111-1111-1111-111111111104">
+    <macro_item guid="d8011111-1111-1111-1111-111111111104" bitmap_id="bb011111-1111-1111-1111-000000000042">
       <text><locale_1033>Rope Wire</locale_1033></text>
-      <tooltip><locale_1033>Multi-Strand Twisted Rope and Braided Wire</locale_1033></tooltip>
-      <button_text><locale_1033>RopeWire</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Multi-Strand Twisted Rope and Braided Wire</locale_1033></tooltip>
+      <button_text><locale_1033>•RopeWire</locale_1033></button_text>
       <script>! _RadRopeWire</script>
     </macro_item>
-    <macro_item guid="d8011111-1111-1111-1111-111111111105">
+    <macro_item guid="d8011111-1111-1111-1111-111111111105" bitmap_id="bb011111-1111-1111-1111-000000000043">
       <text><locale_1033>Celtic Knot</locale_1033></text>
-      <tooltip><locale_1033>Interwoven Filigree and Ribbon Knots</locale_1033></tooltip>
-      <button_text><locale_1033>Celtic</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Interwoven Filigree and Ribbon Knots</locale_1033></tooltip>
+      <button_text><locale_1033>•Celtic</locale_1033></button_text>
       <script>! _RadCelticKnot</script>
     </macro_item>
 
-    <!-- Render -->
-    <macro_item guid="d9011111-1111-1111-1111-111111111101">
+    
+    <macro_item guid="d9011111-1111-1111-1111-111111111101" bitmap_id="bb011111-1111-1111-1111-000000000044">
       <text><locale_1033>Quick Render</locale_1033></text>
-      <tooltip><locale_1033>GPU Raytraced Preview with Diamond Caustics</locale_1033></tooltip>
-      <button_text><locale_1033>QuickRndr</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] GPU Raytraced Preview with Diamond Caustics</locale_1033></tooltip>
+      <button_text><locale_1033>•QuickRndr</locale_1033></button_text>
       <script>! _RadQuickRender</script>
     </macro_item>
-    <macro_item guid="d9011111-1111-1111-1111-111111111102">
+    <macro_item guid="d9011111-1111-1111-1111-111111111102" bitmap_id="bb011111-1111-1111-1111-000000000045">
       <text><locale_1033>Metal Materials</locale_1033></text>
-      <tooltip><locale_1033>Calibrated PBR Gold, Platinum, and Silver Shaders</locale_1033></tooltip>
-      <button_text><locale_1033>Metals</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Calibrated PBR Gold, Platinum, and Silver Shaders</locale_1033></tooltip>
+      <button_text><locale_1033>•Metals</locale_1033></button_text>
       <script>! _RadMetalMaterials</script>
     </macro_item>
-    <macro_item guid="d9011111-1111-1111-1111-111111111103">
+    <macro_item guid="d9011111-1111-1111-1111-111111111103" bitmap_id="bb011111-1111-1111-1111-000000000046">
       <text><locale_1033>Gem Materials</locale_1033></text>
-      <tooltip><locale_1033>Physical Refractive Diamond and Colored Gem Shaders</locale_1033></tooltip>
-      <button_text><locale_1033>GemsMat</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Physical Refractive Diamond and Colored Gem Shaders</locale_1033></tooltip>
+      <button_text><locale_1033>•GemsMat</locale_1033></button_text>
       <script>! _RadGemMaterials</script>
     </macro_item>
-    <macro_item guid="d9011111-1111-1111-1111-111111111104">
+    <macro_item guid="d9011111-1111-1111-1111-111111111104" bitmap_id="bb011111-1111-1111-1111-000000000047">
       <text><locale_1033>Studio Lighting</locale_1033></text>
-      <tooltip><locale_1033>Jewelry Photo-Studio Softbox and Environment Lighting</locale_1033></tooltip>
-      <button_text><locale_1033>Lighting</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Jewelry Photo-Studio Softbox and Environment Lighting</locale_1033></tooltip>
+      <button_text><locale_1033>•Lighting</locale_1033></button_text>
       <script>! _RadStudioEnvironment</script>
     </macro_item>
-    <macro_item guid="d9011111-1111-1111-1111-111111111105">
+    <macro_item guid="d9011111-1111-1111-1111-111111111105" bitmap_id="bb011111-1111-1111-1111-000000000048">
       <text><locale_1033>360 Turntable</locale_1033></text>
-      <tooltip><locale_1033>Automated 360-Degree Video Animation</locale_1033></tooltip>
-      <button_text><locale_1033>Turntable</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Automated 360-Degree Video Animation</locale_1033></tooltip>
+      <button_text><locale_1033>•Turntable</locale_1033></button_text>
       <script>! _RadTurntable</script>
     </macro_item>
 
-    <!-- Manufacturing -->
-    <macro_item guid="d6011111-1111-1111-1111-111111111102">
+    
+    <macro_item guid="d6011111-1111-1111-1111-111111111102" bitmap_id="bb011111-1111-1111-1111-000000000049">
       <text><locale_1033>Export STL</locale_1033></text>
       <tooltip><locale_1033>Export Watertight Binary STL for 3D Printing</locale_1033></tooltip>
       <button_text><locale_1033>ExportSTL</locale_1033></button_text>
       <script>! _RadExportSTL</script>
     </macro_item>
-    <macro_item guid="da011111-1111-1111-1111-111111111101">
+    <macro_item guid="da011111-1111-1111-1111-111111111101" bitmap_id="bb011111-1111-1111-1111-000000000050">
       <text><locale_1033>Weights &amp; BOM</locale_1033></text>
       <tooltip><locale_1033>Calculate Casting Weights (14K, 18K, Plat, Silver)</locale_1033></tooltip>
       <button_text><locale_1033>Weights</locale_1033></button_text>
       <script>! _RadBOM</script>
     </macro_item>
-    <macro_item guid="d6011111-1111-1111-1111-111111111101">
+    <macro_item guid="d6011111-1111-1111-1111-111111111101" bitmap_id="bb011111-1111-1111-1111-000000000051">
       <text><locale_1033>Wall Thickness</locale_1033></text>
-      <tooltip><locale_1033>Ray-Cast Wall Thickness Analysis</locale_1033></tooltip>
-      <button_text><locale_1033>Thickness</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Ray-Cast Wall Thickness Analysis</locale_1033></tooltip>
+      <button_text><locale_1033>•Thickness</locale_1033></button_text>
       <script>! _RadWallThickness</script>
     </macro_item>
-    <macro_item guid="da011111-1111-1111-1111-111111111102">
+    <macro_item guid="da011111-1111-1111-1111-111111111102" bitmap_id="bb011111-1111-1111-1111-000000000052">
       <text><locale_1033>Sprue Placer</locale_1033></text>
-      <tooltip><locale_1033>Attach Casting Sprues with Fillet Junctions</locale_1033></tooltip>
-      <button_text><locale_1033>Sprues</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Attach Casting Sprues with Fillet Junctions</locale_1033></tooltip>
+      <button_text><locale_1033>•Sprues</locale_1033></button_text>
       <script>! _RadSpruePlacer</script>
     </macro_item>
-    <macro_item guid="da011111-1111-1111-1111-111111111103">
+    <macro_item guid="da011111-1111-1111-1111-111111111103" bitmap_id="bb011111-1111-1111-1111-000000000053">
       <text><locale_1033>Casting Tree</locale_1033></text>
-      <tooltip><locale_1033>Assemble Production Tree for Investment Casting</locale_1033></tooltip>
-      <button_text><locale_1033>Tree</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Assemble Production Tree for Investment Casting</locale_1033></tooltip>
+      <button_text><locale_1033>•Tree</locale_1033></button_text>
       <script>! _RadCastingTree</script>
     </macro_item>
-    <macro_item guid="da011111-1111-1111-1111-111111111104">
+    <macro_item guid="da011111-1111-1111-1111-111111111104" bitmap_id="bb011111-1111-1111-1111-000000000054">
       <text><locale_1033>Mesh Doctor</locale_1033></text>
-      <tooltip><locale_1033>Repair Non-Manifold Edges and Guarantee Watertight Solids</locale_1033></tooltip>
-      <button_text><locale_1033>Doctor</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Repair Non-Manifold Edges and Guarantee Watertight Solids</locale_1033></tooltip>
+      <button_text><locale_1033>•Doctor</locale_1033></button_text>
       <script>! _RadMeshDoctor</script>
     </macro_item>
 
-    <!-- Drafting -->
-    <macro_item guid="db011111-1111-1111-1111-111111111101">
+    
+    <macro_item guid="db011111-1111-1111-1111-111111111101" bitmap_id="bb011111-1111-1111-1111-000000000055">
       <text><locale_1033>Auto Dimension</locale_1033></text>
-      <tooltip><locale_1033>Automatic Orthographic Projections and Dimensions</locale_1033></tooltip>
-      <button_text><locale_1033>Dimension</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Automatic Orthographic Projections and Dimensions</locale_1033></tooltip>
+      <button_text><locale_1033>•Dimension</locale_1033></button_text>
       <script>! _RadAutoDimension</script>
     </macro_item>
-    <macro_item guid="db011111-1111-1111-1111-111111111102">
+    <macro_item guid="db011111-1111-1111-1111-111111111102" bitmap_id="bb011111-1111-1111-1111-000000000056">
       <text><locale_1033>Tech Drawing</locale_1033></text>
-      <tooltip><locale_1033>4-View Blueprint Layout with Projections</locale_1033></tooltip>
-      <button_text><locale_1033>Drawing</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] 4-View Blueprint Layout with Projections</locale_1033></tooltip>
+      <button_text><locale_1033>•Drawing</locale_1033></button_text>
       <script>! _RadTechDrawing</script>
     </macro_item>
-    <macro_item guid="db011111-1111-1111-1111-111111111103">
+    <macro_item guid="db011111-1111-1111-1111-111111111103" bitmap_id="bb011111-1111-1111-1111-000000000057">
       <text><locale_1033>Gem Map Sheet</locale_1033></text>
-      <tooltip><locale_1033>Numbered Setter Stone Map and Calibers</locale_1033></tooltip>
-      <button_text><locale_1033>GemMap</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Numbered Setter Stone Map and Calibers</locale_1033></tooltip>
+      <button_text><locale_1033>•GemMap</locale_1033></button_text>
       <script>! _RadGemMapSheet</script>
     </macro_item>
-    <macro_item guid="db011111-1111-1111-1111-111111111104">
+    <macro_item guid="db011111-1111-1111-1111-111111111104" bitmap_id="bb011111-1111-1111-1111-000000000058">
       <text><locale_1033>Appraisal Spec Sheet</locale_1033></text>
-      <tooltip><locale_1033>Formal Appraisal Specification Report</locale_1033></tooltip>
-      <button_text><locale_1033>Appraisal</locale_1033></button_text>
+      <tooltip><locale_1033>[Roadmap Preview] Formal Appraisal Specification Report</locale_1033></tooltip>
+      <button_text><locale_1033>•Appraisal</locale_1033></button_text>
       <script>! _RadAppraisalSheet</script>
     </macro_item>
   </macros>
-</RhinoUI>
+<bitmaps><small_bitmap item_width="16" item_height="16"><bitmap_item guid="bb011111-1111-1111-1111-000000000001" index="0" /><bitmap_item guid="bb011111-1111-1111-1111-000000000002" index="1" /><bitmap_item guid="bb011111-1111-1111-1111-000000000003" index="2" /><bitmap_item guid="bb011111-1111-1111-1111-000000000004" index="3" /><bitmap_item guid="bb011111-1111-1111-1111-000000000005" index="4" /><bitmap_item guid="bb011111-1111-1111-1111-000000000006" index="5" /><bitmap_item guid="bb011111-1111-1111-1111-000000000007" index="6" /><bitmap_item guid="bb011111-1111-1111-1111-000000000008" index="7" /><bitmap_item guid="bb011111-1111-1111-1111-000000000009" index="8" /><bitmap_item guid="bb011111-1111-1111-1111-000000000010" index="9" /><bitmap_item guid="bb011111-1111-1111-1111-000000000011" index="10" /><bitmap_item guid="bb011111-1111-1111-1111-000000000012" index="11" /><bitmap_item guid="bb011111-1111-1111-1111-000000000013" index="12" /><bitmap_item guid="bb011111-1111-1111-1111-000000000014" index="13" /><bitmap_item guid="bb011111-1111-1111-1111-000000000015" index="14" /><bitmap_item guid="bb011111-1111-1111-1111-000000000016" index="15" /><bitmap_item guid="bb011111-1111-1111-1111-000000000017" index="16" /><bitmap_item guid="bb011111-1111-1111-1111-000000000018" index="17" /><bitmap_item guid="bb011111-1111-1111-1111-000000000019" index="18" /><bitmap_item guid="bb011111-1111-1111-1111-000000000020" index="19" /><bitmap_item guid="bb011111-1111-1111-1111-000000000021" index="20" /><bitmap_item guid="bb011111-1111-1111-1111-000000000022" index="21" /><bitmap_item guid="bb011111-1111-1111-1111-000000000023" index="22" /><bitmap_item guid="bb011111-1111-1111-1111-000000000024" index="23" /><bitmap_item guid="bb011111-1111-1111-1111-000000000025" index="24" /><bitmap_item guid="bb011111-1111-1111-1111-000000000026" index="25" /><bitmap_item guid="bb011111-1111-1111-1111-000000000027" index="26" /><bitmap_item guid="bb011111-1111-1111-1111-000000000028" index="27" /><bitmap_item guid="bb011111-1111-1111-1111-000000000029" index="28" /><bitmap_item guid="bb011111-1111-1111-1111-000000000030" index="29" /><bitmap_item guid="bb011111-1111-1111-1111-000000000031" index="30" /><bitmap_item guid="bb011111-1111-1111-1111-000000000032" index="31" /><bitmap_item guid="bb011111-1111-1111-1111-000000000033" index="32" /><bitmap_item guid="bb011111-1111-1111-1111-000000000034" index="33" /><bitmap_item guid="bb011111-1111-1111-1111-000000000035" index="34" /><bitmap_item guid="bb011111-1111-1111-1111-000000000036" index="35" /><bitmap_item guid="bb011111-1111-1111-1111-000000000037" index="36" /><bitmap_item guid="bb011111-1111-1111-1111-000000000038" index="37" /><bitmap_item guid="bb011111-1111-1111-1111-000000000039" index="38" /><bitmap_item guid="bb011111-1111-1111-1111-000000000040" index="39" /><bitmap_item guid="bb011111-1111-1111-1111-000000000041" index="40" /><bitmap_item guid="bb011111-1111-1111-1111-000000000042" index="41" /><bitmap_item guid="bb011111-1111-1111-1111-000000000043" index="42" /><bitmap_item guid="bb011111-1111-1111-1111-000000000044" index="43" /><bitmap_item guid="bb011111-1111-1111-1111-000000000045" index="44" /><bitmap_item guid="bb011111-1111-1111-1111-000000000046" index="45" /><bitmap_item guid="bb011111-1111-1111-1111-000000000047" index="46" /><bitmap_item guid="bb011111-1111-1111-1111-000000000048" index="47" /><bitmap_item guid="bb011111-1111-1111-1111-000000000049" index="48" /><bitmap_item guid="bb011111-1111-1111-1111-000000000050" index="49" /><bitmap_item guid="bb011111-1111-1111-1111-000000000051" index="50" /><bitmap_item guid="bb011111-1111-1111-1111-000000000052" index="51" /><bitmap_item guid="bb011111-1111-1111-1111-000000000053" index="52" /><bitmap_item guid="bb011111-1111-1111-1111-000000000054" index="53" /><bitmap_item guid="bb011111-1111-1111-1111-000000000055" index="54" /><bitmap_item guid="bb011111-1111-1111-1111-000000000056" index="55" /><bitmap_item guid="bb011111-1111-1111-1111-000000000057" index="56" /><bitmap_item guid="bb011111-1111-1111-1111-000000000058" index="57" /><bitmap>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</bitmap></small_bitmap><normal_bitmap item_width="24" item_height="24"><bitmap_item guid="bb011111-1111-1111-1111-000000000001" index="0" /><bitmap_item guid="bb011111-1111-1111-1111-000000000002" index="1" /><bitmap_item guid="bb011111-1111-1111-1111-000000000003" index="2" /><bitmap_item guid="bb011111-1111-1111-1111-000000000004" index="3" /><bitmap_item guid="bb011111-1111-1111-1111-000000000005" index="4" /><bitmap_item guid="bb011111-1111-1111-1111-000000000006" index="5" /><bitmap_item guid="bb011111-1111-1111-1111-000000000007" index="6" /><bitmap_item guid="bb011111-1111-1111-1111-000000000008" index="7" /><bitmap_item guid="bb011111-1111-1111-1111-000000000009" index="8" /><bitmap_item guid="bb011111-1111-1111-1111-000000000010" index="9" /><bitmap_item guid="bb011111-1111-1111-1111-000000000011" index="10" /><bitmap_item guid="bb011111-1111-1111-1111-000000000012" index="11" /><bitmap_item guid="bb011111-1111-1111-1111-000000000013" index="12" /><bitmap_item guid="bb011111-1111-1111-1111-000000000014" index="13" /><bitmap_item guid="bb011111-1111-1111-1111-000000000015" index="14" /><bitmap_item guid="bb011111-1111-1111-1111-000000000016" index="15" /><bitmap_item guid="bb011111-1111-1111-1111-000000000017" index="16" /><bitmap_item guid="bb011111-1111-1111-1111-000000000018" index="17" /><bitmap_item guid="bb011111-1111-1111-1111-000000000019" index="18" /><bitmap_item guid="bb011111-1111-1111-1111-000000000020" index="19" /><bitmap_item guid="bb011111-1111-1111-1111-000000000021" index="20" /><bitmap_item guid="bb011111-1111-1111-1111-000000000022" index="21" /><bitmap_item guid="bb011111-1111-1111-1111-000000000023" index="22" /><bitmap_item guid="bb011111-1111-1111-1111-000000000024" index="23" /><bitmap_item guid="bb011111-1111-1111-1111-000000000025" index="24" /><bitmap_item guid="bb011111-1111-1111-1111-000000000026" index="25" /><bitmap_item guid="bb011111-1111-1111-1111-000000000027" index="26" /><bitmap_item guid="bb011111-1111-1111-1111-000000000028" index="27" /><bitmap_item guid="bb011111-1111-1111-1111-000000000029" index="28" /><bitmap_item guid="bb011111-1111-1111-1111-000000000030" index="29" /><bitmap_item guid="bb011111-1111-1111-1111-000000000031" index="30" /><bitmap_item guid="bb011111-1111-1111-1111-000000000032" index="31" /><bitmap_item guid="bb011111-1111-1111-1111-000000000033" index="32" /><bitmap_item guid="bb011111-1111-1111-1111-000000000034" index="33" /><bitmap_item guid="bb011111-1111-1111-1111-000000000035" index="34" /><bitmap_item guid="bb011111-1111-1111-1111-000000000036" index="35" /><bitmap_item guid="bb011111-1111-1111-1111-000000000037" index="36" /><bitmap_item guid="bb011111-1111-1111-1111-000000000038" index="37" /><bitmap_item guid="bb011111-1111-1111-1111-000000000039" index="38" /><bitmap_item guid="bb011111-1111-1111-1111-000000000040" index="39" /><bitmap_item guid="bb011111-1111-1111-1111-000000000041" index="40" /><bitmap_item guid="bb011111-1111-1111-1111-000000000042" index="41" /><bitmap_item guid="bb011111-1111-1111-1111-000000000043" index="42" /><bitmap_item guid="bb011111-1111-1111-1111-000000000044" index="43" /><bitmap_item guid="bb011111-1111-1111-1111-000000000045" index="44" /><bitmap_item guid="bb011111-1111-1111-1111-000000000046" index="45" /><bitmap_item guid="bb011111-1111-1111-1111-000000000047" index="46" /><bitmap_item guid="bb011111-1111-1111-1111-000000000048" index="47" /><bitmap_item guid="bb011111-1111-1111-1111-000000000049" index="48" /><bitmap_item guid="bb011111-1111-1111-1111-000000000050" index="49" /><bitmap_item guid="bb011111-1111-1111-1111-000000000051" index="50" /><bitmap_item guid="bb011111-1111-1111-1111-000000000052" index="51" /><bitmap_item guid="bb011111-1111-1111-1111-000000000053" index="52" /><bitmap_item guid="bb011111-1111-1111-1111-000000000054" index="53" /><bitmap_item guid="bb011111-1111-1111-1111-000000000055" index="54" /><bitmap_item guid="bb011111-1111-1111-1111-000000000056" index="55" /><bitmap_item guid="bb011111-1111-1111-1111-000000000057" index="56" /><bitmap_item guid="bb011111-1111-1111-1111-000000000058" index="57" /><bitmap>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</bitmap></normal_bitmap><large_bitmap item_width="32" item_height="32"><bitmap_item guid="bb011111-1111-1111-1111-000000000001" index="0" /><bitmap_item guid="bb011111-1111-1111-1111-000000000002" index="1" /><bitmap_item guid="bb011111-1111-1111-1111-000000000003" index="2" /><bitmap_item guid="bb011111-1111-1111-1111-000000000004" index="3" /><bitmap_item guid="bb011111-1111-1111-1111-000000000005" index="4" /><bitmap_item guid="bb011111-1111-1111-1111-000000000006" index="5" /><bitmap_item guid="bb011111-1111-1111-1111-000000000007" index="6" /><bitmap_item guid="bb011111-1111-1111-1111-000000000008" index="7" /><bitmap_item guid="bb011111-1111-1111-1111-000000000009" index="8" /><bitmap_item guid="bb011111-1111-1111-1111-000000000010" index="9" /><bitmap_item guid="bb011111-1111-1111-1111-000000000011" index="10" /><bitmap_item guid="bb011111-1111-1111-1111-000000000012" index="11" /><bitmap_item guid="bb011111-1111-1111-1111-000000000013" index="12" /><bitmap_item guid="bb011111-1111-1111-1111-000000000014" index="13" /><bitmap_item guid="bb011111-1111-1111-1111-000000000015" index="14" /><bitmap_item guid="bb011111-1111-1111-1111-000000000016" index="15" /><bitmap_item guid="bb011111-1111-1111-1111-000000000017" index="16" /><bitmap_item guid="bb011111-1111-1111-1111-000000000018" index="17" /><bitmap_item guid="bb011111-1111-1111-1111-000000000019" index="18" /><bitmap_item guid="bb011111-1111-1111-1111-000000000020" index="19" /><bitmap_item guid="bb011111-1111-1111-1111-000000000021" index="20" /><bitmap_item guid="bb011111-1111-1111-1111-000000000022" index="21" /><bitmap_item guid="bb011111-1111-1111-1111-000000000023" index="22" /><bitmap_item guid="bb011111-1111-1111-1111-000000000024" index="23" /><bitmap_item guid="bb011111-1111-1111-1111-000000000025" index="24" /><bitmap_item guid="bb011111-1111-1111-1111-000000000026" index="25" /><bitmap_item guid="bb011111-1111-1111-1111-000000000027" index="26" /><bitmap_item guid="bb011111-1111-1111-1111-000000000028" index="27" /><bitmap_item guid="bb011111-1111-1111-1111-000000000029" index="28" /><bitmap_item guid="bb011111-1111-1111-1111-000000000030" index="29" /><bitmap_item guid="bb011111-1111-1111-1111-000000000031" index="30" /><bitmap_item guid="bb011111-1111-1111-1111-000000000032" index="31" /><bitmap_item guid="bb011111-1111-1111-1111-000000000033" index="32" /><bitmap_item guid="bb011111-1111-1111-1111-000000000034" index="33" /><bitmap_item guid="bb011111-1111-1111-1111-000000000035" index="34" /><bitmap_item guid="bb011111-1111-1111-1111-000000000036" index="35" /><bitmap_item guid="bb011111-1111-1111-1111-000000000037" index="36" /><bitmap_item guid="bb011111-1111-1111-1111-000000000038" index="37" /><bitmap_item guid="bb011111-1111-1111-1111-000000000039" index="38" /><bitmap_item guid="bb011111-1111-1111-1111-000000000040" index="39" /><bitmap_item guid="bb011111-1111-1111-1111-000000000041" index="40" /><bitmap_item guid="bb011111-1111-1111-1111-000000000042" index="41" /><bitmap_item guid="bb011111-1111-1111-1111-000000000043" index="42" /><bitmap_item guid="bb011111-1111-1111-1111-000000000044" index="43" /><bitmap_item guid="bb011111-1111-1111-1111-000000000045" index="44" /><bitmap_item guid="bb011111-1111-1111-1111-000000000046" index="45" /><bitmap_item guid="bb011111-1111-1111-1111-000000000047" index="46" /><bitmap_item guid="bb011111-1111-1111-1111-000000000048" index="47" /><bitmap_item guid="bb011111-1111-1111-1111-000000000049" index="48" /><bitmap_item guid="bb011111-1111-1111-1111-000000000050" index="49" /><bitmap_item guid="bb011111-1111-1111-1111-000000000051" index="50" /><bitmap_item guid="bb011111-1111-1111-1111-000000000052" index="51" /><bitmap_item guid="bb011111-1111-1111-1111-000000000053" index="52" /><bitmap_item guid="bb011111-1111-1111-1111-000000000054" index="53" /><bitmap_item guid="bb011111-1111-1111-1111-000000000055" index="54" /><bitmap_item guid="bb011111-1111-1111-1111-000000000056" index="55" /><bitmap_item guid="bb011111-1111-1111-1111-000000000057" index="56" /><bitmap_item guid="bb011111-1111-1111-1111-000000000058" index="57" /><bitmap>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</bitmap></large_bitmap></bitmaps></RhinoUI>

@@ -324,6 +324,10 @@ public class RadianceStudioPlugIn : PlugIn
             RhinoApp.RunScript("-_ToolbarGroup \"Standard Toolbars\" Hide", echo: false);
             RhinoApp.RunScript("-_ToolbarGroup \"Radiance Studio\" Show", echo: false);
 
+            // Open native Layers panel on the left container
+            Guid layersPanelId = new("3610bf83-047d-4f7f-93fd-163ea305b493");
+            RhinoPanels.OpenPanel(layersPanelId);
+
             // Open Inspector and History as docked siblings in the right panel
             RhinoPanels.OpenPanel(DynamicInspectorPanelHost.PanelId);
             RhinoPanels.OpenPanelAsSibling(HistoryPanelHost.PanelId, DynamicInspectorPanelHost.PanelId);
