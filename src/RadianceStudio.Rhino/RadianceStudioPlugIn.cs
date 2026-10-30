@@ -122,7 +122,8 @@ public class RadianceStudioPlugIn : PlugIn
     {
         try
         {
-            if (string.Equals(RhinoApp.SchemeName, StudioSchemeName, StringComparison.OrdinalIgnoreCase))
+            if (!string.IsNullOrEmpty(RhinoApp.SchemeName) &&
+                RhinoApp.SchemeName.Contains(StudioSchemeName, StringComparison.OrdinalIgnoreCase))
             {
                 return true;
             }
@@ -318,6 +319,10 @@ public class RadianceStudioPlugIn : PlugIn
         try
         {
             HideStandardToolbars();
+
+            // Explicitly show Radiance Studio toolbar group and hide Standard Toolbars
+            RhinoApp.RunScript("-_ToolbarGroup \"Standard Toolbars\" Hide", echo: false);
+            RhinoApp.RunScript("-_ToolbarGroup \"Radiance Studio\" Show", echo: false);
 
             // Open Inspector and History as docked siblings in the right panel
             RhinoPanels.OpenPanel(DynamicInspectorPanelHost.PanelId);

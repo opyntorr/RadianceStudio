@@ -3,7 +3,7 @@
   <extend_rhino_menus />
   <menus />
   <tool_bar_groups>
-    <tool_bar_group guid="e8b52194-4360-4963-8a02-984cd4d47150" dock_bar_guid64="171011a9-a956-41ee-853e-3ccc0c0db1d8" active_tool_bar_group="a2c430e7-8cfb-4e67-8cf9-b54f9a0c8102" single_file="False" hide_single_tab="False">
+    <tool_bar_group guid="e8b52194-4360-4963-8a02-984cd4d47150" dock_bar_guid64="e8b52194-4360-4963-8a02-984cd4d47150" active_tool_bar_group="a2c430e7-8cfb-4e67-8cf9-b54f9a0c8102" single_file="False" hide_single_tab="False">
       <text>
         <locale_1033>Radiance Studio</locale_1033>
       </text>
