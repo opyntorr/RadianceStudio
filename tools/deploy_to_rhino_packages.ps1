@@ -76,6 +76,12 @@ keywords:
 "@
 Set-Content -Path (Join-Path $StagingDir "manifest.yml") -Value $ManifestContent -Encoding UTF8
 
+# Ensure fresh copy of source RUI is in SourceBin
+$sourceRui = Join-Path $RootDir "src\RadianceStudio.Rhino\RadianceStudioToolbar.rui"
+if (Test-Path $sourceRui) {
+    Copy-Item -Path $sourceRui -Destination (Join-Path $SourceBin "RadianceStudioToolbar.rui") -Force
+}
+
 # 5. Copy compiled assemblies, rui, and rhp into net8.0 staging
 $FilesToCopy = Get-ChildItem -Path "$SourceBin\*" -Include *.rhp, *.dll, *.pdb, *.deps.json, *.rui
 foreach ($file in $FilesToCopy) {

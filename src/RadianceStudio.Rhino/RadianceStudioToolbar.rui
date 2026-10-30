@@ -70,19 +70,19 @@
       <text><locale_1033>Projects</locale_1033></text>
       <tool_bar_item guid="c1011111-1111-1111-1111-111111111101">
         <text><locale_1033>New Project</locale_1033></text>
-        <left_macro_id>m0011111-1111-1111-1111-111111111101</left_macro_id>
+        <left_macro_id>d0011111-1111-1111-1111-111111111101</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c1011111-1111-1111-1111-111111111102">
         <text><locale_1033>Open Project</locale_1033></text>
-        <left_macro_id>m0011111-1111-1111-1111-111111111102</left_macro_id>
+        <left_macro_id>d0011111-1111-1111-1111-111111111102</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c1011111-1111-1111-1111-111111111103">
         <text><locale_1033>Stone Library</locale_1033></text>
-        <left_macro_id>m0011111-1111-1111-1111-111111111103</left_macro_id>
+        <left_macro_id>d0011111-1111-1111-1111-111111111103</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c1011111-1111-1111-1111-111111111104">
         <text><locale_1033>Metal Catalog</locale_1033></text>
-        <left_macro_id>m0011111-1111-1111-1111-111111111104</left_macro_id>
+        <left_macro_id>d0011111-1111-1111-1111-111111111104</left_macro_id>
       </tool_bar_item>
     </tool_bar>
 
@@ -91,31 +91,31 @@
       <text><locale_1033>Rails</locale_1033></text>
       <tool_bar_item guid="c2011111-1111-1111-1111-111111111101">
         <text><locale_1033>Round Rail</locale_1033></text>
-        <left_macro_id>m1011111-1111-1111-1111-111111111101</left_macro_id>
+        <left_macro_id>d1011111-1111-1111-1111-111111111101</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c2011111-1111-1111-1111-111111111102">
         <text><locale_1033>Euro Rail</locale_1033></text>
-        <left_macro_id>m1011111-1111-1111-1111-111111111102</left_macro_id>
+        <left_macro_id>d1011111-1111-1111-1111-111111111102</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c2011111-1111-1111-1111-111111111103">
         <text><locale_1033>Cushion Rail</locale_1033></text>
-        <left_macro_id>m1011111-1111-1111-1111-111111111103</left_macro_id>
+        <left_macro_id>d1011111-1111-1111-1111-111111111103</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c2011111-1111-1111-1111-111111111104">
         <text><locale_1033>Bypass Rail</locale_1033></text>
-        <left_macro_id>m1011111-1111-1111-1111-111111111108</left_macro_id>
+        <left_macro_id>d1011111-1111-1111-1111-111111111108</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c2011111-1111-1111-1111-111111111105">
         <text><locale_1033>Profile Placer</locale_1033></text>
-        <left_macro_id>m1011111-1111-1111-1111-111111111109</left_macro_id>
+        <left_macro_id>d1011111-1111-1111-1111-111111111109</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c2011111-1111-1111-1111-111111111106">
         <text><locale_1033>Sweep 1 Rail</locale_1033></text>
-        <left_macro_id>m1011111-1111-1111-1111-111111111110</left_macro_id>
+        <left_macro_id>d1011111-1111-1111-1111-111111111110</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c2011111-1111-1111-1111-111111111107">
         <text><locale_1033>Sweep 2 Rails</locale_1033></text>
-        <left_macro_id>m1011111-1111-1111-1111-111111111111</left_macro_id>
+        <left_macro_id>d1011111-1111-1111-1111-111111111111</left_macro_id>
       </tool_bar_item>
     </tool_bar>
 
@@ -124,31 +124,31 @@
       <text><locale_1033>Shanks</locale_1033></text>
       <tool_bar_item guid="c3011111-1111-1111-1111-111111111101">
         <text><locale_1033>Comfort-Fit Shank</locale_1033></text>
-        <left_macro_id>m1011111-1111-1111-1111-111111111104</left_macro_id>
+        <left_macro_id>d1011111-1111-1111-1111-111111111104</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c3011111-1111-1111-1111-111111111102">
         <text><locale_1033>Knife-Edge Shank</locale_1033></text>
-        <left_macro_id>m1011111-1111-1111-1111-111111111105</left_macro_id>
+        <left_macro_id>d1011111-1111-1111-1111-111111111105</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c3011111-1111-1111-1111-111111111103">
         <text><locale_1033>Cathedral Shank</locale_1033></text>
-        <left_macro_id>m1011111-1111-1111-1111-111111111106</left_macro_id>
+        <left_macro_id>d1011111-1111-1111-1111-111111111106</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c3011111-1111-1111-1111-111111111104">
         <text><locale_1033>D-Shape Shank</locale_1033></text>
-        <left_macro_id>m1011111-1111-1111-1111-111111111107</left_macro_id>
+        <left_macro_id>d1011111-1111-1111-1111-111111111107</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c3011111-1111-1111-1111-111111111105">
         <text><locale_1033>Flat Shank</locale_1033></text>
-        <left_macro_id>m1011111-1111-1111-1111-111111111112</left_macro_id>
+        <left_macro_id>d1011111-1111-1111-1111-111111111112</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c3011111-1111-1111-1111-111111111106">
         <text><locale_1033>Split Shank</locale_1033></text>
-        <left_macro_id>m1011111-1111-1111-1111-111111111113</left_macro_id>
+        <left_macro_id>d1011111-1111-1111-1111-111111111113</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c3011111-1111-1111-1111-111111111107">
         <text><locale_1033>Eternity Band</locale_1033></text>
-        <left_macro_id>m1011111-1111-1111-1111-111111111114</left_macro_id>
+        <left_macro_id>d1011111-1111-1111-1111-111111111114</left_macro_id>
       </tool_bar_item>
     </tool_bar>
 
@@ -157,23 +157,23 @@
       <text><locale_1033>Gems</locale_1033></text>
       <tool_bar_item guid="c4011111-1111-1111-1111-111111111101">
         <text><locale_1033>Gems on Curve</locale_1033></text>
-        <left_macro_id>m2011111-1111-1111-1111-111111111101</left_macro_id>
+        <left_macro_id>d2011111-1111-1111-1111-111111111101</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c4011111-1111-1111-1111-111111111102">
         <text><locale_1033>Pavé Surface</locale_1033></text>
-        <left_macro_id>m2011111-1111-1111-1111-111111111102</left_macro_id>
+        <left_macro_id>d2011111-1111-1111-1111-111111111102</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c4011111-1111-1111-1111-111111111103">
         <text><locale_1033>Between Curves</locale_1033></text>
-        <left_macro_id>m2011111-1111-1111-1111-111111111103</left_macro_id>
+        <left_macro_id>d2011111-1111-1111-1111-111111111103</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c4011111-1111-1111-1111-111111111104">
         <text><locale_1033>Diamond Placer</locale_1033></text>
-        <left_macro_id>m2011111-1111-1111-1111-111111111104</left_macro_id>
+        <left_macro_id>d2011111-1111-1111-1111-111111111104</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c4011111-1111-1111-1111-111111111105">
         <text><locale_1033>Baguette Placer</locale_1033></text>
-        <left_macro_id>m2011111-1111-1111-1111-111111111105</left_macro_id>
+        <left_macro_id>d2011111-1111-1111-1111-111111111105</left_macro_id>
       </tool_bar_item>
     </tool_bar>
 
@@ -182,27 +182,27 @@
       <text><locale_1033>Settings</locale_1033></text>
       <tool_bar_item guid="c5011111-1111-1111-1111-111111111101">
         <text><locale_1033>Prong Head</locale_1033></text>
-        <left_macro_id>m3011111-1111-1111-1111-111111111101</left_macro_id>
+        <left_macro_id>d3011111-1111-1111-1111-111111111101</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c5011111-1111-1111-1111-111111111102">
         <text><locale_1033>Bezel Setting</locale_1033></text>
-        <left_macro_id>m3011111-1111-1111-1111-111111111102</left_macro_id>
+        <left_macro_id>d3011111-1111-1111-1111-111111111102</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c5011111-1111-1111-1111-111111111103">
         <text><locale_1033>Halo Setting</locale_1033></text>
-        <left_macro_id>m3011111-1111-1111-1111-111111111103</left_macro_id>
+        <left_macro_id>d3011111-1111-1111-1111-111111111103</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c5011111-1111-1111-1111-111111111104">
         <text><locale_1033>Channel Setting</locale_1033></text>
-        <left_macro_id>m3011111-1111-1111-1111-111111111104</left_macro_id>
+        <left_macro_id>d3011111-1111-1111-1111-111111111104</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c5011111-1111-1111-1111-111111111105">
         <text><locale_1033>Cluster Setting</locale_1033></text>
-        <left_macro_id>m3011111-1111-1111-1111-111111111105</left_macro_id>
+        <left_macro_id>d3011111-1111-1111-1111-111111111105</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c5011111-1111-1111-1111-111111111106">
         <text><locale_1033>Shared Prong</locale_1033></text>
-        <left_macro_id>m3011111-1111-1111-1111-111111111106</left_macro_id>
+        <left_macro_id>d3011111-1111-1111-1111-111111111106</left_macro_id>
       </tool_bar_item>
     </tool_bar>
 
@@ -211,19 +211,19 @@
       <text><locale_1033>Cutters</locale_1033></text>
       <tool_bar_item guid="c6011111-1111-1111-1111-111111111101">
         <text><locale_1033>Gem Cutters</locale_1033></text>
-        <left_macro_id>m4011111-1111-1111-1111-111111111101</left_macro_id>
+        <left_macro_id>d4011111-1111-1111-1111-111111111101</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c6011111-1111-1111-1111-111111111102">
         <text><locale_1033>Channel Cutter</locale_1033></text>
-        <left_macro_id>m4011111-1111-1111-1111-111111111102</left_macro_id>
+        <left_macro_id>d4011111-1111-1111-1111-111111111102</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c6011111-1111-1111-1111-111111111103">
         <text><locale_1033>Azure Cutter</locale_1033></text>
-        <left_macro_id>m4011111-1111-1111-1111-111111111103</left_macro_id>
+        <left_macro_id>d4011111-1111-1111-1111-111111111103</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c6011111-1111-1111-1111-111111111104">
         <text><locale_1033>Scoop Cutter</locale_1033></text>
-        <left_macro_id>m4011111-1111-1111-1111-111111111104</left_macro_id>
+        <left_macro_id>d4011111-1111-1111-1111-111111111104</left_macro_id>
       </tool_bar_item>
     </tool_bar>
 
@@ -232,23 +232,23 @@
       <text><locale_1033>Transform</locale_1033></text>
       <tool_bar_item guid="c7011111-1111-1111-1111-111111111101">
         <text><locale_1033>Polar Array</locale_1033></text>
-        <left_macro_id>m5011111-1111-1111-1111-111111111102</left_macro_id>
+        <left_macro_id>d5011111-1111-1111-1111-111111111102</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c7011111-1111-1111-1111-111111111102">
         <text><locale_1033>Curve Array</locale_1033></text>
-        <left_macro_id>m5011111-1111-1111-1111-111111111103</left_macro_id>
+        <left_macro_id>d5011111-1111-1111-1111-111111111103</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c7011111-1111-1111-1111-111111111103">
         <text><locale_1033>Mirror</locale_1033></text>
-        <left_macro_id>m5011111-1111-1111-1111-111111111104</left_macro_id>
+        <left_macro_id>d5011111-1111-1111-1111-111111111104</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c7011111-1111-1111-1111-111111111104">
         <text><locale_1033>Dynamic Bend</locale_1033></text>
-        <left_macro_id>m5011111-1111-1111-1111-111111111105</left_macro_id>
+        <left_macro_id>d5011111-1111-1111-1111-111111111105</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c7011111-1111-1111-1111-111111111105">
         <text><locale_1033>Surface Morph</locale_1033></text>
-        <left_macro_id>m5011111-1111-1111-1111-111111111106</left_macro_id>
+        <left_macro_id>d5011111-1111-1111-1111-111111111106</left_macro_id>
       </tool_bar_item>
     </tool_bar>
 
@@ -257,23 +257,23 @@
       <text><locale_1033>Art &amp; Textures</locale_1033></text>
       <tool_bar_item guid="c8011111-1111-1111-1111-111111111101">
         <text><locale_1033>3D Relief</locale_1033></text>
-        <left_macro_id>m8011111-1111-1111-1111-111111111101</left_macro_id>
+        <left_macro_id>d8011111-1111-1111-1111-111111111101</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c8011111-1111-1111-1111-111111111102">
         <text><locale_1033>Texture on Surface</locale_1033></text>
-        <left_macro_id>m8011111-1111-1111-1111-111111111102</left_macro_id>
+        <left_macro_id>d8011111-1111-1111-1111-111111111102</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c8011111-1111-1111-1111-111111111103">
         <text><locale_1033>Millgrain</locale_1033></text>
-        <left_macro_id>m8011111-1111-1111-1111-111111111103</left_macro_id>
+        <left_macro_id>d8011111-1111-1111-1111-111111111103</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c8011111-1111-1111-1111-111111111104">
         <text><locale_1033>Rope Wire</locale_1033></text>
-        <left_macro_id>m8011111-1111-1111-1111-111111111104</left_macro_id>
+        <left_macro_id>d8011111-1111-1111-1111-111111111104</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c8011111-1111-1111-1111-111111111105">
         <text><locale_1033>Celtic Knot</locale_1033></text>
-        <left_macro_id>m8011111-1111-1111-1111-111111111105</left_macro_id>
+        <left_macro_id>d8011111-1111-1111-1111-111111111105</left_macro_id>
       </tool_bar_item>
     </tool_bar>
 
@@ -282,23 +282,23 @@
       <text><locale_1033>Render</locale_1033></text>
       <tool_bar_item guid="c9011111-1111-1111-1111-111111111101">
         <text><locale_1033>Quick Render</locale_1033></text>
-        <left_macro_id>m9011111-1111-1111-1111-111111111101</left_macro_id>
+        <left_macro_id>d9011111-1111-1111-1111-111111111101</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c9011111-1111-1111-1111-111111111102">
         <text><locale_1033>Metal Materials</locale_1033></text>
-        <left_macro_id>m9011111-1111-1111-1111-111111111102</left_macro_id>
+        <left_macro_id>d9011111-1111-1111-1111-111111111102</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c9011111-1111-1111-1111-111111111103">
         <text><locale_1033>Gem Materials</locale_1033></text>
-        <left_macro_id>m9011111-1111-1111-1111-111111111103</left_macro_id>
+        <left_macro_id>d9011111-1111-1111-1111-111111111103</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c9011111-1111-1111-1111-111111111104">
         <text><locale_1033>Studio Lighting</locale_1033></text>
-        <left_macro_id>m9011111-1111-1111-1111-111111111104</left_macro_id>
+        <left_macro_id>d9011111-1111-1111-1111-111111111104</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="c9011111-1111-1111-1111-111111111105">
         <text><locale_1033>360 Turntable</locale_1033></text>
-        <left_macro_id>m9011111-1111-1111-1111-111111111105</left_macro_id>
+        <left_macro_id>d9011111-1111-1111-1111-111111111105</left_macro_id>
       </tool_bar_item>
     </tool_bar>
 
@@ -307,27 +307,27 @@
       <text><locale_1033>Manufacturing</locale_1033></text>
       <tool_bar_item guid="ca011111-1111-1111-1111-111111111101">
         <text><locale_1033>Export STL</locale_1033></text>
-        <left_macro_id>m6011111-1111-1111-1111-111111111102</left_macro_id>
+        <left_macro_id>d6011111-1111-1111-1111-111111111102</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="ca011111-1111-1111-1111-111111111102">
         <text><locale_1033>Weights &amp; BOM</locale_1033></text>
-        <left_macro_id>ma011111-1111-1111-1111-111111111101</left_macro_id>
+        <left_macro_id>da011111-1111-1111-1111-111111111101</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="ca011111-1111-1111-1111-111111111103">
         <text><locale_1033>Wall Thickness</locale_1033></text>
-        <left_macro_id>m6011111-1111-1111-1111-111111111101</left_macro_id>
+        <left_macro_id>d6011111-1111-1111-1111-111111111101</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="ca011111-1111-1111-1111-111111111104">
         <text><locale_1033>Sprue Placer</locale_1033></text>
-        <left_macro_id>ma011111-1111-1111-1111-111111111102</left_macro_id>
+        <left_macro_id>da011111-1111-1111-1111-111111111102</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="ca011111-1111-1111-1111-111111111105">
         <text><locale_1033>Casting Tree</locale_1033></text>
-        <left_macro_id>ma011111-1111-1111-1111-111111111103</left_macro_id>
+        <left_macro_id>da011111-1111-1111-1111-111111111103</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="ca011111-1111-1111-1111-111111111106">
         <text><locale_1033>Mesh Doctor</locale_1033></text>
-        <left_macro_id>ma011111-1111-1111-1111-111111111104</left_macro_id>
+        <left_macro_id>da011111-1111-1111-1111-111111111104</left_macro_id>
       </tool_bar_item>
     </tool_bar>
 
@@ -336,44 +336,44 @@
       <text><locale_1033>Drafting</locale_1033></text>
       <tool_bar_item guid="cb011111-1111-1111-1111-111111111101">
         <text><locale_1033>Auto Dimension</locale_1033></text>
-        <left_macro_id>mb011111-1111-1111-1111-111111111101</left_macro_id>
+        <left_macro_id>db011111-1111-1111-1111-111111111101</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="cb011111-1111-1111-1111-111111111102">
         <text><locale_1033>Tech Drawing</locale_1033></text>
-        <left_macro_id>mb011111-1111-1111-1111-111111111102</left_macro_id>
+        <left_macro_id>db011111-1111-1111-1111-111111111102</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="cb011111-1111-1111-1111-111111111103">
         <text><locale_1033>Gem Map Sheet</locale_1033></text>
-        <left_macro_id>mb011111-1111-1111-1111-111111111103</left_macro_id>
+        <left_macro_id>db011111-1111-1111-1111-111111111103</left_macro_id>
       </tool_bar_item>
       <tool_bar_item guid="cb011111-1111-1111-1111-111111111104">
         <text><locale_1033>Appraisal Spec Sheet</locale_1033></text>
-        <left_macro_id>mb011111-1111-1111-1111-111111111104</left_macro_id>
+        <left_macro_id>db011111-1111-1111-1111-111111111104</left_macro_id>
       </tool_bar_item>
     </tool_bar>
   </tool_bars>
 
   <macros>
     <!-- Projects -->
-    <macro_item guid="m0011111-1111-1111-1111-111111111101">
+    <macro_item guid="d0011111-1111-1111-1111-111111111101">
       <text><locale_1033>New Project</locale_1033></text>
       <tooltip><locale_1033>Create New Jewelry Project</locale_1033></tooltip>
       <button_text><locale_1033>NewProject</locale_1033></button_text>
       <script>! _RadNewProject</script>
     </macro_item>
-    <macro_item guid="m0011111-1111-1111-1111-111111111102">
+    <macro_item guid="d0011111-1111-1111-1111-111111111102">
       <text><locale_1033>Open Project</locale_1033></text>
       <tooltip><locale_1033>Open Existing Jewelry Project</locale_1033></tooltip>
       <button_text><locale_1033>OpenProject</locale_1033></button_text>
       <script>! _RadOpenProject</script>
     </macro_item>
-    <macro_item guid="m0011111-1111-1111-1111-111111111103">
+    <macro_item guid="d0011111-1111-1111-1111-111111111103">
       <text><locale_1033>Stone Library</locale_1033></text>
       <tooltip><locale_1033>Gemological Cuts and Calibers</locale_1033></tooltip>
       <button_text><locale_1033>StoneLib</locale_1033></button_text>
       <script>! _RadStoneLibrary</script>
     </macro_item>
-    <macro_item guid="m0011111-1111-1111-1111-111111111104">
+    <macro_item guid="d0011111-1111-1111-1111-111111111104">
       <text><locale_1033>Metal Catalog</locale_1033></text>
       <tooltip><locale_1033>Precious Metal Density and Alloy Specifications</locale_1033></tooltip>
       <button_text><locale_1033>MetalCat</locale_1033></button_text>
@@ -381,43 +381,43 @@
     </macro_item>
 
     <!-- Rails -->
-    <macro_item guid="m1011111-1111-1111-1111-111111111101">
+    <macro_item guid="d1011111-1111-1111-1111-111111111101">
       <text><locale_1033>Round Rail</locale_1033></text>
       <tooltip><locale_1033>Create Round Ring Rail</locale_1033></tooltip>
       <button_text><locale_1033>Round</locale_1033></button_text>
       <script>! _RadRingRail</script>
     </macro_item>
-    <macro_item guid="m1011111-1111-1111-1111-111111111102">
+    <macro_item guid="d1011111-1111-1111-1111-111111111102">
       <text><locale_1033>Euro Rail</locale_1033></text>
       <tooltip><locale_1033>Create Euro-Shank Ring Rail</locale_1033></tooltip>
       <button_text><locale_1033>Euro</locale_1033></button_text>
       <script>! _RadEuroRail</script>
     </macro_item>
-    <macro_item guid="m1011111-1111-1111-1111-111111111103">
+    <macro_item guid="d1011111-1111-1111-1111-111111111103">
       <text><locale_1033>Cushion Rail</locale_1033></text>
       <tooltip><locale_1033>Create Cushion Squircle Ring Rail</locale_1033></tooltip>
       <button_text><locale_1033>Cushion</locale_1033></button_text>
       <script>! _RadCushionRail</script>
     </macro_item>
-    <macro_item guid="m1011111-1111-1111-1111-111111111108">
+    <macro_item guid="d1011111-1111-1111-1111-111111111108">
       <text><locale_1033>Bypass Rail</locale_1033></text>
       <tooltip><locale_1033>Create Bypass Overlap Ring Rail</locale_1033></tooltip>
       <button_text><locale_1033>Bypass</locale_1033></button_text>
       <script>! _RadBypassRail</script>
     </macro_item>
-    <macro_item guid="m1011111-1111-1111-1111-111111111109">
+    <macro_item guid="d1011111-1111-1111-1111-111111111109">
       <text><locale_1033>Profile Placer</locale_1033></text>
       <tooltip><locale_1033>Place Cross Section Profiles on Rails</locale_1033></tooltip>
       <button_text><locale_1033>ProfPlacer</locale_1033></button_text>
       <script>! _RadProfilePlacer</script>
     </macro_item>
-    <macro_item guid="m1011111-1111-1111-1111-111111111110">
+    <macro_item guid="d1011111-1111-1111-1111-111111111110">
       <text><locale_1033>Sweep 1 Rail</locale_1033></text>
       <tooltip><locale_1033>Sweep Profiles Along Single Rail</locale_1033></tooltip>
       <button_text><locale_1033>Swp1Rail</locale_1033></button_text>
       <script>! _RadSweep1Rail</script>
     </macro_item>
-    <macro_item guid="m1011111-1111-1111-1111-111111111111">
+    <macro_item guid="d1011111-1111-1111-1111-111111111111">
       <text><locale_1033>Sweep 2 Rails</locale_1033></text>
       <tooltip><locale_1033>Sweep Profiles Along Dual Rails</locale_1033></tooltip>
       <button_text><locale_1033>Swp2Rail</locale_1033></button_text>
@@ -425,43 +425,43 @@
     </macro_item>
 
     <!-- Shanks -->
-    <macro_item guid="m1011111-1111-1111-1111-111111111104">
+    <macro_item guid="d1011111-1111-1111-1111-111111111104">
       <text><locale_1033>Comfort-Fit</locale_1033></text>
       <tooltip><locale_1033>Create Comfort-Fit Swept Shank</locale_1033></tooltip>
       <button_text><locale_1033>ComfortFit</locale_1033></button_text>
       <script>! _RadShank</script>
     </macro_item>
-    <macro_item guid="m1011111-1111-1111-1111-111111111105">
+    <macro_item guid="d1011111-1111-1111-1111-111111111105">
       <text><locale_1033>Knife-Edge</locale_1033></text>
       <tooltip><locale_1033>Create Knife-Edge Shank</locale_1033></tooltip>
       <button_text><locale_1033>KnifeEdge</locale_1033></button_text>
       <script>! _RadKnifeEdgeShank</script>
     </macro_item>
-    <macro_item guid="m1011111-1111-1111-1111-111111111106">
+    <macro_item guid="d1011111-1111-1111-1111-111111111106">
       <text><locale_1033>Cathedral</locale_1033></text>
       <tooltip><locale_1033>Create Cathedral Arch Shank</locale_1033></tooltip>
       <button_text><locale_1033>Cathedral</locale_1033></button_text>
       <script>! _RadCathedralShank</script>
     </macro_item>
-    <macro_item guid="m1011111-1111-1111-1111-111111111107">
+    <macro_item guid="d1011111-1111-1111-1111-111111111107">
       <text><locale_1033>D-Shape</locale_1033></text>
       <tooltip><locale_1033>Create D-Shape Half-Round Shank</locale_1033></tooltip>
       <button_text><locale_1033>DShape</locale_1033></button_text>
       <script>! _RadDShapeShank</script>
     </macro_item>
-    <macro_item guid="m1011111-1111-1111-1111-111111111112">
+    <macro_item guid="d1011111-1111-1111-1111-111111111112">
       <text><locale_1033>Flat Shank</locale_1033></text>
       <tooltip><locale_1033>Create Flat Cross-Section Shank</locale_1033></tooltip>
       <button_text><locale_1033>Flat</locale_1033></button_text>
       <script>! _RadFlatShank</script>
     </macro_item>
-    <macro_item guid="m1011111-1111-1111-1111-111111111113">
+    <macro_item guid="d1011111-1111-1111-1111-111111111113">
       <text><locale_1033>Split Shank</locale_1033></text>
       <tooltip><locale_1033>Create Split Dual-Branch Shank</locale_1033></tooltip>
       <button_text><locale_1033>SplitShank</locale_1033></button_text>
       <script>! _RadSplitShank</script>
     </macro_item>
-    <macro_item guid="m1011111-1111-1111-1111-111111111114">
+    <macro_item guid="d1011111-1111-1111-1111-111111111114">
       <text><locale_1033>Eternity Band</locale_1033></text>
       <tooltip><locale_1033>Create Full Eternity Ring Shank</locale_1033></tooltip>
       <button_text><locale_1033>Eternity</locale_1033></button_text>
@@ -469,31 +469,31 @@
     </macro_item>
 
     <!-- Gems -->
-    <macro_item guid="m2011111-1111-1111-1111-111111111101">
+    <macro_item guid="d2011111-1111-1111-1111-111111111101">
       <text><locale_1033>Gems on Curve</locale_1033></text>
       <tooltip><locale_1033>Distribute Gems along Curve</locale_1033></tooltip>
       <button_text><locale_1033>GemOnCurve</locale_1033></button_text>
       <script>! _RadGemOnCurve</script>
     </macro_item>
-    <macro_item guid="m2011111-1111-1111-1111-111111111102">
+    <macro_item guid="d2011111-1111-1111-1111-111111111102">
       <text><locale_1033>Pavé</locale_1033></text>
       <tooltip><locale_1033>Generate Pavé Stone Distribution</locale_1033></tooltip>
       <button_text><locale_1033>Pave</locale_1033></button_text>
       <script>! _RadPave</script>
     </macro_item>
-    <macro_item guid="m2011111-1111-1111-1111-111111111103">
+    <macro_item guid="d2011111-1111-1111-1111-111111111103">
       <text><locale_1033>Between Curves</locale_1033></text>
       <tooltip><locale_1033>Distribute Stones Between Dual Boundary Curves</locale_1033></tooltip>
       <button_text><locale_1033>BetweenCrvs</locale_1033></button_text>
       <script>! _RadGemBetweenCurves</script>
     </macro_item>
-    <macro_item guid="m2011111-1111-1111-1111-111111111104">
+    <macro_item guid="d2011111-1111-1111-1111-111111111104">
       <text><locale_1033>Diamond Placer</locale_1033></text>
       <tooltip><locale_1033>Place Diamonds Directly on Surfaces</locale_1033></tooltip>
       <button_text><locale_1033>Placer</locale_1033></button_text>
       <script>! _RadDiamondPlacer</script>
     </macro_item>
-    <macro_item guid="m2011111-1111-1111-1111-111111111105">
+    <macro_item guid="d2011111-1111-1111-1111-111111111105">
       <text><locale_1033>Baguette Placer</locale_1033></text>
       <tooltip><locale_1033>Place Baguette Diamonds along Curve</locale_1033></tooltip>
       <button_text><locale_1033>Baguettes</locale_1033></button_text>
@@ -501,37 +501,37 @@
     </macro_item>
 
     <!-- Settings -->
-    <macro_item guid="m3011111-1111-1111-1111-111111111101">
+    <macro_item guid="d3011111-1111-1111-1111-111111111101">
       <text><locale_1033>Prong Head</locale_1033></text>
       <tooltip><locale_1033>Create Parametric Prong Setting</locale_1033></tooltip>
       <button_text><locale_1033>Prongs</locale_1033></button_text>
       <script>! _RadProngHead</script>
     </macro_item>
-    <macro_item guid="m3011111-1111-1111-1111-111111111102">
+    <macro_item guid="d3011111-1111-1111-1111-111111111102">
       <text><locale_1033>Bezel</locale_1033></text>
       <tooltip><locale_1033>Create Parametric Bezel Setting</locale_1033></tooltip>
       <button_text><locale_1033>Bezel</locale_1033></button_text>
       <script>! _RadBezel</script>
     </macro_item>
-    <macro_item guid="m3011111-1111-1111-1111-111111111103">
+    <macro_item guid="d3011111-1111-1111-1111-111111111103">
       <text><locale_1033>Halo</locale_1033></text>
       <tooltip><locale_1033>Create Parametric Halo Setting</locale_1033></tooltip>
       <button_text><locale_1033>Halo</locale_1033></button_text>
       <script>! _RadHalo</script>
     </macro_item>
-    <macro_item guid="m3011111-1111-1111-1111-111111111104">
+    <macro_item guid="d3011111-1111-1111-1111-111111111104">
       <text><locale_1033>Channel Setting</locale_1033></text>
       <tooltip><locale_1033>Create Continuous Channel Wall Setting</locale_1033></tooltip>
       <button_text><locale_1033>Channel</locale_1033></button_text>
       <script>! _RadChannelSetting</script>
     </macro_item>
-    <macro_item guid="m3011111-1111-1111-1111-111111111105">
+    <macro_item guid="d3011111-1111-1111-1111-111111111105">
       <text><locale_1033>Cluster Setting</locale_1033></text>
       <tooltip><locale_1033>Create Multi-Stone Cluster Setting</locale_1033></tooltip>
       <button_text><locale_1033>Cluster</locale_1033></button_text>
       <script>! _RadClusterSetting</script>
     </macro_item>
-    <macro_item guid="m3011111-1111-1111-1111-111111111106">
+    <macro_item guid="d3011111-1111-1111-1111-111111111106">
       <text><locale_1033>Shared Prong</locale_1033></text>
       <tooltip><locale_1033>Create Continuous Shared Prong Row</locale_1033></tooltip>
       <button_text><locale_1033>SharedProng</locale_1033></button_text>
@@ -539,25 +539,25 @@
     </macro_item>
 
     <!-- Cutters -->
-    <macro_item guid="m4011111-1111-1111-1111-111111111101">
+    <macro_item guid="d4011111-1111-1111-1111-111111111101">
       <text><locale_1033>Gem Cutters</locale_1033></text>
       <tooltip><locale_1033>Generate Seat and Light Hole Cutters</locale_1033></tooltip>
       <button_text><locale_1033>Cutters</locale_1033></button_text>
       <script>! _RadCutter</script>
     </macro_item>
-    <macro_item guid="m4011111-1111-1111-1111-111111111102">
+    <macro_item guid="d4011111-1111-1111-1111-111111111102">
       <text><locale_1033>Channel Cutter</locale_1033></text>
       <tooltip><locale_1033>Generate Continuous Channel Excavation Solids</locale_1033></tooltip>
       <button_text><locale_1033>ChanCutter</locale_1033></button_text>
       <script>! _RadChannelCutter</script>
     </macro_item>
-    <macro_item guid="m4011111-1111-1111-1111-111111111103">
+    <macro_item guid="d4011111-1111-1111-1111-111111111103">
       <text><locale_1033>Azure Cutter</locale_1033></text>
       <tooltip><locale_1033>Generate Decorative Honeycomb Azuring Holes</locale_1033></tooltip>
       <button_text><locale_1033>Azure</locale_1033></button_text>
       <script>! _RadAzureCutter</script>
     </macro_item>
-    <macro_item guid="m4011111-1111-1111-1111-111111111104">
+    <macro_item guid="d4011111-1111-1111-1111-111111111104">
       <text><locale_1033>Scoop Cutter</locale_1033></text>
       <tooltip><locale_1033>Excavate Interior Hollows for Weight Reduction</locale_1033></tooltip>
       <button_text><locale_1033>Scoop</locale_1033></button_text>
@@ -565,31 +565,31 @@
     </macro_item>
 
     <!-- Transform -->
-    <macro_item guid="m5011111-1111-1111-1111-111111111102">
+    <macro_item guid="d5011111-1111-1111-1111-111111111102">
       <text><locale_1033>Polar Array</locale_1033></text>
       <tooltip><locale_1033>Array Gems Around Ring Axis</locale_1033></tooltip>
       <button_text><locale_1033>PolarArray</locale_1033></button_text>
       <script>! _ArrayPolar</script>
     </macro_item>
-    <macro_item guid="m5011111-1111-1111-1111-111111111103">
+    <macro_item guid="d5011111-1111-1111-1111-111111111103">
       <text><locale_1033>Curve Array</locale_1033></text>
       <tooltip><locale_1033>Array Objects Along 3D Guide Curve</locale_1033></tooltip>
       <button_text><locale_1033>ArrayCrv</locale_1033></button_text>
       <script>! _ArrayCrv</script>
     </macro_item>
-    <macro_item guid="m5011111-1111-1111-1111-111111111104">
+    <macro_item guid="d5011111-1111-1111-1111-111111111104">
       <text><locale_1033>Mirror</locale_1033></text>
       <tooltip><locale_1033>Mirror Geometry Across Center Planes</locale_1033></tooltip>
       <button_text><locale_1033>Mirror</locale_1033></button_text>
       <script>! _Mirror</script>
     </macro_item>
-    <macro_item guid="m5011111-1111-1111-1111-111111111105">
+    <macro_item guid="d5011111-1111-1111-1111-111111111105">
       <text><locale_1033>Dynamic Bend</locale_1033></text>
       <tooltip><locale_1033>Spine-Based Bending Deformation</locale_1033></tooltip>
       <button_text><locale_1033>Bend</locale_1033></button_text>
       <script>! _RadDynamicBend</script>
     </macro_item>
-    <macro_item guid="m5011111-1111-1111-1111-111111111106">
+    <macro_item guid="d5011111-1111-1111-1111-111111111106">
       <text><locale_1033>Surface Morph</locale_1033></text>
       <tooltip><locale_1033>Morph Geometry onto Doubly Curved Surfaces</locale_1033></tooltip>
       <button_text><locale_1033>Morph</locale_1033></button_text>
@@ -597,31 +597,31 @@
     </macro_item>
 
     <!-- Art & Textures -->
-    <macro_item guid="m8011111-1111-1111-1111-111111111101">
+    <macro_item guid="d8011111-1111-1111-1111-111111111101">
       <text><locale_1033>3D Relief</locale_1033></text>
       <tooltip><locale_1033>Heightfield Mesh Displacement from Vectors</locale_1033></tooltip>
       <button_text><locale_1033>Relief</locale_1033></button_text>
       <script>! _Rad3DRelief</script>
     </macro_item>
-    <macro_item guid="m8011111-1111-1111-1111-111111111102">
+    <macro_item guid="d8011111-1111-1111-1111-111111111102">
       <text><locale_1033>Texture on Surface</locale_1033></text>
       <tooltip><locale_1033>Procedural Hammered, Florentine, and Bark Textures</locale_1033></tooltip>
       <button_text><locale_1033>Textures</locale_1033></button_text>
       <script>! _RadTextureOnSurface</script>
     </macro_item>
-    <macro_item guid="m8011111-1111-1111-1111-111111111103">
+    <macro_item guid="d8011111-1111-1111-1111-111111111103">
       <text><locale_1033>Millgrain</locale_1033></text>
       <tooltip><locale_1033>Parametric Bead and Millgrain Wire along Curves</locale_1033></tooltip>
       <button_text><locale_1033>Millgrain</locale_1033></button_text>
       <script>! _RadMillgrain</script>
     </macro_item>
-    <macro_item guid="m8011111-1111-1111-1111-111111111104">
+    <macro_item guid="d8011111-1111-1111-1111-111111111104">
       <text><locale_1033>Rope Wire</locale_1033></text>
       <tooltip><locale_1033>Multi-Strand Twisted Rope and Braided Wire</locale_1033></tooltip>
       <button_text><locale_1033>RopeWire</locale_1033></button_text>
       <script>! _RadRopeWire</script>
     </macro_item>
-    <macro_item guid="m8011111-1111-1111-1111-111111111105">
+    <macro_item guid="d8011111-1111-1111-1111-111111111105">
       <text><locale_1033>Celtic Knot</locale_1033></text>
       <tooltip><locale_1033>Interwoven Filigree and Ribbon Knots</locale_1033></tooltip>
       <button_text><locale_1033>Celtic</locale_1033></button_text>
@@ -629,31 +629,31 @@
     </macro_item>
 
     <!-- Render -->
-    <macro_item guid="m9011111-1111-1111-1111-111111111101">
+    <macro_item guid="d9011111-1111-1111-1111-111111111101">
       <text><locale_1033>Quick Render</locale_1033></text>
       <tooltip><locale_1033>GPU Raytraced Preview with Diamond Caustics</locale_1033></tooltip>
       <button_text><locale_1033>QuickRndr</locale_1033></button_text>
       <script>! _RadQuickRender</script>
     </macro_item>
-    <macro_item guid="m9011111-1111-1111-1111-111111111102">
+    <macro_item guid="d9011111-1111-1111-1111-111111111102">
       <text><locale_1033>Metal Materials</locale_1033></text>
       <tooltip><locale_1033>Calibrated PBR Gold, Platinum, and Silver Shaders</locale_1033></tooltip>
       <button_text><locale_1033>Metals</locale_1033></button_text>
       <script>! _RadMetalMaterials</script>
     </macro_item>
-    <macro_item guid="m9011111-1111-1111-1111-111111111103">
+    <macro_item guid="d9011111-1111-1111-1111-111111111103">
       <text><locale_1033>Gem Materials</locale_1033></text>
       <tooltip><locale_1033>Physical Refractive Diamond and Colored Gem Shaders</locale_1033></tooltip>
       <button_text><locale_1033>GemsMat</locale_1033></button_text>
       <script>! _RadGemMaterials</script>
     </macro_item>
-    <macro_item guid="m9011111-1111-1111-1111-111111111104">
+    <macro_item guid="d9011111-1111-1111-1111-111111111104">
       <text><locale_1033>Studio Lighting</locale_1033></text>
       <tooltip><locale_1033>Jewelry Photo-Studio Softbox and Environment Lighting</locale_1033></tooltip>
       <button_text><locale_1033>Lighting</locale_1033></button_text>
       <script>! _RadStudioEnvironment</script>
     </macro_item>
-    <macro_item guid="m9011111-1111-1111-1111-111111111105">
+    <macro_item guid="d9011111-1111-1111-1111-111111111105">
       <text><locale_1033>360 Turntable</locale_1033></text>
       <tooltip><locale_1033>Automated 360-Degree Video Animation</locale_1033></tooltip>
       <button_text><locale_1033>Turntable</locale_1033></button_text>
@@ -661,37 +661,37 @@
     </macro_item>
 
     <!-- Manufacturing -->
-    <macro_item guid="m6011111-1111-1111-1111-111111111102">
+    <macro_item guid="d6011111-1111-1111-1111-111111111102">
       <text><locale_1033>Export STL</locale_1033></text>
       <tooltip><locale_1033>Export Watertight Binary STL for 3D Printing</locale_1033></tooltip>
       <button_text><locale_1033>ExportSTL</locale_1033></button_text>
       <script>! _RadExportSTL</script>
     </macro_item>
-    <macro_item guid="ma011111-1111-1111-1111-111111111101">
+    <macro_item guid="da011111-1111-1111-1111-111111111101">
       <text><locale_1033>Weights &amp; BOM</locale_1033></text>
       <tooltip><locale_1033>Calculate Casting Weights (14K, 18K, Plat, Silver)</locale_1033></tooltip>
       <button_text><locale_1033>Weights</locale_1033></button_text>
       <script>! _RadBOM</script>
     </macro_item>
-    <macro_item guid="m6011111-1111-1111-1111-111111111101">
+    <macro_item guid="d6011111-1111-1111-1111-111111111101">
       <text><locale_1033>Wall Thickness</locale_1033></text>
       <tooltip><locale_1033>Ray-Cast Wall Thickness Analysis</locale_1033></tooltip>
       <button_text><locale_1033>Thickness</locale_1033></button_text>
       <script>! _RadWallThickness</script>
     </macro_item>
-    <macro_item guid="ma011111-1111-1111-1111-111111111102">
+    <macro_item guid="da011111-1111-1111-1111-111111111102">
       <text><locale_1033>Sprue Placer</locale_1033></text>
       <tooltip><locale_1033>Attach Casting Sprues with Fillet Junctions</locale_1033></tooltip>
       <button_text><locale_1033>Sprues</locale_1033></button_text>
       <script>! _RadSpruePlacer</script>
     </macro_item>
-    <macro_item guid="ma011111-1111-1111-1111-111111111103">
+    <macro_item guid="da011111-1111-1111-1111-111111111103">
       <text><locale_1033>Casting Tree</locale_1033></text>
       <tooltip><locale_1033>Assemble Production Tree for Investment Casting</locale_1033></tooltip>
       <button_text><locale_1033>Tree</locale_1033></button_text>
       <script>! _RadCastingTree</script>
     </macro_item>
-    <macro_item guid="ma011111-1111-1111-1111-111111111104">
+    <macro_item guid="da011111-1111-1111-1111-111111111104">
       <text><locale_1033>Mesh Doctor</locale_1033></text>
       <tooltip><locale_1033>Repair Non-Manifold Edges and Guarantee Watertight Solids</locale_1033></tooltip>
       <button_text><locale_1033>Doctor</locale_1033></button_text>
@@ -699,25 +699,25 @@
     </macro_item>
 
     <!-- Drafting -->
-    <macro_item guid="mb011111-1111-1111-1111-111111111101">
+    <macro_item guid="db011111-1111-1111-1111-111111111101">
       <text><locale_1033>Auto Dimension</locale_1033></text>
       <tooltip><locale_1033>Automatic Orthographic Projections and Dimensions</locale_1033></tooltip>
       <button_text><locale_1033>Dimension</locale_1033></button_text>
       <script>! _RadAutoDimension</script>
     </macro_item>
-    <macro_item guid="mb011111-1111-1111-1111-111111111102">
+    <macro_item guid="db011111-1111-1111-1111-111111111102">
       <text><locale_1033>Tech Drawing</locale_1033></text>
       <tooltip><locale_1033>4-View Blueprint Layout with Projections</locale_1033></tooltip>
       <button_text><locale_1033>Drawing</locale_1033></button_text>
       <script>! _RadTechDrawing</script>
     </macro_item>
-    <macro_item guid="mb011111-1111-1111-1111-111111111103">
+    <macro_item guid="db011111-1111-1111-1111-111111111103">
       <text><locale_1033>Gem Map Sheet</locale_1033></text>
       <tooltip><locale_1033>Numbered Setter Stone Map and Calibers</locale_1033></tooltip>
       <button_text><locale_1033>GemMap</locale_1033></button_text>
       <script>! _RadGemMapSheet</script>
     </macro_item>
-    <macro_item guid="mb011111-1111-1111-1111-111111111104">
+    <macro_item guid="db011111-1111-1111-1111-111111111104">
       <text><locale_1033>Appraisal Spec Sheet</locale_1033></text>
       <tooltip><locale_1033>Formal Appraisal Specification Report</locale_1033></tooltip>
       <button_text><locale_1033>Appraisal</locale_1033></button_text>
