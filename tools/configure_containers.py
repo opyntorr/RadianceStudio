@@ -61,11 +61,10 @@ for bar in dock_bars_node.findall('dock_bar'):
         if p is not None:
             p.set('visible', 'False')
 
-    # Hide Standard Toolbars dock bar
-    if b_guid == standard_toolbars_guid:
-        p = bar.find('placement')
-        if p is not None:
-            p.set('visible', 'False')
+    # Remove Standard Toolbars dock bar completely from dock_bars
+    if b_guid == standard_toolbars_guid or (bar.get('source_group') == radiance_top_bar_guid and b_guid != radiance_top_bar_guid):
+        to_remove.append(bar)
+        continue
 
 for r in to_remove:
     dock_bars_node.remove(r)
