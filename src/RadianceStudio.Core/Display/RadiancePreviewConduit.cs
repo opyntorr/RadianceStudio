@@ -61,7 +61,7 @@ public class RadiancePreviewConduit : DisplayConduit
     {
         lock (_syncLock)
         {
-            _canonicalMesh = canonicalMesh;
+            _canonicalMesh = canonicalMesh != null && canonicalMesh.IsValid ? canonicalMesh.DuplicateMesh() : null;
             _instanceTransforms.Clear();
             if (transforms != null)
             {
@@ -83,7 +83,7 @@ public class RadiancePreviewConduit : DisplayConduit
     {
         lock (_syncLock)
         {
-            _previewCurve = curve;
+            _previewCurve = curve != null && curve.IsValid ? curve.DuplicateCurve() : null;
             _previewCurves.Clear();
             if (color.HasValue) _curveColor = color.Value;
             _curveThickness = thickness;
@@ -96,7 +96,16 @@ public class RadiancePreviewConduit : DisplayConduit
         {
             _previewCurve = null;
             _previewCurves.Clear();
-            if (curves != null) _previewCurves.AddRange(curves);
+            if (curves != null)
+            {
+                foreach (var c in curves)
+                {
+                    if (c != null && c.IsValid)
+                    {
+                        _previewCurves.Add(c.DuplicateCurve());
+                    }
+                }
+            }
             if (color.HasValue) _curveColor = color.Value;
             _curveThickness = thickness;
         }

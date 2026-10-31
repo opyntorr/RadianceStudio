@@ -153,11 +153,13 @@ public class JewelryRibbon : Panel
             Height = 68,
             Text = FormatButtonText(tool.Name),
             Font = JewelryDarkTheme.SmallFont,
-            BackgroundColor = tool.IsImplemented ? JewelryDarkTheme.SurfaceElevated : Color.FromArgb(0x24, 0x24, 0x28),
-            TextColor = tool.IsImplemented ? JewelryDarkTheme.TextPrimary : Color.FromArgb(0x9E, 0x9E, 0x9E),
+            BackgroundColor = tool.IsImplemented ? JewelryDarkTheme.SurfaceElevated : Color.FromArgb(0x1C, 0x1C, 0x20),
+            TextColor = tool.IsImplemented ? JewelryDarkTheme.TextPrimary : Color.FromArgb(0x72, 0x72, 0x7A),
             Image = RibbonVectorIcons.GetToolIcon(tool, 30),
             ImagePosition = ButtonImagePosition.Above,
-            ToolTip = $"{tool.Name}\n{tool.Description}\nCommand: {tool.CommandOrMacro}"
+            ToolTip = tool.IsImplemented
+                ? $"{tool.Name}\n{tool.Description}\nComando: {tool.CommandOrMacro}"
+                : $"{tool.Name} [Próximamente / CAD Base]\n{tool.Description}\nEjecuta: {tool.CommandOrMacro}"
         };
 
         btn.Click += (s, e) => OnToolClicked(tool, btn);

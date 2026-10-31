@@ -148,20 +148,67 @@ public class RadianceStudioPlugIn : PlugIn
     }
 
     /// <summary>
-    /// Sets the top-level main window title via Eto.Forms Application.Instance.MainForm.Title.
+    /// Sets the top-level main window title via Eto.Forms Application.Instance.MainForm.Title,
+    /// and suppresses Rhino's default menu bar to provide a clean standalone studio shell.
     /// </summary>
     public static void SetStudioWindowTitle()
     {
         try
         {
-            if (Eto.Forms.Application.Instance?.MainForm != null)
+            var mainForm = Eto.Forms.Application.Instance?.MainForm;
+            if (mainForm != null)
             {
-                Eto.Forms.Application.Instance.MainForm.Title = StudioWindowTitle;
+                mainForm.Title = StudioWindowTitle;
+                mainForm.Menu = null;
             }
         }
         catch (Exception ex)
         {
             RhinoApp.WriteLine($"[RadianceStudio] Note updating window title: {ex.Message}");
+        }
+    }
+
+    /// <summary>
+    /// Configures Rhino 8's AppearanceSettings to a deep obsidian dark jewelry workstation theme:
+    /// - Hides Rhino native top menu bar (MenuVisible = false)
+    /// - Moves Command prompt to bottom band
+    /// - Sets viewport background to deep obsidian dark (#141416)
+    /// - Sets subtle grid lines and jewelry gold selection accents (#FFD700)
+    /// </summary>
+    public static void ApplyStudioAppearance()
+    {
+        try
+        {
+            global::Rhino.ApplicationSettings.AppearanceSettings.MenuVisible = false;
+            global::Rhino.ApplicationSettings.AppearanceSettings.CommandPromptPosition = global::Rhino.ApplicationSettings.CommandPromptPosition.Bottom;
+            global::Rhino.ApplicationSettings.AppearanceSettings.ShowSideBar = false;
+            global::Rhino.ApplicationSettings.AppearanceSettings.ShowOsnapBar = true;
+            global::Rhino.ApplicationSettings.AppearanceSettings.ShowStatusBar = true;
+
+            // Obsidian Dark Jewelry Viewport Palette
+            global::Rhino.ApplicationSettings.AppearanceSettings.ViewportBackgroundColor = System.Drawing.Color.FromArgb(20, 20, 22);
+            global::Rhino.ApplicationSettings.AppearanceSettings.FrameBackgroundColor = System.Drawing.Color.FromArgb(28, 28, 32);
+            global::Rhino.ApplicationSettings.AppearanceSettings.GridThinLineColor = System.Drawing.Color.FromArgb(32, 32, 36);
+            global::Rhino.ApplicationSettings.AppearanceSettings.GridThickLineColor = System.Drawing.Color.FromArgb(48, 48, 54);
+            global::Rhino.ApplicationSettings.AppearanceSettings.GridXAxisLineColor = System.Drawing.Color.FromArgb(200, 50, 50);
+            global::Rhino.ApplicationSettings.AppearanceSettings.GridYAxisLineColor = System.Drawing.Color.FromArgb(50, 200, 50);
+            global::Rhino.ApplicationSettings.AppearanceSettings.GridZAxisLineColor = System.Drawing.Color.FromArgb(50, 150, 255);
+            global::Rhino.ApplicationSettings.AppearanceSettings.SelectedObjectColor = System.Drawing.Color.FromArgb(255, 215, 0); // 24K Gold
+            global::Rhino.ApplicationSettings.AppearanceSettings.LockedObjectColor = System.Drawing.Color.FromArgb(70, 70, 75);
+            global::Rhino.ApplicationSettings.AppearanceSettings.FeedbackColor = System.Drawing.Color.FromArgb(0, 229, 255);
+            global::Rhino.ApplicationSettings.AppearanceSettings.CommandPromptBackgroundColor = System.Drawing.Color.FromArgb(24, 24, 26);
+            global::Rhino.ApplicationSettings.AppearanceSettings.CommandPromptTextColor = System.Drawing.Color.FromArgb(240, 240, 240);
+
+            global::Rhino.ApplicationSettings.AppearanceSettings.SetPaintColor(global::Rhino.ApplicationSettings.PaintColor.PanelBackground, System.Drawing.Color.FromArgb(28, 28, 32), false);
+            global::Rhino.ApplicationSettings.AppearanceSettings.SetPaintColor(global::Rhino.ApplicationSettings.PaintColor.InactiveTabBackground, System.Drawing.Color.FromArgb(20, 20, 22), false);
+            global::Rhino.ApplicationSettings.AppearanceSettings.SetPaintColor(global::Rhino.ApplicationSettings.PaintColor.ActiveViewportTitle, System.Drawing.Color.FromArgb(212, 175, 55), false);
+            global::Rhino.ApplicationSettings.AppearanceSettings.SetPaintColor(global::Rhino.ApplicationSettings.PaintColor.InactiveViewportTitle, System.Drawing.Color.FromArgb(140, 140, 145), false);
+            global::Rhino.ApplicationSettings.AppearanceSettings.SetPaintColor(global::Rhino.ApplicationSettings.PaintColor.TextEnabled, System.Drawing.Color.FromArgb(240, 240, 240), false);
+            global::Rhino.ApplicationSettings.AppearanceSettings.SetPaintColor(global::Rhino.ApplicationSettings.PaintColor.TextDisabled, System.Drawing.Color.FromArgb(100, 100, 105), false);
+        }
+        catch (Exception ex)
+        {
+            RhinoApp.WriteLine($"[RadianceStudio] Note configuring studio appearance: {ex.Message}");
         }
     }
 
@@ -403,6 +450,7 @@ public class RadianceStudioPlugIn : PlugIn
         if (!_initialWorkspaceConfigured)
         {
             _initialWorkspaceConfigured = true;
+            ApplyStudioAppearance();
             if (RhinoDoc.ActiveDoc != null)
             {
                 ConfigureJewelryDocument(RhinoDoc.ActiveDoc);

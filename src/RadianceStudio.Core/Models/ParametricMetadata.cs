@@ -51,13 +51,32 @@ public class ParametricMetadata
     /// <summary>
     /// Finds parametric metadata on a geometry instance if present.
     /// </summary>
-    public static ParametricMetadata? Find(GeometryBase geometry)
+    public static ParametricMetadata? Find(GeometryBase? geometry)
     {
         if (geometry == null) return null;
 
         if (geometry.UserDictionary.ContainsKey(UserDictionaryKey))
         {
             var dict = geometry.UserDictionary.GetDictionary(UserDictionaryKey);
+            if (dict != null)
+            {
+                return new ParametricMetadata(dict);
+            }
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    /// Finds parametric metadata on object attributes if present.
+    /// </summary>
+    public static ParametricMetadata? Find(Rhino.DocObjects.ObjectAttributes? attributes)
+    {
+        if (attributes == null) return null;
+
+        if (attributes.UserDictionary.ContainsKey(UserDictionaryKey))
+        {
+            var dict = attributes.UserDictionary.GetDictionary(UserDictionaryKey);
             if (dict != null)
             {
                 return new ParametricMetadata(dict);

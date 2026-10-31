@@ -567,8 +567,8 @@ public static class RibbonVectorIcons
         string key = $"ToolIcon_{tool.Id}_{size}_{(tool.IsImplemented ? "1" : "0")}";
         return GetCachedOrRender(key, size, (g, s) =>
         {
-            Color primaryColor = tool.IsImplemented ? JewelryDarkTheme.AccentGold : Color.FromArgb(0xB8, 0x86, 0x0B);
-            Color accentColor = tool.IsImplemented ? JewelryDarkTheme.AccentCyan : Color.FromArgb(0x8B, 0x73, 0x55);
+            Color primaryColor = tool.IsImplemented ? JewelryDarkTheme.AccentGold : Color.FromArgb(0x75, 0x6D, 0x5C);
+            Color accentColor = tool.IsImplemented ? JewelryDarkTheme.AccentCyan : Color.FromArgb(0x4A, 0x5E, 0x66);
 
             using var mainPen = new Pen(primaryColor, 1.8f);
             using var fillBrush = new SolidBrush(Color.FromArgb(primaryColor.Rb, primaryColor.Gb, primaryColor.Bb, 0x25));

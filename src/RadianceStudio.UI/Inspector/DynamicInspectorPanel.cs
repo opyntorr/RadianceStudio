@@ -184,9 +184,22 @@ public class DynamicInspectorPanel : Panel
         RhinoDoc.ActiveDoc?.Views?.Redraw();
     }
 
+    private DateTime _lastRedrawTime = DateTime.MinValue;
+
     private void OnViewModelPreviewUpdated(object? sender, EventArgs e)
     {
-        RhinoDoc.ActiveDoc?.Views?.Redraw();
+        var now = DateTime.UtcNow;
+        if ((now - _lastRedrawTime).TotalMilliseconds >= 16)
+        {
+            _lastRedrawTime = now;
+            try
+            {
+                RhinoDoc.ActiveDoc?.Views?.Redraw();
+            }
+            catch
+            {
+            }
+        }
     }
 
     public void ApplyCurrent()

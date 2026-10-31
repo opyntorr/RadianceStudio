@@ -76,6 +76,17 @@ for bar in dock_bars_node.findall('dock_bar'):
 for r in to_remove:
     dock_bars_node.remove(r)
 
+# 2b. Configure Command Prompt dock_bar placement to Bottom
+cmd_bar_guid = "1d3d1785-2332-428b-a838-b2fe39ec50f4"
+for bar in dock_bars_node.findall('dock_bar'):
+    if bar.get('guid') == cmd_bar_guid:
+        p_cmd = bar.find('placement')
+        if p_cmd is not None:
+            p_cmd.set('dock_location', 'Bottom')
+            p_cmd.set('recent_dock_location', 'Bottom')
+            p_cmd.set('dock_band_size', '200,28')
+            p_cmd.set('visible', 'True')
+
 # 3. Create or configure Radiance Studio top dock_bar
 top_bar = None
 for bar in dock_bars_node.findall('dock_bar'):
@@ -207,19 +218,22 @@ if last_col is not None:
         elif item.get('guid') == layers_guid:
             item.set('dock_bar', left_container_guid)
 
-# 7. Configure Dock Sites (Left: Layers, Right: Inspector/History, Top: Command + Radiance Ribbon)
+# 7. Configure Dock Sites (Left: Workspace Sidebar, Right: Inspector/History, Top: Ribbon, Bottom: Command Prompt)
 for site in root.findall('.//dock_site'):
     loc = site.get('location')
     if loc == 'Top':
         bands = site.findall('band')
         for b in bands:
             site.remove(b)
-            
-        b1 = ET.SubElement(site, 'band')
-        ET.SubElement(b1, 'dock_bar', {'guid': '1d3d1785-2332-428b-a838-b2fe39ec50f4'})
-        
-        b2 = ET.SubElement(site, 'band', {'size': '54'})
-        ET.SubElement(b2, 'dock_bar', {'guid': radiance_top_bar_guid})
+        b_top = ET.SubElement(site, 'band', {'size': '54'})
+        ET.SubElement(b_top, 'dock_bar', {'guid': radiance_top_bar_guid})
+
+    elif loc == 'Bottom':
+        bands = site.findall('band')
+        for b in bands:
+            site.remove(b)
+        b_bot = ET.SubElement(site, 'band', {'size': '28'})
+        ET.SubElement(b_bot, 'dock_bar', {'guid': cmd_bar_guid})
 
     elif loc == 'Left':
         for b in site.findall('band'):
@@ -235,4 +249,13 @@ for site in root.findall('.//dock_site'):
         ET.SubElement(b_right, 'dock_bar', {'guid': right_container_guid})
 
 tree.write(containers_path, encoding='utf-8', xml_declaration=True)
-print("[SUCCESS] Scheme__RadianceStudio containers.xml configured with Left Layers and Right Inspector/History!")
+print("[SUCCESS] Scheme__RadianceStudio containers.xml configured with Top Ribbon, Left Workspace, Right Inspector/History, and Bottom Command Bar!")
+
+# Also configure scheme settings (dark mode, obsidian viewport, jewelry theme)
+try:
+    import sys
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import configure_scheme_settings
+    configure_scheme_settings.configure_scheme_settings()
+except Exception as ex:
+    print(f"[WARN] Failed to configure scheme settings: {ex}")

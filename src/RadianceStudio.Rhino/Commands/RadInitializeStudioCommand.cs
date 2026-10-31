@@ -27,10 +27,13 @@ public class RadInitializeStudioCommand : Command
         // 1. Configure jewelry document tolerances and viewport grid
         RadianceStudioPlugIn.ConfigureJewelryDocument(doc);
 
-        // 2. Set top-level window title
+        // 2. Set top-level window title and suppress native menu bar
         RadianceStudioPlugIn.SetStudioWindowTitle();
 
-        // 3. Open and dock workspace panels (Ribbon, Inspector, History)
+        // 3. Apply obsidian jewelry appearance and bottom command prompt
+        RadianceStudioPlugIn.ApplyStudioAppearance();
+
+        // 4. Open and dock workspace panels (Ribbon, Inspector, History)
         RadianceStudioPlugIn.OpenStudioWorkspace();
 
         // 4. Write readiness token file to %TEMP%\radiance_ready_<pid>.tmp

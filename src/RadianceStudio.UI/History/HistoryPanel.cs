@@ -525,10 +525,13 @@ public class HistoryPanel : Panel
 
         foreach (var obj in e.RhinoObjects)
         {
-            if (obj?.Geometry == null) continue;
+            if (obj == null) continue;
 
-            var metadata = ParametricMetadata.Find(obj.Geometry);
-            if (metadata != null)
+            bool isParametric = (_graphManager != null && _graphManager.ContainsNode(obj.Id)) ||
+                                (obj.Geometry != null && ParametricMetadata.Find(obj.Geometry) != null) ||
+                                (obj.Attributes != null && ParametricMetadata.Find(obj.Attributes) != null);
+
+            if (isParametric)
             {
                 // Switch focus to the Parametric History / Operation Tree tab
                 try

@@ -96,6 +96,14 @@ public class ParametricGraphManager
     }
 
     /// <summary>
+    /// Checks whether a feature node exists in the graph.
+    /// </summary>
+    public bool ContainsNode(Guid id)
+    {
+        return _nodes.ContainsKey(id);
+    }
+
+    /// <summary>
     /// Returns all registered feature nodes sorted chronologically by their execution OrderIndex.
     /// </summary>
     public IReadOnlyList<FeatureNode> GetNodesInExecutionOrder()
