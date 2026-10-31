@@ -242,29 +242,11 @@ public class RadianceStudioPlugIn : PlugIn
 
         try
         {
-            RhinoPanels.RegisterPanel(this, typeof(QuickCommandsPanelHost), "Quick Commands", null);
+            RhinoPanels.RegisterPanel(this, typeof(JewelryLeftSidebarPanelHost), "Workspace", null);
         }
         catch (Exception ex)
         {
-            RhinoApp.WriteLine($"[RadianceStudio] Note registering Quick Commands panel: {ex.Message}");
-        }
-
-        try
-        {
-            RhinoPanels.RegisterPanel(this, typeof(JewelryLayersPanelHost), "Jewelry Layers", null);
-        }
-        catch (Exception ex)
-        {
-            RhinoApp.WriteLine($"[RadianceStudio] Note registering Jewelry Layers panel: {ex.Message}");
-        }
-
-        try
-        {
-            RhinoPanels.RegisterPanel(this, typeof(DisplayModesPanelHost), "Display Modes", null);
-        }
-        catch (Exception ex)
-        {
-            RhinoApp.WriteLine($"[RadianceStudio] Note registering Display Modes panel: {ex.Message}");
+            RhinoApp.WriteLine($"[RadianceStudio] Note registering Left Sidebar panel: {ex.Message}");
         }
 
         try
@@ -351,10 +333,8 @@ public class RadianceStudioPlugIn : PlugIn
             RhinoApp.RunScript("-_ToolbarGroup \"Standard Toolbars\" Hide", echo: false);
             RhinoApp.RunScript("-_ToolbarGroup \"Radiance Studio\" Show", echo: false);
 
-            // Open Left dock container panels: Quick Commands, Jewelry Layers, Display Modes
-            RhinoPanels.OpenPanel(QuickCommandsPanelHost.PanelId);
-            RhinoPanels.OpenPanelAsSibling(JewelryLayersPanelHost.PanelId, QuickCommandsPanelHost.PanelId);
-            RhinoPanels.OpenPanelAsSibling(DisplayModesPanelHost.PanelId, QuickCommandsPanelHost.PanelId);
+            // Open Left dock container: Unified Left Sidebar (Quick Commands, Projects, Layers, Display Modes)
+            RhinoPanels.OpenPanel(JewelryLeftSidebarPanelHost.PanelId);
 
             // Open Right dock container panels: Dynamic Commands (Inspector) & Dynamic Groups (History Tree)
             RhinoPanels.OpenPanel(DynamicInspectorPanelHost.PanelId);

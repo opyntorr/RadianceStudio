@@ -110,7 +110,7 @@ if tabs is None:
     tabs = ET.SubElement(top_bar, 'tabs')
 tabs.clear()
 tabs.set('name', 'Radiance Studio')
-tabs.set('selected_item', 'f1011111-1111-1111-1111-111111111102') # Rails
+tabs.set('selected_item', 'f1011111-1111-1111-1111-111111111101') # Rails
 tabs.set('display_style', 'Text')
 
 name_elem = ET.SubElement(tabs, 'name')
@@ -118,17 +118,22 @@ loc_elem = ET.SubElement(name_elem, 'locale_1033')
 loc_elem.text = 'Radiance Studio'
 
 toolbar_guids = [
-    "f1011111-1111-1111-1111-111111111101", # Projects
-    "f1011111-1111-1111-1111-111111111102", # Rails
-    "f1011111-1111-1111-1111-111111111103", # Shanks
-    "f1011111-1111-1111-1111-111111111104", # Gems
-    "f1011111-1111-1111-1111-111111111105", # Settings
-    "f1011111-1111-1111-1111-111111111106", # Cutters
-    "f1011111-1111-1111-1111-111111111107", # Transform
-    "f1011111-1111-1111-1111-111111111108", # Art & Textures
-    "f1011111-1111-1111-1111-111111111109", # Render
-    "f1011111-1111-1111-1111-111111111110", # Manufacturing
-    "f1011111-1111-1111-1111-111111111111"  # Drafting
+    "f1011111-1111-1111-1111-111111111101", # Curve
+    "f1011111-1111-1111-1111-111111111102", # Surface
+    "f1011111-1111-1111-1111-111111111103", # Solid
+    "f1011111-1111-1111-1111-111111111104", # Tools
+    "f1011111-1111-1111-1111-111111111105", # Gems
+    "f1011111-1111-1111-1111-111111111106", # Settings
+    "f1011111-1111-1111-1111-111111111107", # Cutters
+    "f1011111-1111-1111-1111-111111111108", # Transform
+    "f1011111-1111-1111-1111-111111111109", # Clayoo
+    "f1011111-1111-1111-1111-111111111110", # Render
+    "f1011111-1111-1111-1111-111111111111", # View
+    "f1011111-1111-1111-1111-111111111112", # Mesh
+    "f1011111-1111-1111-1111-111111111113", # Dimension
+    "f1011111-1111-1111-1111-111111111114", # Analyze
+    "f1011111-1111-1111-1111-111111111115", # Misc
+    "f1011111-1111-1111-1111-111111111116"  # Manufacturing
 ]
 
 for tb_guid in toolbar_guids:
@@ -182,17 +187,16 @@ if l_tabs is None:
     l_tabs = ET.SubElement(left_bar, 'tabs')
 l_tabs.clear()
 l_tabs.set('name', 'Left Container')
-l_tabs.set('selected_item', quick_cmds_guid)
+left_sidebar_guid = "4f101111-2222-3333-4444-555555555502"
+l_tabs.set('selected_item', left_sidebar_guid)
 l_tabs.set('display_style', 'BitmapAndText')
 
 name_elem = ET.SubElement(l_tabs, 'name')
 loc_elem = ET.SubElement(name_elem, 'locale_1033')
-loc_elem.text = 'Quick Commands'
+loc_elem.text = 'Workspace'
 
-ET.SubElement(l_tabs, 'panel', {'guid': quick_cmds_guid, 'plug_in': plugin_guid, 'name': 'Quick Commands'})
-ET.SubElement(l_tabs, 'panel', {'guid': jewelry_layers_guid, 'plug_in': plugin_guid, 'name': 'Jewelry Layers'})
+ET.SubElement(l_tabs, 'panel', {'guid': left_sidebar_guid, 'plug_in': plugin_guid, 'name': 'Workspace'})
 ET.SubElement(l_tabs, 'panel', {'guid': layers_guid, 'plug_in': layers_plugin_guid, 'name': 'Layers'})
-ET.SubElement(l_tabs, 'panel', {'guid': display_modes_guid, 'plug_in': plugin_guid, 'name': 'Display Modes'})
 
 # 6. Fix last_collection_panel_was_in
 last_col = root.find('.//last_collection_panel_was_in')
