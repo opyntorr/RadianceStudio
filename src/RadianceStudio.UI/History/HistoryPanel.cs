@@ -54,7 +54,7 @@ public class HistoryPanel : Panel
         // 1. Header with Mode Toggle
         _titleLabel = new Label
         {
-            Text = "Parametric History",
+            Text = "Dynamic Groups",
             Font = JewelryDarkTheme.HeaderFont,
             TextColor = JewelryDarkTheme.AccentGold
         };

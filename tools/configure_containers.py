@@ -22,6 +22,9 @@ layers_plugin_guid = "a6f26df9-1ffd-4cf3-b1ec-a11a28a40892"
 
 right_container_guid = "5a5b89a0-830f-c90d-5f60-35c2e907e18c"
 left_container_guid = "4f101111-2222-3333-4444-555555555501"
+quick_cmds_guid = "51c420b1-18f9-4672-91de-4a47e7d99001"
+jewelry_layers_guid = "51c420b1-18f9-4672-91de-4a47e7d99002"
+display_modes_guid = "51c420b1-18f9-4672-91de-4a47e7d99003"
 radiance_top_bar_guid = "e8b52194-4360-4963-8a02-984cd4d47150"
 standard_toolbars_guid = "171011a9-a956-41ee-853e-3ccc0c0db1d8"
 
@@ -179,13 +182,17 @@ if l_tabs is None:
     l_tabs = ET.SubElement(left_bar, 'tabs')
 l_tabs.clear()
 l_tabs.set('name', 'Left Container')
-l_tabs.set('selected_item', layers_guid)
+l_tabs.set('selected_item', quick_cmds_guid)
 l_tabs.set('display_style', 'BitmapAndText')
 
 name_elem = ET.SubElement(l_tabs, 'name')
 loc_elem = ET.SubElement(name_elem, 'locale_1033')
-loc_elem.text = 'Layers'
+loc_elem.text = 'Quick Commands'
+
+ET.SubElement(l_tabs, 'panel', {'guid': quick_cmds_guid, 'plug_in': plugin_guid, 'name': 'Quick Commands'})
+ET.SubElement(l_tabs, 'panel', {'guid': jewelry_layers_guid, 'plug_in': plugin_guid, 'name': 'Jewelry Layers'})
 ET.SubElement(l_tabs, 'panel', {'guid': layers_guid, 'plug_in': layers_plugin_guid, 'name': 'Layers'})
+ET.SubElement(l_tabs, 'panel', {'guid': display_modes_guid, 'plug_in': plugin_guid, 'name': 'Display Modes'})
 
 # 6. Fix last_collection_panel_was_in
 last_col = root.find('.//last_collection_panel_was_in')

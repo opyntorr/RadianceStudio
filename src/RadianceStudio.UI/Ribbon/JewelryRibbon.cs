@@ -4,13 +4,14 @@ using System;
 using System.Collections.Generic;
 using Eto.Drawing;
 using Eto.Forms;
-using RadianceStudio.Core.Enums;
 using RadianceStudio.UI.Theme;
 
 /// <summary>
-/// Top horizontal ribbon bar (Height = 105) providing fast, organized access to the
-/// 6 jewelry CAD workflow tabs: Rails &amp; Shanks, Gems, Settings, Cutters, Transform, and Manufacturing.
-/// Built exclusively with pure Eto.Forms and procedural vector icons.
+/// Top horizontal commercial ribbon bar (Height = 105) hosting the 16 workflow tabs
+/// in exact structural parity with the reference design:
+/// Curve, Surface, Solid, Tools, Gems, Settings, Cutters, Transform, Clayoo, Render,
+/// View, Mesh, Dimension, Analyze, Misc, Manufacturing.
+/// Features colored indicator dots, real-time command search bar, and tool flyouts.
 /// </summary>
 public class JewelryRibbon : Panel
 {
@@ -20,6 +21,7 @@ public class JewelryRibbon : Panel
     public event EventHandler<string>? CommandRequested;
 
     private readonly TabControl _tabControl;
+    private readonly TopSearchBar _searchBar;
 
     public JewelryRibbon()
     {
@@ -31,15 +33,31 @@ public class JewelryRibbon : Panel
             BackgroundColor = JewelryDarkTheme.BackgroundDark
         };
 
-        // Create the 6 workflow tabs
-        _tabControl.Pages.Add(CreateRailsAndShanksTab());
-        _tabControl.Pages.Add(CreateGemsTab());
-        _tabControl.Pages.Add(CreateSettingsTab());
-        _tabControl.Pages.Add(CreateCuttersTab());
-        _tabControl.Pages.Add(CreateTransformTab());
-        _tabControl.Pages.Add(CreateManufacturingTab());
+        // Populate all 16 tabs in exact order
+        foreach (var tabDef in RibbonToolCatalog.Tabs)
+        {
+            _tabControl.Pages.Add(CreateTab(tabDef));
+        }
 
-        Content = _tabControl;
+        // Top Search Bar
+        _searchBar = new TopSearchBar();
+        _searchBar.ToolSelected += OnSearchToolSelected;
+
+        // Assembly: TabControl scaled with SearchBar docked in header row
+        var headerLayout = new TableLayout
+        {
+            Padding = new Padding(4, 2),
+            Spacing = new Size(8, 0),
+            Rows =
+            {
+                new TableRow(
+                    new TableCell(_tabControl, true),
+                    new TableCell(_searchBar, false)
+                )
+            }
+        };
+
+        Content = headerLayout;
         JewelryDarkTheme.ApplyTheme(this);
     }
 
@@ -55,377 +73,179 @@ public class JewelryRibbon : Panel
         }
     }
 
-    #region Tab Builders
-
-    private TabPage CreateRailsAndShanksTab()
+    public void SelectTab(string tabId)
     {
-        var page = new TabPage
+        for (int i = 0; i < _tabControl.Pages.Count; i++)
         {
-            Text = "Rails & Shanks",
-            Image = RibbonVectorIcons.GetRailsAndShanksIcon(16),
-            BackgroundColor = JewelryDarkTheme.SurfaceCard
-        };
-
-        var row = new StackLayout
-        {
-            Orientation = Orientation.Horizontal,
-            Spacing = 6,
-            Padding = new Padding(4)
-        };
-
-        // Section: Ring Rails
-        row.Items.Add(CreateSection("Ring Rails", new Control[]
-        {
-            CreateButton("Round", RibbonVectorIcons.GetRingRailIcon(RailProfileType.CanonicalCircle), "_RadRingRail Round", "Standard Round Ring Rail"),
-            CreateButton("Euro", RibbonVectorIcons.GetRingRailIcon(RailProfileType.EuroShank), "_RadRingRail Euro", "Euro-Shank Ring Rail with Anti-Spin Corners"),
-            CreateButton("Cushion", RibbonVectorIcons.GetRingRailIcon(RailProfileType.CushionSquircle), "_RadRingRail Cushion", "Cushion Squircle Ergonomic Rail"),
-            CreateButton("Oval", RibbonVectorIcons.GetRingRailIcon(RailProfileType.CanonicalCircle), "_RadRingRail Oval", "Oval Ring Rail"),
-            CreateButton("Square", RibbonVectorIcons.GetRingRailIcon(RailProfileType.CushionSquircle), "_RadRingRail Square", "Square Profile Ring Rail"),
-            CreateButton("Bypass", RibbonVectorIcons.GetRingRailIcon(RailProfileType.BypassOverlap), "_RadRingRail Bypass", "3D Bypass Overlapping Rail")
-        }));
-
-        row.Items.Add(CreateSeparator());
-
-        // Section: Shanks
-        row.Items.Add(CreateSection("Shanks", new Control[]
-        {
-            CreateButton("Standard", RibbonVectorIcons.GetShankIcon(ShankProfileType.Flat), "_RadShank Flat", "Standard Flat Shank"),
-            CreateButton("Euro-Shank", RibbonVectorIcons.GetShankIcon(ShankProfileType.DShape), "_RadShank EuroShank", "Euro-Shank Anti-Spin Profile"),
-            CreateButton("Cathedral", RibbonVectorIcons.GetShankIcon(ShankProfileType.Cathedral), "_RadShank Cathedral", "Elevated Cathedral Arch Shank"),
-            CreateButton("Bypass", RibbonVectorIcons.GetShankIcon(ShankProfileType.Flat), "_RadShank Bypass", "Spiral Bypass Shank"),
-            CreateButton("D-Shape", RibbonVectorIcons.GetShankIcon(ShankProfileType.DShape), "_RadShank DShape", "D-Shape Half-Round Shank"),
-            CreateButton("Comfort-Fit", RibbonVectorIcons.GetShankIcon(ShankProfileType.ComfortFit), "_RadShank ComfortFit", "Double-Crowned Comfort-Fit Shank"),
-            CreateButton("Knife-Edge", RibbonVectorIcons.GetShankIcon(ShankProfileType.KnifeEdge), "_RadShank KnifeEdge", "Peaked Knife-Edge Shank")
-        }));
-
-        page.Content = new Scrollable { Content = row, BackgroundColor = JewelryDarkTheme.SurfaceCard };
-        return page;
-    }
-
-    private TabPage CreateGemsTab()
-    {
-        var page = new TabPage
-        {
-            Text = "Gems",
-            Image = RibbonVectorIcons.GetGemsIcon(16),
-            BackgroundColor = JewelryDarkTheme.SurfaceCard
-        };
-
-        var row = new StackLayout
-        {
-            Orientation = Orientation.Horizontal,
-            Spacing = 6,
-            Padding = new Padding(4)
-        };
-
-        // Gem Loader Quick Cuts
-        var cutsDropDown = new DropDown
-        {
-            Width = 120,
-            BackgroundColor = JewelryDarkTheme.SurfaceElevated,
-            TextColor = JewelryDarkTheme.TextPrimary
-        };
-
-        var cutTypes = new[]
-        {
-            GemCutType.RoundBrilliant, GemCutType.Princess, GemCutType.Oval,
-            GemCutType.Pear, GemCutType.Emerald, GemCutType.Marquise,
-            GemCutType.Cushion, GemCutType.Baguette, GemCutType.Radiant,
-            GemCutType.Asscher, GemCutType.Heart, GemCutType.Trilliant,
-            GemCutType.TaperedBaguette
-        };
-
-        foreach (var c in cutTypes)
-        {
-            cutsDropDown.Items.Add(new ListItem { Text = c.ToString(), Key = c.ToString() });
+            if (string.Equals(_tabControl.Pages[i].Text, tabId, StringComparison.OrdinalIgnoreCase))
+            {
+                _tabControl.SelectedIndex = i;
+                break;
+            }
         }
-        cutsDropDown.SelectedIndex = 0;
+    }
 
-        var loadGemBtn = new Button
+    private TabPage CreateTab(RibbonTabDefinition tabDef)
+    {
+        var page = new TabPage
         {
-            Text = "Load Gem",
-            Image = RibbonVectorIcons.GetGemCutIcon(GemCutType.RoundBrilliant),
-            BackgroundColor = JewelryDarkTheme.SurfaceElevated,
-            TextColor = JewelryDarkTheme.AccentCyan
-        };
-        loadGemBtn.Click += (s, e) =>
-        {
-            string cutName = cutsDropDown.SelectedKey ?? "RoundBrilliant";
-            TriggerAction($"_RadGemLoader {cutName}");
+            Text = tabDef.Title,
+            Image = RibbonVectorIcons.GetTabDotIcon(tabDef.IndicatorColor, 12),
+            BackgroundColor = JewelryDarkTheme.SurfaceCard,
+            ToolTip = tabDef.Description
         };
 
-        var gemLoaderBox = new StackLayout
+        var toolsLayout = new StackLayout
+        {
+            Orientation = Orientation.Horizontal,
+            Spacing = 4,
+            Padding = new Padding(6, 4),
+            VerticalContentAlignment = VerticalAlignment.Center
+        };
+
+        var tools = RibbonToolCatalog.GetToolsForTab(tabDef.Id);
+        foreach (var tool in tools)
+        {
+            toolsLayout.Items.Add(CreateToolButton(tool));
+        }
+
+        // Right side utility icons (Settings, Help, Dynamic Toggle)
+        var utilLayout = new StackLayout
         {
             Orientation = Orientation.Vertical,
-            Spacing = 4,
-            Items = { cutsDropDown, loadGemBtn }
-        };
-
-        row.Items.Add(CreateSection("Gem Loader (13 Cuts)", new Control[] { gemLoaderBox }));
-        row.Items.Add(CreateSeparator());
-
-        // Placement tools
-        row.Items.Add(CreateSection("Stone Placement", new Control[]
-        {
-            CreateButton("On Curve", RibbonVectorIcons.GetGemsOnCurveIcon(), "_RadGemOnCurve", "Distribute Gems along 3D Space Curve"),
-            CreateButton("Between Curves", RibbonVectorIcons.GetGemsOnCurveIcon(), "_RadGemsBetweenCurves", "Distribute Gem Row between Two Rails"),
-            CreateButton("3D Surface Pavé", RibbonVectorIcons.GetPaveSurfaceIcon(), "_RadPave", "Automatic Hexagonal / Honeycomb Surface Pavé")
-        }));
-
-        page.Content = new Scrollable { Content = row, BackgroundColor = JewelryDarkTheme.SurfaceCard };
-        return page;
-    }
-
-    private TabPage CreateSettingsTab()
-    {
-        var page = new TabPage
-        {
-            Text = "Settings",
-            Image = RibbonVectorIcons.GetSettingsIcon(16),
-            BackgroundColor = JewelryDarkTheme.SurfaceCard
-        };
-
-        var row = new StackLayout
-        {
-            Orientation = Orientation.Horizontal,
-            Spacing = 6,
-            Padding = new Padding(4)
-        };
-
-        row.Items.Add(CreateSection("Prongs", new Control[]
-        {
-            CreateButton("4-Prong", RibbonVectorIcons.GetProngHeadIcon(4), "_RadProngHead 4", "Parametric 4-Prong Head"),
-            CreateButton("6-Prong", RibbonVectorIcons.GetProngHeadIcon(6), "_RadProngHead 6", "Classic Tiffany-style 6-Prong Head"),
-            CreateButton("8-Prong", RibbonVectorIcons.GetProngHeadIcon(8), "_RadProngHead 8", "High-Security 8-Prong Head"),
-            CreateButton("V-Prongs", RibbonVectorIcons.GetProngHeadIcon(4), "_RadProngHead VProng", "Corner Chevron V-Prongs for Princess / Marquise"),
-            CreateButton("Shared", RibbonVectorIcons.GetProngHeadIcon(4), "_RadProngHead SharedProng", "Shared Prongs for Eternity Bands")
-        }));
-
-        row.Items.Add(CreateSeparator());
-
-        row.Items.Add(CreateSection("Bezels & Halos", new Control[]
-        {
-            CreateButton("Full Bezel", RibbonVectorIcons.GetFullBezelIcon(), "_RadBezel Full", "Full 360-degree Metal Collar Bezel"),
-            CreateButton("Semi-Bezel", RibbonVectorIcons.GetSemiBezelIcon(), "_RadBezel Semi", "Dual Open-Side Semi-Bezel"),
-            CreateButton("Halos", RibbonVectorIcons.GetGemsOnCurveIcon(), "_RadHalo Single", "Surrounding Melee Gem Halo")
-        }));
-
-        page.Content = new Scrollable { Content = row, BackgroundColor = JewelryDarkTheme.SurfaceCard };
-        return page;
-    }
-
-    private TabPage CreateCuttersTab()
-    {
-        var page = new TabPage
-        {
-            Text = "Cutters",
-            Image = RibbonVectorIcons.GetCuttersIcon(16),
-            BackgroundColor = JewelryDarkTheme.SurfaceCard
-        };
-
-        var row = new StackLayout
-        {
-            Orientation = Orientation.Horizontal,
-            Spacing = 6,
-            Padding = new Padding(4)
-        };
-
-        row.Items.Add(CreateSection("Seat & Hole Cutters", new Control[]
-        {
-            CreateButton("Gem Cutters", RibbonVectorIcons.GetCuttersIcon(), "_RadCutter GemCutter", "Parametric Seat Cutters for Stone Rows"),
-            CreateButton("Light Holes", RibbonVectorIcons.GetCuttersIcon(), "_RadCutter LightHole", "Piercing Light Hole Punches"),
-            CreateButton("Channel Cutters", RibbonVectorIcons.GetCuttersIcon(), "_RadCutter Channel", "Channel Groove Cutters")
-        }));
-
-        row.Items.Add(CreateSeparator());
-
-        row.Items.Add(CreateSection("Booleans", new Control[]
-        {
-            CreateButton("1-Click Boolean", RibbonVectorIcons.GetBooleanDifferenceIcon(), "_RadApplyBooleanCutters", "Subtract All Active Cutters from Metal Solenoids")
-        }));
-
-        page.Content = new Scrollable { Content = row, BackgroundColor = JewelryDarkTheme.SurfaceCard };
-        return page;
-    }
-
-    private TabPage CreateTransformTab()
-    {
-        var page = new TabPage
-        {
-            Text = "Transform",
-            Image = RibbonVectorIcons.GetTransformIcon(16),
-            BackgroundColor = JewelryDarkTheme.SurfaceCard
-        };
-
-        var row = new StackLayout
-        {
-            Orientation = Orientation.Horizontal,
-            Spacing = 6,
-            Padding = new Padding(4)
-        };
-
-        row.Items.Add(CreateSection("Array & Mirror", new Control[]
-        {
-            CreateButton("Polar Array", RibbonVectorIcons.GetTransformIcon(), "_RadPolarArray", "Radial Polar Array around Ring Axis"),
-            CreateButton("Mirror", RibbonVectorIcons.GetTransformIcon(), "_RadMirror", "Symmetric Mirror across XZ / YZ Plane")
-        }));
-
-        row.Items.Add(CreateSeparator());
-
-        row.Items.Add(CreateSection("Deformation", new Control[]
-        {
-            CreateButton("Surface Flow", RibbonVectorIcons.GetTransformIcon(), "_RadSurfaceFlow", "Flow Planar Details along 3D Ring Surface"),
-            CreateButton("Comfort Deform", RibbonVectorIcons.GetTransformIcon(), "_RadComfortDeform", "Ergonomic Inside-Band Comfort Deformation")
-        }));
-
-        page.Content = new Scrollable { Content = row, BackgroundColor = JewelryDarkTheme.SurfaceCard };
-        return page;
-    }
-
-    private TabPage CreateManufacturingTab()
-    {
-        var page = new TabPage
-        {
-            Text = "Manufacturing",
-            Image = RibbonVectorIcons.GetManufacturingIcon(16),
-            BackgroundColor = JewelryDarkTheme.SurfaceCard
-        };
-
-        var row = new StackLayout
-        {
-            Orientation = Orientation.Horizontal,
-            Spacing = 6,
-            Padding = new Padding(4)
-        };
-
-        // Alloy Selector
-        var alloyDropDown = new DropDown
-        {
-            Width = 140,
-            BackgroundColor = JewelryDarkTheme.SurfaceElevated,
-            TextColor = JewelryDarkTheme.AccentGold
-        };
-        alloyDropDown.Items.Add(new ListItem { Text = "14K Yellow Gold", Key = "14K_Yellow" });
-        alloyDropDown.Items.Add(new ListItem { Text = "18K Yellow Gold", Key = "18K_Yellow" });
-        alloyDropDown.Items.Add(new ListItem { Text = "14K White Gold", Key = "14K_White" });
-        alloyDropDown.Items.Add(new ListItem { Text = "18K White Gold", Key = "18K_White" });
-        alloyDropDown.Items.Add(new ListItem { Text = "Platinum 950", Key = "Pt950" });
-        alloyDropDown.Items.Add(new ListItem { Text = "Sterling Silver 925", Key = "Ag925" });
-        alloyDropDown.SelectedIndex = 0;
-        alloyDropDown.SelectedIndexChanged += (s, e) =>
-        {
-            TriggerAction($"_RadSetAlloy {alloyDropDown.SelectedKey}");
-        };
-
-        var alloyBox = new StackLayout
-        {
-            Orientation = Orientation.Vertical,
-            Spacing = 4,
+            Spacing = 2,
+            Padding = new Padding(2),
             Items =
             {
-                new Label { Text = "Precious Alloy:", TextColor = JewelryDarkTheme.TextSecondary, Font = JewelryDarkTheme.SmallFont },
-                alloyDropDown
+                CreateIconButton(RibbonVectorIcons.GetGearIcon(16), "! _Options", "Application Settings"),
+                CreateIconButton(RibbonVectorIcons.GetHelpIcon(16), "! _Help", "Help and Documentation"),
+                CreateIconButton(RibbonVectorIcons.GetDynamicToggleIcon(16), "_RadToggleTreeMode", "Toggle Parametric Dynamic Mode")
             }
         };
 
-        row.Items.Add(CreateSection("Materials", new Control[] { alloyBox }));
-        row.Items.Add(CreateSeparator());
-
-        row.Items.Add(CreateSection("Diagnostics & Export", new Control[]
+        var scrollable = new Scrollable
         {
-            CreateButton("Live BOM Report", RibbonVectorIcons.GetManufacturingIcon(), "_RadBOM", "Calculates Weights, Gem Counts, and Material Cost"),
-            CreateButton("Wall Thickness", RibbonVectorIcons.GetManufacturingIcon(), "_RadWallThickness", "Diagnoses Thin Walls (< 0.8mm) for Casting Feasibility"),
-            CreateButton("Hermetic STL", RibbonVectorIcons.GetManufacturingIcon(), "_RadExportSTL", "Exports Watertight 3D Print STL via ShrinkWrap")
-        }));
+            BackgroundColor = JewelryDarkTheme.SurfaceCard,
+            Content = toolsLayout,
+            Border = BorderType.None
+        };
 
-        page.Content = new Scrollable { Content = row, BackgroundColor = JewelryDarkTheme.SurfaceCard };
+        var pageLayout = new TableLayout
+        {
+            Rows =
+            {
+                new TableRow(
+                    new TableCell(scrollable, true),
+                    new TableCell(utilLayout, false)
+                )
+            }
+        };
+
+        page.Content = pageLayout;
         return page;
     }
 
-    #endregion
-
-    #region Helper Controls
-
-    private static Control CreateSeparator()
-    {
-        return new Panel
-        {
-            Width = 1,
-            BackgroundColor = JewelryDarkTheme.BorderSubtle,
-            Height = 70
-        };
-    }
-
-    private static Panel CreateSection(string title, IEnumerable<Control> controls)
-    {
-        var container = new StackLayout
-        {
-            Orientation = Orientation.Vertical,
-            Spacing = 3,
-            HorizontalContentAlignment = HorizontalAlignment.Center
-        };
-
-        var controlsRow = new StackLayout
-        {
-            Orientation = Orientation.Horizontal,
-            Spacing = 4
-        };
-
-        foreach (var c in controls)
-        {
-            controlsRow.Items.Add(c);
-        }
-
-        container.Items.Add(controlsRow);
-        container.Items.Add(new Label
-        {
-            Text = title,
-            Font = JewelryDarkTheme.SmallFont,
-            TextColor = JewelryDarkTheme.TextMuted,
-            TextAlignment = TextAlignment.Center
-        });
-
-        return new Panel
-        {
-            Content = container,
-            Padding = new Padding(2)
-        };
-    }
-
-    private Button CreateButton(string label, Image? icon, string command, string tooltip)
+    private Control CreateToolButton(ToolDefinition tool)
     {
         var btn = new Button
         {
-            Text = label,
-            Image = icon,
-            ImagePosition = ButtonImagePosition.Above,
-            ToolTip = tooltip,
-            BackgroundColor = JewelryDarkTheme.SurfaceElevated,
-            TextColor = JewelryDarkTheme.TextPrimary,
+            Width = 62,
+            Height = 68,
+            Text = FormatButtonText(tool.Name),
             Font = JewelryDarkTheme.SmallFont,
-            Height = 56,
-            Width = 66
+            BackgroundColor = tool.IsImplemented ? JewelryDarkTheme.SurfaceElevated : Color.FromArgb(0x24, 0x24, 0x28),
+            TextColor = tool.IsImplemented ? JewelryDarkTheme.TextPrimary : Color.FromArgb(0x9E, 0x9E, 0x9E),
+            Image = RibbonVectorIcons.GetToolIcon(tool, 30),
+            ImagePosition = ButtonImagePosition.Above,
+            ToolTip = $"{tool.Name}\n{tool.Description}\nCommand: {tool.CommandOrMacro}"
         };
 
-        btn.Click += (s, e) => TriggerAction(command);
+        btn.Click += (s, e) => OnToolClicked(tool, btn);
         return btn;
     }
 
-    private void TriggerAction(string command)
+    private Control CreateIconButton(Image? icon, string command, string tooltip)
     {
-        ActionTriggered?.Invoke(this, command);
-        CommandRequested?.Invoke(this, command);
+        var btn = new Button
+        {
+            Width = 22,
+            Height = 22,
+            Image = icon,
+            BackgroundColor = JewelryDarkTheme.SurfaceCard,
+            ToolTip = tooltip
+        };
 
-        // If running in Rhino environment, execute command string
+        btn.Click += (s, e) => CommandRequested?.Invoke(this, command);
+        return btn;
+    }
+
+    private void OnToolClicked(ToolDefinition tool, Button sourceButton)
+    {
+        if (tool.HasGroupBadge && !string.IsNullOrEmpty(tool.GroupKey))
+        {
+            var group = RibbonToolCatalog.GetToolGroup(tool.GroupKey);
+            if (group != null && group.SubTools.Count > 0)
+            {
+                ShowToolGroupMenu(group, sourceButton);
+                return;
+            }
+        }
+
+        // Direct command execution
+        ActionTriggered?.Invoke(this, tool.CommandOrMacro);
+        CommandRequested?.Invoke(this, tool.CommandOrMacro);
+    }
+
+    private void ShowToolGroupMenu(ToolGroupDefinition group, Button sourceButton)
+    {
+        var menu = new ContextMenu();
+        foreach (var subTool in group.SubTools)
+        {
+            var item = new ButtonMenuItem
+            {
+                Text = subTool.Name,
+                ToolTip = subTool.Description
+            };
+
+            var target = subTool;
+            item.Click += (s, e) =>
+            {
+                ActionTriggered?.Invoke(this, target.CommandOrMacro);
+                CommandRequested?.Invoke(this, target.CommandOrMacro);
+            };
+
+            menu.Items.Add(item);
+        }
+
         try
         {
-            Rhino.RhinoApp.RunScript(command, false);
+            menu.Show(sourceButton, new PointF(0, sourceButton.Height));
         }
         catch
         {
-            // Headless / outside Rhino - event notification suffices
+            // Context menu show might fail if control is detached in test harness
         }
     }
 
-    #endregion
+    private void OnSearchToolSelected(object? sender, ToolDefinition tool)
+    {
+        SelectTab(tool.TabId);
+        ActionTriggered?.Invoke(this, tool.CommandOrMacro);
+        CommandRequested?.Invoke(this, tool.CommandOrMacro);
+    }
+
+    private static string FormatButtonText(string name)
+    {
+        if (string.IsNullOrEmpty(name)) return string.Empty;
+        if (name.Length <= 10) return name;
+
+        // Truncate or break words gracefully for 2-row button label
+        int spaceIdx = name.IndexOf(' ');
+        if (spaceIdx > 0 && spaceIdx < 10)
+        {
+            return name.Substring(0, spaceIdx) + "\n" + name.Substring(spaceIdx + 1);
+        }
+
+        return name.Length > 12 ? name.Substring(0, 10) + "…" : name;
+    }
 }

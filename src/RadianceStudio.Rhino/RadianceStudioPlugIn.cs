@@ -242,20 +242,47 @@ public class RadianceStudioPlugIn : PlugIn
 
         try
         {
-            RhinoPanels.RegisterPanel(this, typeof(DynamicInspectorPanelHost), "Jewelry Inspector", null);
+            RhinoPanels.RegisterPanel(this, typeof(QuickCommandsPanelHost), "Quick Commands", null);
         }
         catch (Exception ex)
         {
-            RhinoApp.WriteLine($"[RadianceStudio] Note registering Inspector panel: {ex.Message}");
+            RhinoApp.WriteLine($"[RadianceStudio] Note registering Quick Commands panel: {ex.Message}");
         }
 
         try
         {
-            RhinoPanels.RegisterPanel(this, typeof(HistoryPanelHost), "Parametric History", null);
+            RhinoPanels.RegisterPanel(this, typeof(JewelryLayersPanelHost), "Jewelry Layers", null);
         }
         catch (Exception ex)
         {
-            RhinoApp.WriteLine($"[RadianceStudio] Note registering History panel: {ex.Message}");
+            RhinoApp.WriteLine($"[RadianceStudio] Note registering Jewelry Layers panel: {ex.Message}");
+        }
+
+        try
+        {
+            RhinoPanels.RegisterPanel(this, typeof(DisplayModesPanelHost), "Display Modes", null);
+        }
+        catch (Exception ex)
+        {
+            RhinoApp.WriteLine($"[RadianceStudio] Note registering Display Modes panel: {ex.Message}");
+        }
+
+        try
+        {
+            RhinoPanels.RegisterPanel(this, typeof(DynamicInspectorPanelHost), "Dynamic Commands", null);
+        }
+        catch (Exception ex)
+        {
+            RhinoApp.WriteLine($"[RadianceStudio] Note registering Dynamic Commands panel: {ex.Message}");
+        }
+
+        try
+        {
+            RhinoPanels.RegisterPanel(this, typeof(HistoryPanelHost), "Dynamic Groups", null);
+        }
+        catch (Exception ex)
+        {
+            RhinoApp.WriteLine($"[RadianceStudio] Note registering Dynamic Groups panel: {ex.Message}");
         }
     }
 
@@ -324,11 +351,12 @@ public class RadianceStudioPlugIn : PlugIn
             RhinoApp.RunScript("-_ToolbarGroup \"Standard Toolbars\" Hide", echo: false);
             RhinoApp.RunScript("-_ToolbarGroup \"Radiance Studio\" Show", echo: false);
 
-            // Open native Layers panel on the left container
-            Guid layersPanelId = new("3610bf83-047d-4f7f-93fd-163ea305b493");
-            RhinoPanels.OpenPanel(layersPanelId);
+            // Open Left dock container panels: Quick Commands, Jewelry Layers, Display Modes
+            RhinoPanels.OpenPanel(QuickCommandsPanelHost.PanelId);
+            RhinoPanels.OpenPanelAsSibling(JewelryLayersPanelHost.PanelId, QuickCommandsPanelHost.PanelId);
+            RhinoPanels.OpenPanelAsSibling(DisplayModesPanelHost.PanelId, QuickCommandsPanelHost.PanelId);
 
-            // Open Inspector and History as docked siblings in the right panel
+            // Open Right dock container panels: Dynamic Commands (Inspector) & Dynamic Groups (History Tree)
             RhinoPanels.OpenPanel(DynamicInspectorPanelHost.PanelId);
             RhinoPanels.OpenPanelAsSibling(HistoryPanelHost.PanelId, DynamicInspectorPanelHost.PanelId);
 

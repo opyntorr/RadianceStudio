@@ -500,6 +500,192 @@ public static class RibbonVectorIcons
 
     #endregion
 
+    #region Commercial 16-Tab & Tool Badging Icons
+
+    public static Bitmap? GetTabDotIcon(Color color, int size = 12)
+    {
+        string key = $"TabDot_{color.ToHex()}_{size}";
+        return GetCachedOrRender(key, size, (g, s) =>
+        {
+            using var brush = new SolidBrush(color);
+            float pad = s * 0.15f;
+            g.FillRectangle(brush, pad, pad, s - 2 * pad, s - 2 * pad);
+        });
+    }
+
+    public static Bitmap? GetGearIcon(int size = 18)
+    {
+        return GetCachedOrRender($"Util_Gear_{size}", size, (g, s) =>
+        {
+            using var pen = new Pen(JewelryDarkTheme.TextSecondary, 1.5f);
+            float cx = s / 2f, cy = s / 2f, r = s * 0.35f;
+            g.DrawEllipse(pen, cx - r, cy - r, r * 2f, r * 2f);
+            g.DrawEllipse(pen, cx - r * 0.5f, cy - r * 0.5f, r, r);
+        });
+    }
+
+    public static Bitmap? GetHelpIcon(int size = 18)
+    {
+        return GetCachedOrRender($"Util_Help_{size}", size, (g, s) =>
+        {
+            using var brush = new SolidBrush(JewelryDarkTheme.TextSecondary);
+            using var font = new Font(FontFamilies.Sans, s * 0.6f, FontStyle.Bold);
+            g.DrawText(font, brush, s * 0.25f, s * 0.15f, "?");
+        });
+    }
+
+    public static Bitmap? GetDynamicToggleIcon(int size = 18)
+    {
+        return GetCachedOrRender($"Util_DynToggle_{size}", size, (g, s) =>
+        {
+            using var brush = new SolidBrush(JewelryDarkTheme.AccentCyan);
+            using var path = new GraphicsPath();
+            path.MoveTo(s * 0.55f, s * 0.15f);
+            path.LineTo(s * 0.25f, s * 0.55f);
+            path.LineTo(s * 0.48f, s * 0.55f);
+            path.LineTo(s * 0.40f, s * 0.88f);
+            path.LineTo(s * 0.78f, s * 0.45f);
+            path.LineTo(s * 0.54f, s * 0.45f);
+            path.CloseFigure();
+            g.FillPath(brush, path);
+        });
+    }
+
+    public static Bitmap? GetSearchIcon(int size = 16)
+    {
+        return GetCachedOrRender($"Util_Search_{size}", size, (g, s) =>
+        {
+            using var pen = new Pen(JewelryDarkTheme.TextSecondary, 1.5f);
+            float r = s * 0.30f;
+            g.DrawEllipse(pen, s * 0.15f, s * 0.15f, r * 2f, r * 2f);
+            g.DrawLine(pen, s * 0.58f, s * 0.58f, s * 0.85f, s * 0.85f);
+        });
+    }
+
+    public static Bitmap? GetToolIcon(ToolDefinition tool, int size = 32)
+    {
+        string key = $"ToolIcon_{tool.Id}_{size}_{(tool.IsImplemented ? "1" : "0")}";
+        return GetCachedOrRender(key, size, (g, s) =>
+        {
+            Color primaryColor = tool.IsImplemented ? JewelryDarkTheme.AccentGold : Color.FromArgb(0xB8, 0x86, 0x0B);
+            Color accentColor = tool.IsImplemented ? JewelryDarkTheme.AccentCyan : Color.FromArgb(0x8B, 0x73, 0x55);
+
+            using var mainPen = new Pen(primaryColor, 1.8f);
+            using var fillBrush = new SolidBrush(Color.FromArgb(primaryColor.Rb, primaryColor.Gb, primaryColor.Bb, 0x25));
+
+            float pad = s * 0.22f;
+            float w = s - 2 * pad;
+            float h = s - 2 * pad;
+
+            if (tool.TabId == "Curve")
+            {
+                using var p = new GraphicsPath();
+                p.AddBezier(
+                    new PointF(pad, pad + h * 0.8f),
+                    new PointF(pad + w * 0.2f, pad),
+                    new PointF(pad + w * 0.8f, pad + h),
+                    new PointF(pad + w, pad + h * 0.2f));
+                g.DrawPath(mainPen, p);
+            }
+            else if (tool.TabId == "Surface")
+            {
+                using var p = new GraphicsPath();
+                p.MoveTo(pad, pad + h * 0.3f);
+                p.LineTo(pad + w * 0.7f, pad);
+                p.LineTo(pad + w, pad + h * 0.7f);
+                p.LineTo(pad + w * 0.3f, pad + h);
+                p.CloseFigure();
+                g.FillPath(fillBrush, p);
+                g.DrawPath(mainPen, p);
+            }
+            else if (tool.TabId == "Solid")
+            {
+                g.DrawRectangle(mainPen, pad, pad + h * 0.25f, w * 0.7f, h * 0.7f);
+                using var secondaryPen = new Pen(accentColor, 1.2f);
+                g.DrawLine(secondaryPen, pad + w * 0.7f, pad + h * 0.25f, pad + w, pad);
+                g.DrawLine(secondaryPen, pad + w * 0.7f, pad + h * 0.95f, pad + w, pad + h * 0.7f);
+            }
+            else if (tool.TabId == "Gems")
+            {
+                using var p = new GraphicsPath();
+                p.MoveTo(pad + w * 0.25f, pad);
+                p.LineTo(pad + w * 0.75f, pad);
+                p.LineTo(pad + w, pad + h * 0.45f);
+                p.LineTo(pad + w * 0.5f, pad + h);
+                p.LineTo(pad, pad + h * 0.45f);
+                p.CloseFigure();
+                g.FillPath(fillBrush, p);
+                g.DrawPath(mainPen, p);
+            }
+            else if (tool.TabId == "Settings")
+            {
+                float cx = s / 2f, cy = s / 2f + 2f, r = w * 0.40f;
+                g.DrawEllipse(mainPen, cx - r, cy - r, r * 2f, r * 2f);
+                using var prongBrush = new SolidBrush(primaryColor);
+                g.FillEllipse(prongBrush, cx - r - 1f, cy - 2f, 4f, 4f);
+                g.FillEllipse(prongBrush, cx + r - 3f, cy - 2f, 4f, 4f);
+                g.FillEllipse(prongBrush, cx - 2f, cy - r - 1f, 4f, 4f);
+                g.FillEllipse(prongBrush, cx - 2f, cy + r - 3f, 4f, 4f);
+            }
+            else if (tool.TabId == "Cutters")
+            {
+                using var p = new GraphicsPath();
+                p.MoveTo(pad + w * 0.5f, pad);
+                p.LineTo(pad + w * 0.5f, pad + h * 0.35f);
+                p.LineTo(pad + w * 0.9f, pad + h * 0.55f);
+                p.LineTo(pad + w * 0.5f, pad + h);
+                p.LineTo(pad + w * 0.1f, pad + h * 0.55f);
+                p.LineTo(pad + w * 0.5f, pad + h * 0.35f);
+                using var cutterPen = new Pen(Color.FromArgb(0xCF, 0x9B, 0x77), 1.5f);
+                g.DrawPath(cutterPen, p);
+            }
+            else
+            {
+                g.DrawEllipse(mainPen, pad, pad, w, h);
+                using var crossPen = new Pen(accentColor, 1.2f);
+                g.DrawLine(crossPen, pad + w * 0.5f, pad, pad + w * 0.5f, pad + h);
+                g.DrawLine(crossPen, pad, pad + h * 0.5f, pad + w, pad + h * 0.5f);
+            }
+
+            // BADGE 1: Dynamic Jewelry Lightning Bolt (⚡) in Top-Right Corner
+            if (tool.HasLightningBadge)
+            {
+                using var boltBrush = new SolidBrush(tool.IsImplemented ? JewelryDarkTheme.AccentCyan : Color.FromArgb(0x8B, 0x73, 0x55));
+                using var boltPath = new GraphicsPath();
+                float bx = s - 9f, by = 2f;
+                boltPath.MoveTo(bx + 5f, by);
+                boltPath.LineTo(bx + 1f, by + 5f);
+                boltPath.LineTo(bx + 4f, by + 5f);
+                boltPath.LineTo(bx + 3f, by + 9f);
+                boltPath.LineTo(bx + 8f, by + 4f);
+                boltPath.LineTo(bx + 5f, by + 4f);
+                boltPath.CloseFigure();
+                g.FillPath(boltBrush, boltPath);
+            }
+
+            // BADGE 2: Tool Group White Triangle (◢) in Bottom-Right Corner
+            if (tool.HasGroupBadge)
+            {
+                using var triangleBrush = new SolidBrush(Color.FromArgb(0xE0, 0xE0, 0xE0));
+                using var trianglePath = new GraphicsPath();
+                trianglePath.MoveTo(s - 2f, s - 8f);
+                trianglePath.LineTo(s - 2f, s - 2f);
+                trianglePath.LineTo(s - 8f, s - 2f);
+                trianglePath.CloseFigure();
+                g.FillPath(triangleBrush, trianglePath);
+            }
+
+            // Roadmap Placeholder bullet distinction
+            if (!tool.IsImplemented)
+            {
+                using var bulletBrush = new SolidBrush(Color.FromArgb(0xB8, 0x86, 0x0B));
+                g.FillEllipse(bulletBrush, 2f, 2f, 4f, 4f);
+            }
+        });
+    }
+
+    #endregion
+
     private static Bitmap? GetCachedOrRender(string key, int size, Action<Graphics, int> renderAction)
     {
         if (!IsEtoPlatformAvailable)
