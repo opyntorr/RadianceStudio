@@ -92,9 +92,9 @@ def configure_scheme_file(settings_path):
     print(f"[SUCCESS] Configured {settings_path} for Obsidian Dark Jewelry theme!")
 
 def configure_scheme_settings():
+    # STRICT SCHEME ISOLATION: NEVER touch Scheme__Default
     targets = [
-        os.path.expandvars(r'%APPDATA%\McNeel\Rhinoceros\8.0\settings\settings-Scheme__RadianceStudio.xml'),
-        os.path.expandvars(r'%APPDATA%\McNeel\Rhinoceros\8.0\settings\settings-Scheme__Default.xml')
+        os.path.expandvars(r'%APPDATA%\McNeel\Rhinoceros\8.0\settings\settings-Scheme__RadianceStudio.xml')
     ]
     for p in targets:
         configure_scheme_file(p)
