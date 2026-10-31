@@ -263,9 +263,9 @@ def configure_container_file(containers_path):
     print(f"[SUCCESS] Configured {containers_path} with 4 Left panels, 3 Right panels, and Top Bitmap toolbar!")
 
 def configure_containers():
+    # STRICT SCHEME ISOLATION: NEVER touch Scheme__Default
     targets = [
-        os.path.expandvars(r'%APPDATA%\McNeel\Rhinoceros\8.0\settings\Scheme__RadianceStudio\containers.xml'),
-        os.path.expandvars(r'%APPDATA%\McNeel\Rhinoceros\8.0\settings\Scheme__Default\containers.xml')
+        os.path.expandvars(r'%APPDATA%\McNeel\Rhinoceros\8.0\settings\Scheme__RadianceStudio\containers.xml')
     ]
     for p in targets:
         configure_container_file(p)
