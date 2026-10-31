@@ -349,41 +349,41 @@ def draw_icon(size, is_implemented, name):
     rect = [margin, margin, size - 1 - margin, size - 1 - margin]
     
     if is_implemented:
-        bg_color = (18, 38, 58, 240)
+        bg_color = (20, 35, 52, 240)
         border_color = (0, 180, 240, 255)
-        accent_color = (0, 220, 255, 255)
+        accent_color = (0, 230, 255, 255)
     else:
-        bg_color = (48, 38, 28, 220)
-        border_color = (210, 150, 70, 200)
-        accent_color = (230, 175, 95, 255)
+        bg_color = (48, 36, 24, 220)
+        border_color = (200, 130, 40, 220)
+        accent_color = (235, 160, 60, 255)
         
-    draw.rounded_rectangle(rect, radius=size//5, fill=bg_color, outline=border_color, width=1)
+    draw.rounded_rectangle(rect, radius=max(2, size // 5), fill=bg_color, outline=border_color, width=1)
     cx, cy = size / 2.0, size / 2.0
     r = size * 0.28
     
     n_lower = name.lower()
     if 'rail' in n_lower or 'circle' in n_lower or 'round' in n_lower:
-        draw.ellipse([cx - r, cy - r, cx + r, cy + r], outline=accent_color, width=max(1, size//14))
+        draw.ellipse([cx - r, cy - r, cx + r, cy + r], outline=accent_color, width=max(1, size // 14))
     elif 'gem' in n_lower or 'diamond' in n_lower or 'pave' in n_lower:
         pts = [(cx, cy - r), (cx + r, cy), (cx, cy + r), (cx - r, cy)]
         draw.polygon(pts, outline=accent_color, fill=(bg_color[0]+30, bg_color[1]+30, bg_color[2]+30, 200))
     elif 'prong' in n_lower or 'head' in n_lower or 'bezel' in n_lower or 'halo' in n_lower:
         draw.ellipse([cx - r*0.6, cy - r*0.6, cx + r*0.6, cy + r*0.6], outline=accent_color, width=1)
-        pr = max(1, size//12)
+        pr = max(1, size // 12)
         for dx, dy in [(-r*0.8, -r*0.8), (r*0.8, -r*0.8), (r*0.8, r*0.8), (-r*0.8, r*0.8)]:
             draw.ellipse([cx+dx-pr, cy+dy-pr, cx+dx+pr, cy+dy+pr], fill=accent_color)
     elif 'cutter' in n_lower:
         pts = [(cx - r, cy - r*0.6), (cx + r, cy - r*0.6), (cx, cy + r)]
         draw.polygon(pts, outline=accent_color)
     elif 'box' in n_lower or 'solid' in n_lower or 'extrude' in n_lower or 'mesh' in n_lower:
-        draw.rectangle([cx - r, cy - r, cx + r, cy + r], outline=accent_color, width=max(1, size//14))
+        draw.rectangle([cx - r, cy - r, cx + r, cy + r], outline=accent_color, width=max(1, size // 14))
     else:
-        draw.arc([cx - r, cy - r, cx + r, cy + r], 45, 315, fill=accent_color, width=max(1, size//12))
+        draw.arc([cx - r, cy - r, cx + r, cy + r], 45, 315, fill=accent_color, width=max(1, size // 12))
 
     if not is_implemented:
         badge_r = max(2, size // 7)
-        bx, by = size - margin - badge_r - 2, margin + badge_r + 2
-        draw.ellipse([bx - badge_r, by - badge_r, bx + badge_r, by + badge_r], fill=(220, 140, 40, 255), outline=(255, 200, 100, 255))
+        bx, by = size - margin - badge_r - 1, margin + badge_r + 1
+        draw.ellipse([bx - badge_r, by - badge_r, bx + badge_r, by + badge_r], fill=(230, 130, 30, 255), outline=(255, 210, 80, 255))
         
     return img
 
@@ -443,8 +443,8 @@ def build_rui():
         for tool_idx, (tool_name, macro_cmd, is_impl) in enumerate(tools):
             macro_guid = f"d{tab_idx+1:x}011111-1111-1111-1111-{tool_idx+1:012d}"
             item_guid = f"c{tab_idx+1:x}011111-1111-1111-1111-{tool_idx+1:012d}"
-            bitmap_idx = len(all_macros)
-            all_macros.append((tool_name, is_impl))
+            bitmap_guid = f"bb011111-1111-1111-1111-{len(all_macros)+1:012d}"
+            all_macros.append((tool_name, is_impl, bitmap_guid))
             
             # Toolbar Item
             item_elem = ET.SubElement(tb_elem, "tool_bar_item", {"guid": item_guid})
@@ -452,37 +452,71 @@ def build_rui():
             ET.SubElement(i_text, "locale_1033").text = tool_name
             ET.SubElement(item_elem, "left_macro_id").text = macro_guid
             
-            # Macro Item
-            macro_elem = ET.SubElement(macros_elem, "macro_item", {"guid": macro_guid})
+            # Macro Item (bitmap_id is an ATTRIBUTE pointing to bitmap_item guid)
+            macro_elem = ET.SubElement(macros_elem, "macro_item", {
+                "guid": macro_guid,
+                "bitmap_id": bitmap_guid
+            })
             m_text = ET.SubElement(macro_elem, "text")
             ET.SubElement(m_text, "locale_1033").text = tool_name
             ET.SubElement(macro_elem, "script").text = macro_cmd
-            ET.SubElement(macro_elem, "tooltip").text = f"{tool_name} ({macro_cmd})"
-            ET.SubElement(macro_elem, "help_text").text = f"Executes {tool_name}"
-            ET.SubElement(macro_elem, "button_text").text = tool_name
-            ET.SubElement(macro_elem, "menu_text").text = tool_name
-            ET.SubElement(macro_elem, "bitmap_id").text = f"{bitmap_idx}"
+            m_tt = ET.SubElement(macro_elem, "tooltip")
+            ET.SubElement(m_tt, "locale_1033").text = f"{tool_name} ({macro_cmd})"
+            m_ht = ET.SubElement(macro_elem, "help_text")
+            ET.SubElement(m_ht, "locale_1033").text = f"Executes {tool_name}"
+            m_bt = ET.SubElement(macro_elem, "button_text")
+            ET.SubElement(m_bt, "locale_1033").text = tool_name
+            m_mt = ET.SubElement(macro_elem, "menu_text")
+            ET.SubElement(m_mt, "locale_1033").text = tool_name
             
-    # Generate unified horizontal bitmap strips
+    # Generate unified VERTICAL bitmap strips (Rhino RUI strips stack vertically!)
     num_tools = len(all_macros)
-    print(f"Generating bitmap strips for {num_tools} tools across 16 tabs...")
+    print(f"Generating vertical bitmap strips for {num_tools} tools across 16 tabs...")
     
-    for size in [24, 32]:
-        strip = Image.new('RGBA', (size * num_tools, size), (0, 0, 0, 0))
-        for idx, (name, is_impl) in enumerate(all_macros):
-            icon = draw_icon(size, is_impl, name)
-            strip.paste(icon, (idx * size, 0))
-            
-        buf = io.BytesIO()
-        strip.save(buf, format='PNG')
-        b64 = base64.b64encode(buf.getvalue()).decode('ascii')
+    # 1. 16x16 Small Bitmaps (Width: 16, Height: 16 * num_tools)
+    small_elem = ET.SubElement(bitmaps_elem, "small_bitmap", {"item_width": "16", "item_height": "16"})
+    for idx, (name, is_impl, bmp_guid) in enumerate(all_macros):
+        ET.SubElement(small_elem, "bitmap_item", {"guid": bmp_guid, "index": str(idx)})
+    
+    strip16 = Image.new('RGBA', (16, 16 * num_tools), (0, 0, 0, 0))
+    for idx, (name, is_impl, bmp_guid) in enumerate(all_macros):
+        icon = draw_icon(16, is_impl, name)
+        strip16.paste(icon, (0, idx * 16))
+    buf16 = io.BytesIO()
+    strip16.save(buf16, format='PNG')
+    b64_16 = base64.b64encode(buf16.getvalue()).decode('ascii')
+    bmp16 = ET.SubElement(small_elem, "bitmap")
+    bmp16.text = b64_16
+
+    # 2. 24x24 Normal Bitmaps (Width: 24, Height: 24 * num_tools)
+    normal_elem = ET.SubElement(bitmaps_elem, "normal_bitmap", {"item_width": "24", "item_height": "24"})
+    for idx, (name, is_impl, bmp_guid) in enumerate(all_macros):
+        ET.SubElement(normal_elem, "bitmap_item", {"guid": bmp_guid, "index": str(idx)})
+    
+    strip24 = Image.new('RGBA', (24, 24 * num_tools), (0, 0, 0, 0))
+    for idx, (name, is_impl, bmp_guid) in enumerate(all_macros):
+        icon = draw_icon(24, is_impl, name)
+        strip24.paste(icon, (0, idx * 24))
+    buf24 = io.BytesIO()
+    strip24.save(buf24, format='PNG')
+    b64_24 = base64.b64encode(buf24.getvalue()).decode('ascii')
+    bmp24 = ET.SubElement(normal_elem, "bitmap")
+    bmp24.text = b64_24
+    
+    # 3. 32x32 Large Bitmaps (Width: 32, Height: 32 * num_tools)
+    large_elem = ET.SubElement(bitmaps_elem, "large_bitmap", {"item_width": "32", "item_height": "32"})
+    for idx, (name, is_impl, bmp_guid) in enumerate(all_macros):
+        ET.SubElement(large_elem, "bitmap_item", {"guid": bmp_guid, "index": str(idx)})
         
-        bmp_elem = ET.SubElement(bitmaps_elem, "bitmap", {
-            "guid": str(uuid.uuid4()),
-            "dpi": "100",
-            "file": "strip.png"
-        })
-        bmp_elem.text = b64
+    strip32 = Image.new('RGBA', (32, 32 * num_tools), (0, 0, 0, 0))
+    for idx, (name, is_impl, bmp_guid) in enumerate(all_macros):
+        icon = draw_icon(32, is_impl, name)
+        strip32.paste(icon, (0, idx * 32))
+    buf32 = io.BytesIO()
+    strip32.save(buf32, format='PNG')
+    b64_32 = base64.b64encode(buf32.getvalue()).decode('ascii')
+    bmp32 = ET.SubElement(large_elem, "bitmap")
+    bmp32.text = b64_32
 
     rui_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src', 'RadianceStudio.Rhino', 'RadianceStudioToolbar.rui'))
     tree = ET.ElementTree(root)

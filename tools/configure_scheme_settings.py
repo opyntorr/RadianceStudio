@@ -1,8 +1,9 @@
 import os
 import xml.etree.ElementTree as ET
 
-def configure_scheme_settings():
-    settings_path = os.path.expandvars(r'%APPDATA%\McNeel\Rhinoceros\8.0\settings\settings-Scheme__RadianceStudio.xml')
+def configure_scheme_file(settings_path):
+    if not os.path.exists(settings_path) and "Default" in settings_path:
+        return
     if not os.path.exists(settings_path):
         print(f"[INFO] Creating {settings_path}")
         root = ET.Element('settings', {'id': '2.0'})
@@ -52,7 +53,7 @@ def configure_scheme_settings():
         'UsePaintColors': 'True',
         'MenuVisible': 'False',
         'CommandPromptPosition': 'Bottom',
-        'ShowOsnapBar': 'True',
+        'ShowOsnapBar': 'False',
         'ShowStatusBar': 'True',
         'ShowSideBar': 'False',
         'ShowViewportTitles': 'True',
@@ -65,22 +66,13 @@ def configure_scheme_settings():
             e = ET.SubElement(app, 'entry', {'key': k})
         e.text = v
 
-    # 3. UiPaintColors
-    uipc = options.find('child[@key="UiPaintColors"]')
+    # 3. UIPaintColors
+    uipc = app.find('child[@key="UIPaintColors"]')
     if uipc is None:
-        uipc = ET.SubElement(options, 'child', {'key': 'UiPaintColors'})
+        uipc = ET.SubElement(app, 'child', {'key': 'UIPaintColors'})
 
     uipc_entries = {
-        'NormalStart': '255,30,30,34',
-        'NormalEnd': '255,24,24,28',
-        'NormalBorder': '255,45,45,50',
-        'MouseOverControlStart': '255,45,45,52',
-        'MouseOverControlEnd': '255,50,50,58',
-        'MouseOverControlBorder': '255,212,175,55',
-        'HotStart': '255,40,40,46',
-        'HotEnd': '255,40,40,46',
-        'PressedStart': '255,20,20,24',
-        'PressedEnd': '255,212,175,55',
+        'PanelBackground': '255,28,28,32',
         'TextEnabled': '255,240,240,240',
         'TextDisabled': '255,100,100,105',
         'ActiveViewportTitle': '255,212,175,55',
@@ -98,6 +90,14 @@ def configure_scheme_settings():
 
     tree.write(settings_path, encoding='utf-8', xml_declaration=True)
     print(f"[SUCCESS] Configured {settings_path} for Obsidian Dark Jewelry theme!")
+
+def configure_scheme_settings():
+    targets = [
+        os.path.expandvars(r'%APPDATA%\McNeel\Rhinoceros\8.0\settings\settings-Scheme__RadianceStudio.xml'),
+        os.path.expandvars(r'%APPDATA%\McNeel\Rhinoceros\8.0\settings\settings-Scheme__Default.xml')
+    ]
+    for p in targets:
+        configure_scheme_file(p)
 
 if __name__ == '__main__':
     configure_scheme_settings()

@@ -182,7 +182,7 @@ public class RadianceStudioPlugIn : PlugIn
             global::Rhino.ApplicationSettings.AppearanceSettings.MenuVisible = false;
             global::Rhino.ApplicationSettings.AppearanceSettings.CommandPromptPosition = global::Rhino.ApplicationSettings.CommandPromptPosition.Bottom;
             global::Rhino.ApplicationSettings.AppearanceSettings.ShowSideBar = false;
-            global::Rhino.ApplicationSettings.AppearanceSettings.ShowOsnapBar = true;
+            global::Rhino.ApplicationSettings.AppearanceSettings.ShowOsnapBar = false;
             global::Rhino.ApplicationSettings.AppearanceSettings.ShowStatusBar = true;
 
             // Obsidian Dark Jewelry Viewport Palette
@@ -287,31 +287,29 @@ public class RadianceStudioPlugIn : PlugIn
             RhinoApp.WriteLine($"[RadianceStudio] Note registering Ribbon panel: {ex.Message}");
         }
 
+        // Left Workspace Panels
         try
         {
-            RhinoPanels.RegisterPanel(this, typeof(JewelryLeftSidebarPanelHost), "Workspace", null);
+            RhinoPanels.RegisterPanel(this, typeof(QuickCommandsPanelHost), "Quick Commands", null);
+            RhinoPanels.RegisterPanel(this, typeof(ProjectsPanelHost), "Projects", null);
+            RhinoPanels.RegisterPanel(this, typeof(JewelryLayersPanelHost), "Layers", null);
+            RhinoPanels.RegisterPanel(this, typeof(JewelryMaterialsPanelHost), "Materials", null);
         }
         catch (Exception ex)
         {
-            RhinoApp.WriteLine($"[RadianceStudio] Note registering Left Sidebar panel: {ex.Message}");
+            RhinoApp.WriteLine($"[RadianceStudio] Note registering Left panels: {ex.Message}");
         }
 
-        try
-        {
-            RhinoPanels.RegisterPanel(this, typeof(DynamicInspectorPanelHost), "Dynamic Commands", null);
-        }
-        catch (Exception ex)
-        {
-            RhinoApp.WriteLine($"[RadianceStudio] Note registering Dynamic Commands panel: {ex.Message}");
-        }
-
+        // Right Workspace Panels
         try
         {
             RhinoPanels.RegisterPanel(this, typeof(HistoryPanelHost), "Dynamic Groups", null);
+            RhinoPanels.RegisterPanel(this, typeof(DynamicInspectorPanelHost), "Dynamic Commands", null);
+            RhinoPanels.RegisterPanel(this, typeof(JewelryPropertiesPanelHost), "Properties", null);
         }
         catch (Exception ex)
         {
-            RhinoApp.WriteLine($"[RadianceStudio] Note registering Dynamic Groups panel: {ex.Message}");
+            RhinoApp.WriteLine($"[RadianceStudio] Note registering Right panels: {ex.Message}");
         }
     }
 
@@ -380,12 +378,28 @@ public class RadianceStudioPlugIn : PlugIn
             RhinoApp.RunScript("-_ToolbarGroup \"Standard Toolbars\" Hide", echo: false);
             RhinoApp.RunScript("-_ToolbarGroup \"Radiance Studio\" Show", echo: false);
 
-            // Open Left dock container: Unified Left Sidebar (Quick Commands, Projects, Layers, Display Modes)
-            RhinoPanels.OpenPanel(JewelryLeftSidebarPanelHost.PanelId);
+            // Open Left dock panels: Quick Commands, Projects, Layers, Materials (stacked independently)
+            RhinoPanels.OpenPanel(QuickCommandsPanelHost.PanelId);
+            RhinoPanels.OpenPanel(ProjectsPanelHost.PanelId);
+            RhinoPanels.OpenPanel(JewelryLayersPanelHost.PanelId);
+            RhinoPanels.OpenPanel(JewelryMaterialsPanelHost.PanelId);
 
-            // Open Right dock container panels: Dynamic Commands (Inspector) & Dynamic Groups (History Tree)
+            // Open Right dock panels: Dynamic Groups (Tree), Dynamic Commands (Inspector), Properties (stacked independently)
+            RhinoPanels.OpenPanel(HistoryPanelHost.PanelId);
             RhinoPanels.OpenPanel(DynamicInspectorPanelHost.PanelId);
-            RhinoPanels.OpenPanelAsSibling(HistoryPanelHost.PanelId, DynamicInspectorPanelHost.PanelId);
+            RhinoPanels.OpenPanel(JewelryPropertiesPanelHost.PanelId);
+
+            // Explicitly close unwanted legacy and native panels
+            try
+            {
+                RhinoPanels.ClosePanel(new Guid("3610bf83-047d-4f7f-93fd-163ea305b493")); // Rhino Native Layers
+                RhinoPanels.ClosePanel(new Guid("d3c4a392-88de-4c4f-88a4-ba5636ef7f38")); // Rhino Native Osnap
+                RhinoPanels.ClosePanel(new Guid("34ffb674-c504-49d9-9fcd-99cc811dcda2")); // Rhino Native Properties
+                RhinoPanels.ClosePanel(new Guid("4f101111-2222-3333-4444-555555555502")); // Old monolithic left sidebar
+            }
+            catch
+            {
+            }
 
             // Connect Inspector and History if both are instantiated
             if (InspectorPanel != null && HistoryPanel != null)
