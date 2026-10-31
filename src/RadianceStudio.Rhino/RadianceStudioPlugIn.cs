@@ -78,12 +78,11 @@ public class RadianceStudioPlugIn : PlugIn
             RhinoDoc.EndOpenDocument += OnEndOpenDocument;
             RhinoApp.Idle += OnRhinoIdle;
 
-            // Register Eto.Forms UI panels with Rhino Panels system
-            RegisterStudioPanels();
-
-            // If running under the RadianceStudio scheme, initialize title, units, and workspace
+            // Register panels and initialize workspace ONLY when running under the RadianceStudio scheme.
+            // This prevents polluting Base Rhino's dockbar factories and guarantees zero shutdown popup warnings in Base Rhino.
             if (IsRadianceStudioScheme())
             {
+                RegisterStudioPanels();
                 SetStudioWindowTitle();
 
                 if (RhinoDoc.ActiveDoc != null)
@@ -110,7 +109,40 @@ public class RadianceStudioPlugIn : PlugIn
         RhinoDoc.EndOpenDocument -= OnEndOpenDocument;
         RhinoApp.Idle -= OnRhinoIdle;
 
+        if (IsRadianceStudioScheme())
+        {
+            CloseStudioPanels();
+        }
+
         base.OnShutdown();
+    }
+
+    /// <summary>
+    /// Safely closes and unhooks all RadianceStudio panels before plugin unloads to ensure
+    /// Rhino's tabbed dockbar manager cleans up references cleanly without shutdown assertions.
+    /// </summary>
+    public static void CloseStudioPanels()
+    {
+        if (!RailEngine.IsRhinoNativeAvailable) return;
+
+        try
+        {
+            JewelryPropertiesPanelHost.Instance?.CleanUp();
+            JewelryRibbonPanel.Instance?.CleanUp();
+
+            RhinoPanels.ClosePanel(QuickCommandsPanelHost.PanelId);
+            RhinoPanels.ClosePanel(ProjectsPanelHost.PanelId);
+            RhinoPanels.ClosePanel(JewelryLayersPanelHost.PanelId);
+            RhinoPanels.ClosePanel(JewelryMaterialsPanelHost.PanelId);
+            RhinoPanels.ClosePanel(HistoryPanelHost.PanelId);
+            RhinoPanels.ClosePanel(DynamicInspectorPanelHost.PanelId);
+            RhinoPanels.ClosePanel(JewelryPropertiesPanelHost.PanelId);
+            RhinoPanels.ClosePanel(JewelryRibbonPanel.PanelId);
+        }
+        catch (Exception ex)
+        {
+            RhinoApp.WriteLine($"[RadianceStudio] Note closing panels on shutdown: {ex.Message}");
+        }
     }
 
     #region Scheme & Branding

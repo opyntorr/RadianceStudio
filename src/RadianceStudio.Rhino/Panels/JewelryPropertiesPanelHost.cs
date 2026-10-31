@@ -34,6 +34,24 @@ public class JewelryPropertiesPanelHost : JewelryPropertiesPanel
         }
     }
 
+    public void CleanUp()
+    {
+        try
+        {
+            RhinoDoc.SelectObjects -= OnSelectionChanged;
+            RhinoDoc.DeselectObjects -= OnSelectionChanged;
+            RhinoDoc.DeselectAllObjects -= OnDeselectAll;
+        }
+        catch
+        {
+        }
+
+        if (Instance == this)
+        {
+            Instance = null;
+        }
+    }
+
     private void OnSelectionChanged(object? sender, RhinoObjectSelectionEventArgs e)
     {
         RefreshProperties();

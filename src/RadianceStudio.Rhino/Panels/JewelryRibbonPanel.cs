@@ -36,4 +36,17 @@ public class JewelryRibbonPanel : JewelryRibbon
             RhinoApp.WriteLine($"[RadianceStudio] Unable to execute ribbon command '{commandName}': {ex.Message}");
         }
     }
+
+    public void CleanUp()
+    {
+        CommandRequested -= OnCommandRequested;
+        if (Instance == this)
+        {
+            Instance = null;
+        }
+        if (RadianceStudioPlugIn.Ribbon == this)
+        {
+            RadianceStudioPlugIn.Ribbon = null;
+        }
+    }
 }
